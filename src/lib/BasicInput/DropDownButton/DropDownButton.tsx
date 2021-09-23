@@ -54,7 +54,16 @@ export function DropDownButton(props: DropDownButtonProps) {
                     <div className={styles['dropdown-content']}>
                         {props.items && props.items.length ? (
                             props.items.map(i => (
-                                <div className={styles['dropdown-item']}>
+                                <div
+                                    className={styles['dropdown-item']}
+                                    onClick={() => {
+                                        if (props.onSelect) {
+                                            props.onSelect(i)
+                                        }
+
+                                        setIsVisible(false)
+                                    }}
+                                >
                                     {i.icon ? <Icon type={i.icon} style={{ marginRight: '8px' }} /> : <></>}
 
                                     <TextBlock type="body">{i.name}</TextBlock>

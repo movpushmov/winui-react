@@ -14,15 +14,40 @@ export function TitleBlock(props: TextBlockProps) {
         className: ''
     }, props)
 
-    const { className, type, accent, disabled, ...otherProps } = defaultProps
+    const {
+        className,
+        type,
+        accent,
+        disabled,
+        children,
+        ...otherProps
+    } = defaultProps
 
     switch (type) {
         case 'title':
-            return <h3 {...otherProps} className={`${styles['title']} ${getStyles(defaultProps)} ${className}`}/>
+            return (
+                <h3
+                    children={children || ' '}
+                    {...otherProps}
+                    className={`${styles['title']} ${getStyles(defaultProps)} ${className}`}
+                />
+            )
         case 'title-large':
-            return <h2 {...otherProps} className={`${styles['title-large']} ${getStyles(defaultProps)} ${className}`}/>
+            return (
+                <h2
+                    children={children || ' '}
+                    {...otherProps}
+                    className={`${styles['title-large']} ${getStyles(defaultProps)} ${className}`}
+                />
+            )
         case 'display':
-            return <h1 {...otherProps} className={`${styles['display']} ${getStyles(defaultProps)} ${className}`}/>
+            return (
+                <h1
+                    children={children || ' '}
+                    {...otherProps}
+                    className={`${styles['display']} ${getStyles(defaultProps)} ${className}`}
+                />
+            )
     }
 
     // if type is subtitle or undefined

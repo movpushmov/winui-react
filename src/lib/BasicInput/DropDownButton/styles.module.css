@@ -57,6 +57,10 @@
     color: var(--text-color-secondary) !important;
 }
 
+.dropdown-item:active>span {
+
+}
+
 .dropdown-content {
     position: relative;
     z-index: 1;

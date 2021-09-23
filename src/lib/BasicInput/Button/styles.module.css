@@ -37,6 +37,10 @@
     border-bottom-color: rgba(0, 0, 0, .4);
 }
 
+.btn-accent>span {
+    color: var(--text-on-accent-color-primary) !important;
+}
+
 .btn-accent:hover:not(:disabled) {
     background-color: var(--accent-color-secondary);
 }
@@ -45,14 +49,22 @@
     background-color: var(--fill-color-secondary);
 }
 
-.btn:active {
+.btn:active:not(:disabled) {
     background-color: var(--fill-color-tertiary) !important;
     color: var(--text-color-secondary);
 }
 
-.btn-accent:active {
+.btn:active:not(:disabled)>span {
+    color: var(--text-color-secondary) !important;
+}
+
+.btn-accent:active:not(:disabled) {
     background-color: var(--accent-color-tertiary) !important;
     color: var(--text-on-accent-color-secondary);
+}
+
+.btn-accent:active:not(:disabled)>span {
+    color: var(--text-on-accent-color-secondary) !important;
 }
 
 .btn:disabled {
@@ -60,10 +72,18 @@
     color: var(--text-color-disabled);
 }
 
+.btn:disabled>span {
+    color: var(--text-color-disabled) !important;
+}
+
 .btn-accent:disabled {
     background-color: var(--accent-color-disabled);
     color: var(--text-on-accent-color-disabled);
     border-color: transparent;
+}
+
+.btn:disabled>span {
+    color: var(--accent-color-disabled) !important;
 }
 
 @media (prefers-color-scheme: dark) {

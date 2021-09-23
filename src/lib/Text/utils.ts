@@ -12,7 +12,7 @@ export interface TextBlockPropsBase {
     children?: React.ReactNode
 }
 
-export default function(params: { accent?: boolean; disabled?: boolean, underline?: boolean }) {
+export default function getStyles(params: { accent?: boolean; disabled?: boolean, underline?: boolean }) {
     const postfix = params.disabled ? '-disabled' : '' // adds postfix to classname like accent-disabled
 
     return `${

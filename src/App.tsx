@@ -3,10 +3,10 @@ import './lib/winui.css'
 
 import {Button} from "./lib/BasicInput/Button/Button";
 import {TitleBlock} from "./lib/Text/TitleBlock";
-import {ToggleButton} from "./lib/BasicInput/ToggleButton/ToggleButton";
-import {HyperlinkButton} from "./lib/BasicInput/HyperlinkButton/HyperlinkButton";
-import {DropDownButton} from "./lib/BasicInput/DropDownButton/DropDownButton";
 import {Icon, IconType} from "./lib/Icons/Icon";
+import {ToggleButton} from "./lib/BasicInput/ToggleButton/ToggleButton";
+import { HyperlinkButton } from './lib/BasicInput/HyperlinkButton/HyperlinkButton';
+import {DropDownButton} from "./lib/BasicInput/DropDownButton/DropDownButton";
 
 const rowStyle: CSSProperties = {
     display: 'flex',
@@ -22,7 +22,7 @@ function App() {
 
             <div style={rowStyle}>
                 <Button>Standard XAML Button</Button>
-                <Button type="accent" style={{ marginLeft: '16px' }}>Accent Style Button</Button>
+                <Button type="accent" iconRight={<Icon type={IconType.Calendar} style={{ marginLeft: '8px' }}/>} style={{ marginLeft: '16px' }}>Accent Style Button</Button>
                 <Button
                     iconLeft={<Icon style={{ marginRight: '4px' }} type={IconType.DefenderApp}/>}
                     style={{ marginLeft: '16px' }}
@@ -60,7 +60,8 @@ function App() {
                         { icon: IconType.Replay, name: 'Reply', value: 5 },
                         { icon: IconType.Calendar, name: 'Select date', value: 3 }
                     ]}
-                    onSelect={(v) => v}
+                    onSelect={(v) => console.log(v)}
+                    disabled
                 >
                     Select some value.
                 </DropDownButton>
