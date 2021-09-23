@@ -1,0 +1,25 @@
+.link>a {
+    color: var(--accent-text-color-primary);
+    text-decoration: none;
+
+    padding: 4px 12px;
+    border-radius: 4px;
+}
+
+.link>a:hover {
+    color: var(--accent-text-color-secondary);
+    background-color: var(--fill-color-subtle-secondary);
+}
+
+.link>a:active {
+    color: var(--accent-text-color-tertiary);
+    background-color: var(--fill-color-subtle-tertiary);
+}
+
+.link-disabled>a {
+    color: var(--accent-text-color-disabled);
+    text-decoration: none;
+
+    padding: 4px 12px;
+    border-radius: 4px;
+}

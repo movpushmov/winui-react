@@ -1,0 +1,80 @@
+.btn-base {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Segoe UI Variable Display', sans-serif;
+
+    font-size: var(--font-size-body);
+
+    padding: 4px 12px;
+    border-radius: 4px;
+    border-style: solid;
+}
+
+.btn {
+    composes: btn-base;
+    background-clip: padding-box;
+
+    background-color: rgba(255, 255, 255, .7);
+
+    border-color: rgba(0, 0, 0, .1622);
+    border-bottom-color: rgba(0, 0, 0, .0578);
+
+    color: var(--text-color-primary);
+}
+
+.btn-accent {
+    composes: btn-base;
+
+    background-color: var(--accent-color);
+
+    color: var(--text-on-accent-color-primary);
+
+    border-color: rgba(255, 255, 255, .08);
+    border-bottom-color: rgba(0, 0, 0, .4);
+}
+
+.btn-accent:hover:not(:disabled) {
+    background-color: var(--accent-color-secondary);
+}
+
+.btn:hover:not(:disabled) {
+    background-color: var(--fill-color-secondary);
+}
+
+.btn:active {
+    background-color: var(--fill-color-tertiary) !important;
+    color: var(--text-color-secondary);
+}
+
+.btn-accent:active {
+    background-color: var(--accent-color-tertiary) !important;
+    color: var(--text-on-accent-color-secondary);
+}
+
+.btn:disabled {
+    background-color: var(--fill-color-disabled);
+    color: var(--text-color-disabled);
+}
+
+.btn-accent:disabled {
+    background-color: var(--accent-color-disabled);
+    color: var(--text-on-accent-color-disabled);
+    border-color: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+    .btn {
+        background-color: rgba(255, 255, 255, .0605);
+
+        border-color: rgba(255, 255, 255, .068);
+        border-top-color: rgba(255, 255, 255, .093);
+    }
+
+    .btn-accent {
+        border-bottom-color: rgba(0, 0, 0, .14);
+    }
+}

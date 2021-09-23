@@ -1,0 +1,89 @@
+body {
+    --accent-color: #005FB8;
+    --accent-color-secondary: rgba(0, 95, 184, .9); /* #005FB8 with alpha 90% */
+    --accent-color-tertiary: rgba(0, 95, 184, .8); /* #005FB8 with alpha 80% */
+    --accent-color-disabled: rgba(0, 0, 0, .2169);
+    --accent-color-selected-text-background: #0078D4;
+
+    --text-color-primary: rgba(0, 0, 0, .8956);
+    --text-color-secondary: rgba(0, 0, 0, .6063);
+    --text-color-tertiary: rgba(0, 0, 0, .4458);
+    --text-color-disabled: rgba(0, 0, 0, .3614);
+
+    --accent-text-color-primary: #003E92;
+    --accent-text-color-secondary: #001A68;
+    --accent-text-color-tertiary: #005FB8;
+    --accent-text-color-disabled: rgba(0, 0, 0, .3614);
+
+    --font-size-caption: 12px;
+    --font-size-body: 14px;
+    --font-size-body-large: 18px;
+    --font-size-subtitle: 20px;
+    --font-size-title: 28px;
+    --font-size-title-large: 40px;
+    --font-size-display: 68px;
+
+    --fill-color-transparent: transparent;
+    --fill-color-default: rgba(255, 255, 255, .7);
+    --fill-color-secondary: rgba(255, 255, 255, .5);
+    --fill-color-tertiary: rgba(255, 255, 255, .3);
+    --fill-color-disabled: rgba(255, 255, 255, .3);
+    --fill-color-input-active: rgb(255, 255, 255);
+
+    --text-on-accent-color-primary: #FFFFFF;
+    --text-on-accent-color-secondary: rgba(255, 255, 255, .7);
+    --text-on-accent-color-disabled: #FFFFFF;
+    --text-on-accent-color-selected: #FFFFFF;
+
+    --fill-color-subtle-primary: rgba(255, 255, 255, 0);
+    --fill-color-subtle-secondary: rgba(0, 0, 0, .0373);
+    --fill-color-subtle-tertiary: rgba(0, 0, 0, .0241);
+    --fill-color-subtle-disabled: rgba(0, 0, 0, 0);
+
+    --stroke-color-default: rgba(117, 117, 117, .4);
+    --stroke-color-flyout: rgba(0, 0, 0, .0578);
+
+    background-color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        --accent-color: #60CDFF;
+        --accent-color-secondary: rgba(96, 205, 255, .9); /* #005FB8 with alpha 90% */
+        --accent-color-tertiary: rgba(96, 205, 255, .8); /* #005FB8 with alpha 80% */
+        --accent-color-disabled: rgba(255, 255, 255, .1581);
+        --accent-color-selected-text-background: #0078D4;
+
+        --text-color-primary: rgba(255, 255, 255, .8956);
+        --text-color-secondary: rgba(255, 255, 255, .786);
+        --text-color-tertiary: rgba(255, 255, 255, .5442);
+        --text-color-disabled: rgba(255, 255, 255, .3628);
+
+        --accent-text-color-primary: #99EBFF;
+        --accent-text-color-secondary: #99EBFF;
+        --accent-text-color-tertiary: #60CDFF;
+        --accent-text-color-disabled: rgba(255, 255, 255, .3628);
+
+        --fill-color-transparent: transparent;
+        --fill-color-default: rgba(255, 255, 255, .0605);
+        --fill-color-secondary: rgba(255, 255, 255, .0837);
+        --fill-color-tertiary: rgba(255, 255, 255, .0326);
+        --fill-color-disabled: rgba(255, 255, 255, .0419);
+        --fill-color-input-active: rgba(30, 30, 30, .7);
+
+        --text-on-accent-color-primary: #000000;
+        --text-on-accent-color-secondary: rgba(0, 0, 0, .5);
+        --text-on-accent-color-disabled: rgba(255, 255, 255, .5302);
+        --text-on-accent-color-selected: #FFFFFF;
+
+        --fill-color-subtle-primary: rgba(255, 255, 255, 0);
+        --fill-color-subtle-secondary: rgba(255, 255, 255, .0605);
+        --fill-color-subtle-tertiary: rgba(255, 255, 255, .0419);
+        --fill-color-subtle-disabled: rgba(255, 255, 255, 0);
+
+        --stroke-color-default: rgba(117, 117, 117, .4);
+        --stroke-color-flyout: rgba(0, 0, 0, .2);
+
+        background-color: #2C2C2C;
+    }
+}
