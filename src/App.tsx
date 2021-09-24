@@ -9,11 +9,12 @@ import { HyperlinkButton } from './lib/BasicInput/HyperlinkButton/HyperlinkButto
 import {DropDownButton} from "./lib/BasicInput/DropDownButton/DropDownButton";
 import {SplitButton} from "./lib/BasicInput/SplitButton/SplitButton";
 import {ToggleSplitButton} from "./lib/BasicInput/ToggleSplitButton/ToggleSplitButton";
+import {ToggleSwitch} from "./lib/BasicInput/ToggleSwitch/ToggleSwitch";
 
 const rowStyle: CSSProperties = {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
 }
 
 function App() {
@@ -139,6 +140,22 @@ function App() {
 
             <TitleBlock type="title">Combo Box</TitleBlock>
             <TitleBlock type="title">Toggle Switch</TitleBlock>
+
+            <div style={rowStyle}>
+                <ToggleSwitch header="With header"/>
+                <ToggleSwitch
+                    header="With header & content"
+                    style={{ marginLeft: '24px' }}
+                    onContent="On"
+                    offContent="Off"
+                />
+                <ToggleSwitch
+                    header="Disabled toggle"
+                    style={{ marginLeft: '24px' }}
+                    disabled
+                />
+            </div>
+
             <TitleBlock type="title">Check Box</TitleBlock>
             <TitleBlock type="title">Radio Button</TitleBlock>
             <TitleBlock type="title">Slider</TitleBlock>

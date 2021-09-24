@@ -37,21 +37,58 @@ body {
     --fill-color-control-disabled: rgba(249, 249, 249, .3);
     --fill-color-control-transparent: transparent;
 
+    --fill-control-alt-transparent: transparent;
+    --fill-control-alt-disabled: rgba(255, 255, 255, 0);
+    --fill-control-alt-secondary: rgba(0, 0, 0, .0241);
+    --fill-control-alt-tertiary: rgba(0, 0, 0, .0578);
+    --fill-control-alt-quarternary: rgba(0, 0, 0, .0924);
+
     --text-on-accent-color-primary: #FFFFFF;
     --text-on-accent-color-secondary: rgba(255, 255, 255, .7);
     --text-on-accent-color-disabled: #FFFFFF;
     --text-on-accent-color-selected: #FFFFFF;
-
-    --fill-color-subtle-primary: rgba(255, 255, 255, 0);
-    --fill-color-subtle-secondary: rgba(0, 0, 0, .0373);
-    --fill-color-subtle-tertiary: rgba(0, 0, 0, .0241);
-    --fill-color-subtle-disabled: rgba(0, 0, 0, 0);
 
     --stroke-color-default: rgba(117, 117, 117, .4);
     --stroke-color-flyout: rgba(0, 0, 0, .0578);
 
     --control-stroke-default: rgba(0, 0, 0, .0578);
     --control-stroke-on-accent-tertiary: rgba(0, 0, 0, .2169);
+
+
+
+
+    --card-background-default: rgba(255, 255, 255, .7);
+    --card-background-secondary: rgba(246, 246, 246, .5);
+
+    --smoke-background: rgba(0, 0, 0, .3);
+
+    --fill-color-subtle-primary: rgba(255, 255, 255, 0);
+    --fill-color-subtle-secondary: rgba(0, 0, 0, .0373);
+    --fill-color-subtle-tertiary: rgba(0, 0, 0, .0241);
+    --fill-color-subtle-disabled: rgba(0, 0, 0, 0);
+
+    --fill-color-control-strong-default: rgba(0, 0, 0, .4458);
+    --fill-color-control-strong-disabled: rgba(0, 0, 0, .3173);
+
+    --fill-control-on-image-default: rgba(255, 255, 255, .79);
+    --fill-control-on-image-secondary: #F3F3F3;
+    --fill-control-on-image-tertiary: #EBEBEB;
+    --fill-control-on-image-disabled: rgba(255, 255, 255, 0);
+
+    --system-critical: #C42B1C;
+    --system-success: #0F7B0F;
+    --system-attention: #005FB7;
+    --system-caution: #9D5D00;
+    --system-neutral: rgba(0, 0, 0, .4458);
+    --system-solid-neutral: #8A8A8A;
+
+    --infobar-critical: #FDE7E9;
+    --infobar-success: #DFF6DD;
+    --infobar-attention: rgba(246, 246, 246, .5);
+    --infobar-solid-attention: #F7F7F7;
+    --infobar-caution: #FFF4CE;
+    --infobar-neutral: rgba(0, 0, 0, .0241);
+    --infobar-solid-neutral: #EEEEEE;
 
     background-color: #FAFAFA;
 }
@@ -103,6 +140,35 @@ body {
 
         --control-stroke-default: rgba(255, 255, 255, .0698);
         --control-stroke-on-accent-tertiary: rgba(0, 0, 0, .2169);
+
+
+
+
+        --card-background-default: rgba(255, 255, 255, .0512);
+        --card-background-secondary: rgba(255, 255, 255, .0326);
+
+        --fill-color-control-strong-default: rgba(255, 255, 255, .5442);
+        --fill-color-control-strong-disabled: rgba(255, 255, 255, .1581);
+
+        --fill-control-on-image-default: rgba(28, 28, 28, .7);
+        --fill-control-on-image-secondary: #1A1A1A;
+        --fill-control-on-image-tertiary: #131313;
+        --fill-control-on-image-disabled: rgba(30, 30, 30, 0);
+
+        --system-critical: #FF99A4;
+        --system-success: #6CCB5F;
+        --system-attention: #60CDFF;
+        --system-caution: #FCE100;
+        --system-neutral: rgba(255, 255, 255, .5442);
+        --system-solid-neutral: #8A8A8A;
+
+        --infobar-critical: #442726;
+        --infobar-success: #393D1B;
+        --infobar-attention: rgba(255, 255, 255, .0326);
+        --infobar-solid-attention: #2E2E2E;
+        --infobar-caution: #433519;
+        --infobar-neutral: rgba(255, 255, 255, .0326);
+        --infobar-solid-neutral: #2E2E2E;
 
         background-color: #2C2C2C;
     }
