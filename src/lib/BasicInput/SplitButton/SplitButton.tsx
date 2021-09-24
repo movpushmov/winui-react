@@ -2,8 +2,7 @@ import React, {CSSProperties, useEffect, useState} from "react";
 import {Button} from "../Button/Button";
 import styles from './styles.module.css'
 import {Icon, IconType} from "../../Icons/Icon";
-import {TextBlock} from "../../Text/TextBlock";
-import {DropDown} from "./DropDown";
+import {DropDown} from "../DropDownButton/DropDown";
 
 export type DropDownItem = {
     icon?: IconType,
@@ -11,7 +10,7 @@ export type DropDownItem = {
     value?: any
 }
 
-interface DropDownButtonProps {
+export interface SplitButtonProps {
     items?: DropDownItem[] | React.ReactElement[]
     emptyMessage?: string
 
@@ -25,7 +24,7 @@ interface DropDownButtonProps {
     disabled?: boolean
 }
 
-export function DropDownButton(props: DropDownButtonProps) {
+export function SplitButton(props: SplitButtonProps) {
     const defaultProps = Object.assign({
         items: [],
         emptyMessage: 'Nothing to see.',
@@ -47,18 +46,25 @@ export function DropDownButton(props: DropDownButtonProps) {
 
     return (
         <div className={`${styles['dropdown']} ${defaultProps.className}`}>
-            <Button
-                {...otherProps}
-                onClick={(e) => {
-                    if (onClick) {
-                        onClick(e)
-                    }
+            <div className={styles['buttons-row']}>
+                <Button
+                    {...otherProps}
+                    onClick={(e) => {
+                        if (onClick) {
+                            onClick(e)
+                        }
+                    }}
+                    className={`${styles['content-button']}`}
+                />
 
-                    setIsVisible(!visible)
-                }}
-                className={`${styles['dropdown-button']} ${animateIcon ? styles['animate-icon'] : ''}`}
-                iconRight={<Icon type={IconType.ChevronDown} style={{ marginLeft: '16px' }} />}
-            />
+                <Button
+                    disabled={otherProps.disabled}
+                    className={`${styles['dropdown-button']} ${animateIcon ? styles['animate-icon'] : ''}`}
+                    onClick={() => setIsVisible(!visible)}
+                >
+                    <Icon type={IconType.ChevronDown} />
+                </Button>
+            </div>
 
             <DropDown
                 visible={visible}

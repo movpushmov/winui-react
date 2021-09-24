@@ -1,3 +1,24 @@
+.buttons-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.content-button {
+    border-radius: 4px 0 0 4px;
+
+    align-self: stretch;
+}
+
+.dropdown-button {
+    border-radius: 0 4px 4px 0;
+    border-left: none;
+
+    padding: 4px 8px;
+
+    align-self: stretch;
+}
+
 .dropdown {
     position: relative;
     user-select: none;
@@ -29,5 +50,3 @@
     animation-duration: .3s;
     animation-name: Icon-Animation;
 }
-
-

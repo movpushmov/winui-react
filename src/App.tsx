@@ -7,6 +7,8 @@ import {Icon, IconType} from "./lib/Icons/Icon";
 import {ToggleButton} from "./lib/BasicInput/ToggleButton/ToggleButton";
 import { HyperlinkButton } from './lib/BasicInput/HyperlinkButton/HyperlinkButton';
 import {DropDownButton} from "./lib/BasicInput/DropDownButton/DropDownButton";
+import {SplitButton} from "./lib/BasicInput/SplitButton/SplitButton";
+import {ToggleSplitButton} from "./lib/BasicInput/ToggleSplitButton/ToggleSplitButton";
 
 const rowStyle: CSSProperties = {
     display: 'flex',
@@ -61,14 +63,80 @@ function App() {
                         { icon: IconType.Calendar, name: 'Select date', value: 3 }
                     ]}
                     onSelect={(v) => console.log(v)}
-                    disabled
                 >
                     Select some value.
+                </DropDownButton>
+
+                <DropDownButton
+                    style={{ marginLeft: '12px' }}
+                    items={[
+                        { icon: IconType.Send, name: 'Send', value: 5 },
+                        { icon: IconType.Replay, name: 'Reply', value: 5 },
+                        { icon: IconType.Calendar, name: 'Select date', value: 3 }
+                    ]}
+                    onSelect={(v) => console.log(v)}
+                    disabled
+                >
+                    Disabled DropDown Button
                 </DropDownButton>
             </div>
 
             <TitleBlock type="title">Split Button</TitleBlock>
+
+            <div style={rowStyle}>
+                <SplitButton
+                    items={[
+                        { icon: IconType.Send, name: 'Send', value: 5 },
+                        { icon: IconType.Replay, name: 'Reply', value: 5 },
+                        { icon: IconType.Calendar, name: 'Select date', value: 3 }
+                    ]}
+                    onSelect={(v) => console.log(v)}
+                >
+                    Select some value.
+                </SplitButton>
+
+                <SplitButton
+                    style={{ marginLeft: '12px' }}
+                    items={[
+                        { icon: IconType.Send, name: 'Send', value: 5 },
+                        { icon: IconType.Replay, name: 'Reply', value: 5 },
+                        { icon: IconType.Calendar, name: 'Select date', value: 3 }
+                    ]}
+                    onSelect={(v) => console.log(v)}
+                    disabled
+                >
+                    Disabled DropDown Button
+                </SplitButton>
+            </div>
+
             <TitleBlock type="title">Toggle Split Button</TitleBlock>
+
+            <div style={rowStyle}>
+                <ToggleSplitButton
+                    items={[
+                        { icon: IconType.Send, name: 'Send', value: 5 },
+                        { icon: IconType.Replay, name: 'Reply', value: 5 },
+                        { icon: IconType.Calendar, name: 'Select date', value: 3 }
+                    ]}
+                    onSelect={(v) => console.log(v)}
+                >
+                    Select some value.
+                </ToggleSplitButton>
+
+                <ToggleSplitButton
+                    style={{ marginLeft: '12px' }}
+                    items={[
+                        { icon: IconType.Send, name: 'Send', value: 5 },
+                        { icon: IconType.Replay, name: 'Reply', value: 5 },
+                        { icon: IconType.Calendar, name: 'Select date', value: 3 }
+                    ]}
+                    onSelect={(v) => console.log(v)}
+                    disabled
+                >
+                    Disabled DropDown Button
+                </ToggleSplitButton>
+            </div>
+
             <TitleBlock type="title">Combo Box</TitleBlock>
             <TitleBlock type="title">Toggle Switch</TitleBlock>
             <TitleBlock type="title">Check Box</TitleBlock>

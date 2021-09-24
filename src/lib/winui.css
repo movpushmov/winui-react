@@ -30,6 +30,13 @@ body {
     --fill-color-disabled: rgba(255, 255, 255, .3);
     --fill-color-input-active: rgb(255, 255, 255);
 
+    --fill-color-control-default: rgba(255, 255, 255, .7);
+    --fill-color-control-secondary: rgba(249, 249, 249, .5);
+    --fill-color-control-tertiary: rgba(249, 249, 249, .3);
+    --fill-color-control-input-active: #FFFFFF;
+    --fill-color-control-disabled: rgba(249, 249, 249, .3);
+    --fill-color-control-transparent: transparent;
+
     --text-on-accent-color-primary: #FFFFFF;
     --text-on-accent-color-secondary: rgba(255, 255, 255, .7);
     --text-on-accent-color-disabled: #FFFFFF;
@@ -43,7 +50,10 @@ body {
     --stroke-color-default: rgba(117, 117, 117, .4);
     --stroke-color-flyout: rgba(0, 0, 0, .0578);
 
-    background-color: white;
+    --control-stroke-default: rgba(0, 0, 0, .0578);
+    --control-stroke-on-accent-tertiary: rgba(0, 0, 0, .2169);
+
+    background-color: #FAFAFA;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -81,8 +91,18 @@ body {
         --fill-color-subtle-tertiary: rgba(255, 255, 255, .0419);
         --fill-color-subtle-disabled: rgba(255, 255, 255, 0);
 
+        --fill-color-control-default: rgba(255, 255, 255, .0605);
+        --fill-color-control-secondary: rgba(255, 255, 255, .0837);
+        --fill-color-control-tertiary: rgba(255, 255, 255, .0326);
+        --fill-color-control-input-active: rgba(30, 30, 30, .7);
+        --fill-color-control-disabled: rgba(255, 255, 255, .0419);
+        --fill-color-control-transparent: transparent;
+
         --stroke-color-default: rgba(117, 117, 117, .4);
         --stroke-color-flyout: rgba(0, 0, 0, .2);
+
+        --control-stroke-default: rgba(255, 255, 255, .0698);
+        --control-stroke-on-accent-tertiary: rgba(0, 0, 0, .2169);
 
         background-color: #2C2C2C;
     }
