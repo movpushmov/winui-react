@@ -10,6 +10,7 @@ import {DropDownButton} from "./lib/BasicInput/DropDownButton/DropDownButton";
 import {SplitButton} from "./lib/BasicInput/SplitButton/SplitButton";
 import {ToggleSplitButton} from "./lib/BasicInput/ToggleSplitButton/ToggleSplitButton";
 import {ToggleSwitch} from "./lib/BasicInput/ToggleSwitch/ToggleSwitch";
+import {CheckBox} from "./lib/BasicInput/CheckBox/CheckBox";
 
 const rowStyle: CSSProperties = {
     display: 'flex',
@@ -157,6 +158,14 @@ function App() {
             </div>
 
             <TitleBlock type="title">Check Box</TitleBlock>
+
+            <div style={rowStyle}>
+                <CheckBox/>
+                <CheckBox disabled/>
+                <CheckBox isThreeState/>
+                <CheckBox isThreeState content="Check Box with content"/>
+            </div>
+
             <TitleBlock type="title">Radio Button</TitleBlock>
             <TitleBlock type="title">Slider</TitleBlock>
             <TitleBlock type="title">Color Picker</TitleBlock>

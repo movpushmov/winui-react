@@ -1,0 +1,148 @@
+.container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    height: 21px;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 19px;
+    width: 19px;
+
+    background-color: var(--fill-control-alt-secondary);
+    border: 1px solid var(--fill-color-control-strong-default);
+
+    border-radius: 4px;
+
+
+    font-family: 'Segoe Fluent Icons', sans-serif;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+@keyframes Icon-Animation {
+    0% { clip-path: polygon(0% 0%, 0% 0%, 100% 100%, 0% 100%); }
+    1% { clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%); }
+    100% { clip-path: polygon(0% 0%, 100% 0%, 50% 100%, 0% 100%); }
+}
+
+.container input[checkbox-data="1"]:not(:disabled) ~ .checkmark:after {
+    color: var(--text-on-accent-color-primary);
+    content: '';
+
+    top: 2px;
+    left: 3px;
+
+    font-size: 15px;
+    animation-duration: .3s;
+    animation-name: Icon-Animation;
+}
+
+.container input[checkbox-data="2"]:not(:disabled) ~ .checkmark:after {
+    color: var(--text-on-accent-color-primary);
+    content: '';
+
+    top: 3px;
+    left: 3px;
+
+    font-size: 15px;
+    animation-duration: .15s;
+    animation-name: Icon-Animation;
+}
+
+/* disabled checkbox styles */
+.container input:disabled ~ .checkmark {
+    border-color: var(--fill-color-control-strong-disabled);
+    background-color: var(--fill-control-alt-quarternary);
+}
+
+input:not(:disabled) ~ .checkmark {
+    cursor: pointer;
+}
+
+
+/* hover action when checkbox not disabled && don't have any state */
+.container:hover input:not(:disabled):not([checkbox-data="1"]):not([checkbox-data="2"]) ~ .checkmark {
+    background-color: var(--fill-control-alt-tertiary);
+}
+
+/* active action when checkbox not disabled && don't have any state */
+.container:active input:not(:disabled):not([checkbox-data="1"]):not([checkbox-data="2"]) ~ .checkmark {
+    border-color: var(--fill-color-control-strong-disabled);
+    background-color: var(--fill-control-alt-quarternary);
+}
+
+.container input[checkbox-data="1"] ~ .checkmark {
+    background-color: var(--accent-color);
+    border: none;
+
+    padding: 1px;
+}
+.container input[checkbox-data="2"] ~ .checkmark {
+    background-color: var(--accent-color);
+    border: none;
+
+    padding: 1px;
+}
+
+.container input[checkbox-data="1"] ~ .checkmark:after {
+    display: block;
+}
+
+.container input[checkbox-data="2"] ~ .checkmark:after {
+    display: block;
+}
+
+/* hover action when checkbox not disabled && have any state */
+.container:hover input:not(:disabled)[checkbox-data="1"] ~ .checkmark {
+    background-color: var(--accent-color-secondary);
+    border: none;
+}
+
+.container:hover input:not(:disabled)[checkbox-data="2"] ~ .checkmark {
+    background-color: var(--accent-color-secondary);
+    border: none;
+}
+
+/* active action when checkbox not disabled && have any state */
+.container:active input:not(:disabled)[checkbox-data="1"] ~ .checkmark {
+    background-color: var(--accent-color-tertiary);
+    border: none;
+}
+
+.container:active input:not(:disabled)[checkbox-data="1"] ~ .checkmark:after {
+    color: var(--text-on-accent-color-secondary);
+}
+
+.container:active input:not(:disabled)[checkbox-data="2"] ~ .checkmark {
+    background-color: var(--accent-color-tertiary);
+    border: none;
+}
+
+.container:active input:not(:disabled)[checkbox-data="2"] ~ .checkmark:after {
+    color: var(--text-on-accent-color-secondary);
+}
+
+.container>p {
+    margin: 1px 0;
+}

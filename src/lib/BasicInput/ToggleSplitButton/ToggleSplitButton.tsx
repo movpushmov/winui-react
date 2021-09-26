@@ -8,6 +8,8 @@ import {SplitButtonProps} from "../SplitButton/SplitButton";
 interface DropDownButtonProps extends SplitButtonProps {
     initialValue?: boolean
     value?: boolean
+
+    onToggle?: (value: boolean) => void
 }
 
 export function ToggleSplitButton(props: DropDownButtonProps) {
@@ -43,6 +45,12 @@ export function ToggleSplitButton(props: DropDownButtonProps) {
             setIsAnimateIcon(true)
         }
     }, [visible])
+
+    useEffect(() => {
+        if (!props.disabled && props.onToggle) {
+            props.onToggle(toggled)
+        }
+    },[toggled, props])
 
     return (
         <div className={`${styles['dropdown']} ${defaultProps.className || ''}`}>

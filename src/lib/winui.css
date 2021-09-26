@@ -39,8 +39,8 @@ body {
 
     --fill-control-alt-transparent: transparent;
     --fill-control-alt-disabled: rgba(255, 255, 255, 0);
-    --fill-control-alt-secondary: rgba(0, 0, 0, .0241);
-    --fill-control-alt-tertiary: rgba(0, 0, 0, .0578);
+    --fill-control-alt-secondary: rgba(0, 0, 0, .1);
+    --fill-control-alt-tertiary: rgba(255, 255, 255, .0419);
     --fill-control-alt-quarternary: rgba(0, 0, 0, .0924);
 
     --text-on-accent-color-primary: #FFFFFF;
@@ -67,7 +67,7 @@ body {
     --fill-color-subtle-tertiary: rgba(0, 0, 0, .0241);
     --fill-color-subtle-disabled: rgba(0, 0, 0, 0);
 
-    --fill-color-control-strong-default: rgba(0, 0, 0, .4458);
+    --fill-color-control-strong-default: rgba(255, 255, 255, .5442);
     --fill-color-control-strong-disabled: rgba(0, 0, 0, .3173);
 
     --fill-control-on-image-default: rgba(255, 255, 255, .79);
