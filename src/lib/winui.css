@@ -55,6 +55,8 @@ body {
     --control-stroke-on-accent-tertiary: rgba(0, 0, 0, .2169);
 
 
+    --surface-stroke-default: rgba(117, 117, 117, .4);
+    --surface-stroke-flyout: rgba(0, 0, 0, .0578);
 
 
     --card-background-default: rgba(255, 255, 255, .7);
@@ -89,6 +91,10 @@ body {
     --infobar-caution: #FFF4CE;
     --infobar-neutral: rgba(0, 0, 0, .0241);
     --infobar-solid-neutral: #EEEEEE;
+
+    --noise-image-url: url('./noise.png');
+    --fill-color-acrylic-base: rgba(243, 243, 243, .9);
+    --fill-color-acrylic-default: rgba(252, 252, 252, .85);
 
     background-color: #FAFAFA;
 }
@@ -143,6 +149,9 @@ body {
 
 
 
+        --surface-stroke-default: rgba(117, 117, 117, .4);
+        --surface-stroke-flyout: rgba(0, 0, 0, .2);
+
 
         --card-background-default: rgba(255, 255, 255, .0512);
         --card-background-secondary: rgba(255, 255, 255, .0326);
@@ -169,6 +178,9 @@ body {
         --infobar-caution: #433519;
         --infobar-neutral: rgba(255, 255, 255, .0326);
         --infobar-solid-neutral: #2E2E2E;
+
+        --fill-color-acrylic-base: linear-gradient(0deg, rgba(44, 44, 44, 0.15), rgba(44, 44, 44, 0.15)), rgba(44, 44, 44, 0.96);
+        --fill-color-acrylic-default: rgba(44, 44, 44, 0.96);
 
         background-color: #2C2C2C;
     }

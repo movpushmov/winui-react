@@ -11,6 +11,8 @@ import {SplitButton} from "./lib/BasicInput/SplitButton/SplitButton";
 import {ToggleSplitButton} from "./lib/BasicInput/ToggleSplitButton/ToggleSplitButton";
 import {ToggleSwitch} from "./lib/BasicInput/ToggleSwitch/ToggleSwitch";
 import {CheckBox} from "./lib/BasicInput/CheckBox/CheckBox";
+import {Tooltip} from "./lib/StatusAndInfo/Tooltip/Tooltip";
+import {TextBlock} from "./lib/Text/TextBlock";
 
 const rowStyle: CSSProperties = {
     display: 'flex',
@@ -169,6 +171,14 @@ function App() {
             <TitleBlock type="title">Radio Button</TitleBlock>
             <TitleBlock type="title">Slider</TitleBlock>
             <TitleBlock type="title">Color Picker</TitleBlock>
+
+            <TitleBlock type="title">Simple Tooltip</TitleBlock>
+
+            <div style={rowStyle}>
+                <Tooltip content="I'm tooltip!">
+                    <Button>Hello! I'm button with tooltip!</Button>
+                </Tooltip>
+            </div>
         </div>
     );
 }

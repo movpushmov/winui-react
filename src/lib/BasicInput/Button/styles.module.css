@@ -45,10 +45,12 @@
 
 .btn-accent:hover:not(:disabled) {
     background-color: var(--accent-color-secondary);
+    cursor: pointer;
 }
 
 .btn:hover:not(:disabled) {
     background-color: var(--fill-color-secondary);
+    cursor: pointer;
 }
 
 .btn:active:not(:disabled) {

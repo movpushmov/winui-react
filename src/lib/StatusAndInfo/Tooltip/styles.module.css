@@ -1,0 +1,91 @@
+.tooltip-container {
+    position: relative;
+}
+
+.tooltip-box {
+    position: absolute;
+    color: var(--text-color-primary);
+
+    padding: 4px 12px;
+
+    background: var(--fill-color-acrylic-default);
+    background-blend-mode: overlay;
+    /* Dark/Shadow/Tooltip */
+
+    border: 1px solid var(--surface-stroke-flyout);
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 4px;
+
+    backdrop-filter: blur(60px);
+
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    user-select: none;
+}
+
+.tooltip-box::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.02;
+    border-radius: 4px;
+
+    background-image: var(--noise-image-url);
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+}
+
+@keyframes Show-Animation {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.visible {
+    animation-timing-function: ease;
+    animation-duration: .2s;
+    animation-name: Show-Animation;
+
+    visibility: visible;
+}
+
+@keyframes Hide-Animation {
+    0% {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    99% {
+        opacity: 0;
+    }
+
+    100% {
+        visibility: hidden;
+    }
+}
+
+.hide {
+    animation-timing-function: ease;
+    animation-duration: .2s;
+    animation-name: Hide-Animation;
+
+    visibility: hidden;
+}
