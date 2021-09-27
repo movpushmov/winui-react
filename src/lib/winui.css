@@ -69,8 +69,8 @@ body {
     --fill-color-subtle-tertiary: rgba(0, 0, 0, .0241);
     --fill-color-subtle-disabled: rgba(0, 0, 0, 0);
 
-    --fill-color-control-strong-default: rgba(255, 255, 255, .5442);
-    --fill-color-control-strong-disabled: rgba(0, 0, 0, .3173);
+    --fill-color-control-strong-default: rgba(0, 0, 0, .4458);
+    --fill-color-control-strong-disabled: rgba(0, 0, 0, .2169);
 
     --fill-control-on-image-default: rgba(255, 255, 255, .79);
     --fill-control-on-image-secondary: #F3F3F3;
