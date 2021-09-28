@@ -1,39 +1,47 @@
 .caption {
+    font-family: 'Segoe UI Variable Small', sans-serif;
     font-size: var(--font-size-caption);
     font-weight: 400;
 }
 
 .body {
+    font-family: 'Segoe UI Variable Text', sans-serif;
     font-size: var(--font-size-body);
     font-weight: 400;
 }
 
 .body-strong {
+    font-family: 'Segoe UI Variable Text', sans-serif;
     font-size: var(--font-size-body);
     font-weight: 600;
 }
 
 .body-large {
+    font-family: 'Segoe UI Variable Text', sans-serif;
     font-size: var(--font-size-body-large);
     font-weight: 400;
 }
 
 .subtitle {
+    font-family: 'Segoe UI Variable Display', sans-serif;
     font-size: var(--font-size-subtitle);
     font-weight: 600;
 }
 
 .title {
+    font-family: 'Segoe UI Variable Display', sans-serif;
     font-size: var(--font-size-title);
     font-weight: 600;
 }
 
 .title-large {
+    font-family: 'Segoe UI Variable Display', sans-serif;
     font-size: var(--font-size-title-large);
     font-weight: 600;
 }
 
 .display {
+    font-family: 'Segoe UI Variable Display', sans-serif;
     font-size: var(--font-size-display);
     font-weight: 600;
 }

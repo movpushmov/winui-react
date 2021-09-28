@@ -58,6 +58,8 @@ body {
     --surface-stroke-default: rgba(117, 117, 117, .4);
     --surface-stroke-flyout: rgba(0, 0, 0, .0578);
 
+    --card-stroke-default: rgba(0, 0, 0, .0578);
+    --card-stroke-default-solid: #EBEBEB;
 
     --card-background-default: rgba(255, 255, 255, .7);
     --card-background-secondary: rgba(246, 246, 246, .5);
@@ -147,7 +149,8 @@ body {
         --control-stroke-default: rgba(255, 255, 255, .0698);
         --control-stroke-on-accent-tertiary: rgba(0, 0, 0, .2169);
 
-
+        --card-stroke-default: rgba(0, 0, 0, .1);
+        --card-stroke-default-solid: #1C1C1C;
 
         --surface-stroke-default: rgba(117, 117, 117, .4);
         --surface-stroke-flyout: rgba(0, 0, 0, .2);
@@ -182,6 +185,6 @@ body {
         --fill-color-acrylic-base: linear-gradient(0deg, rgba(44, 44, 44, 0.15), rgba(44, 44, 44, 0.15)), rgba(44, 44, 44, 0.96);
         --fill-color-acrylic-default: rgba(44, 44, 44, 0.96);
 
-        background-color: #2C2C2C;
+        background-color: #1C1C1C;
     }
 }

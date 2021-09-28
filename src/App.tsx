@@ -13,11 +13,17 @@ import {ToggleSwitch} from "./lib/BasicInput/ToggleSwitch/ToggleSwitch";
 import {CheckBox} from "./lib/BasicInput/CheckBox/CheckBox";
 import {Tooltip} from "./lib/StatusAndInfo/Tooltip/Tooltip";
 import {TextBlock} from "./lib/Text/TextBlock";
+import {InfoBar} from "./lib/StatusAndInfo/InfoBar/InfoBar";
 
 const rowStyle: CSSProperties = {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+}
+
+const columnStyle: CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
 }
 
 function App() {
@@ -178,6 +184,67 @@ function App() {
                 <Tooltip content="I'm tooltip!">
                     <Button>Hello! I'm button with tooltip!</Button>
                 </Tooltip>
+            </div>
+
+            <TitleBlock type="title">Info Bar</TitleBlock>
+
+            <div style={columnStyle}>
+                <InfoBar
+                    title="Info Bar"
+                    message="Simple info bar with title & description."
+                />
+                <InfoBar
+                    severity="success"
+                    title="Info Bar"
+                    style={{ marginTop: '8px' }}
+                />
+                <InfoBar
+                    severity="warning"
+                    title="Info Bar"
+                    style={{ marginTop: '8px' }}
+                />
+                <InfoBar
+                    severity="error"
+                    title="Info Bar"
+                    style={{ marginTop: '8px' }}
+                />
+
+                <InfoBar
+                    title="Closable Info Bar"
+                    message="Simple info bar with title & description."
+                    closable
+                    style={{ marginTop: '8px' }}
+                />
+                <InfoBar
+                    title="Closable Info Bar"
+                    message="Simple info bar with title & description."
+                    severity="success"
+                    closable
+                    style={{ marginTop: '8px' }}
+                />
+                <InfoBar
+                    title="Closable Info Bar"
+                    message="Simple info bar with title & description."
+                    severity="warning"
+                    closable
+                    style={{ marginTop: '8px' }}
+                />
+                <InfoBar
+                    title="Closable Info Bar"
+                    message="Simple info bar with title & description."
+                    severity="error"
+                    closable
+                    style={{ marginTop: '8px' }}
+                />
+
+                <InfoBar
+                    title="Info Bar with long description."
+                    message="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna."
+                    severity="error"
+                    layout="column"
+                    closable
+                    style={{ marginTop: '8px' }}
+                />
             </div>
         </div>
     );
