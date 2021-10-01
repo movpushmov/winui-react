@@ -16,9 +16,9 @@
 
 | Type of components  | Current development status | Estimated release date |
 |---------------------|----------------------------|------------------------|
-| Basic Inputs        | 🚧🏗️                         | 4 October              |
-| Text                | 🚧🏗️                         | 11 October             |
-| Status and info     | 🚧🏗️                         | This week              |
+| Basic Inputs        | 🚧🏗️                         | 11 October              |
+| Text                | 🚧🏗️                         | In near future             |
+| Status and info     | 🚧🏗️                         | 7 October              |
 | Navigation          | ❌                          | In near future         |
 | Dialogs and Flyouts | ❌                          | In near future         |
 | Collections         | ❌                          | In near future         |
