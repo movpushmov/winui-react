@@ -14,6 +14,7 @@ import {CheckBox} from "./lib/BasicInput/CheckBox/CheckBox";
 import {Tooltip} from "./lib/StatusAndInfo/Tooltip/Tooltip";
 import {TextBlock} from "./lib/Text/TextBlock";
 import {InfoBar} from "./lib/StatusAndInfo/InfoBar/InfoBar";
+import {InfoBadge} from "./lib/StatusAndInfo/InfoBadge/InfoBadge";
 
 const rowStyle: CSSProperties = {
     display: 'flex',
@@ -245,6 +246,32 @@ function App() {
                     closable
                     style={{ marginTop: '8px' }}
                 />
+            </div>
+
+            <TitleBlock type="title">Info Badge</TitleBlock>
+
+            <div style={columnStyle}>
+                <InfoBadge value="50" style={{ marginBottom: '12px' }}>
+                    <Button>
+                        Button with badge
+                    </Button>
+                </InfoBadge>
+
+                <div style={rowStyle}>
+                    <TextBlock>Standalone badge</TextBlock>
+
+                    <InfoBadge value="50" style={{ marginLeft: '16px' }}/>
+                </div>
+
+                <div style={rowStyle}>
+                    <TextBlock>Another types of badge</TextBlock>
+
+                    <InfoBadge value="50" style={{ marginLeft: '16px' }}/>
+                    <InfoBadge value="50" type="informational" style={{ marginLeft: '16px' }}/>
+                    <InfoBadge value="50" type="success" style={{ marginLeft: '16px' }}/>
+                    <InfoBadge value="50" type="critical" style={{ marginLeft: '16px' }}/>
+                    <InfoBadge value="50" type="caution" style={{ marginLeft: '16px' }}/>
+                </div>
             </div>
         </div>
     );

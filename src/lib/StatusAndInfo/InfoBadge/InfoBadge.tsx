@@ -34,9 +34,10 @@ export function InfoBadge(props: InfoBadgeProps) {
             <div
                 style={defaultProps.style}
                 badge-type={defaultProps.type}
-                badge-value={defaultProps.value}
                 className={`${styles['badge-standalone']} ${defaultProps.className}`}
-            />
+            >
+                {defaultProps.value}
+            </div>
         )
     }
 }
