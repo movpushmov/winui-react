@@ -15,6 +15,7 @@ import {Tooltip} from "./lib/StatusAndInfo/Tooltip/Tooltip";
 import {TextBlock} from "./lib/Text/TextBlock";
 import {InfoBar} from "./lib/StatusAndInfo/InfoBar/InfoBar";
 import {InfoBadge} from "./lib/StatusAndInfo/InfoBadge/InfoBadge";
+import {ProgressRing} from "./lib/StatusAndInfo/ProgressRing/ProgressRing";
 
 const rowStyle: CSSProperties = {
     display: 'flex',
@@ -272,6 +273,13 @@ function App() {
                     <InfoBadge value="50" type="critical" style={{ marginLeft: '16px' }}/>
                     <InfoBadge value="50" type="caution" style={{ marginLeft: '16px' }}/>
                 </div>
+            </div>
+
+            <TitleBlock type="title">Progress Ring</TitleBlock>
+
+            <div style={columnStyle}>
+                <ProgressRing active={true}/>
+                <ProgressRing indeterminate value={100} />
             </div>
         </div>
     );
