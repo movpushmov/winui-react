@@ -2,9 +2,9 @@
 
 ### Current roadmap:
 
-- This week: Progress Ring, Progress Bar, Info Bar, Info Badge
-- 4 October: Slider, Radio Button, ComboBox
-- 11 October: Color Picker, Auto Suggests Box, Input (Number box, Password box, Text Box)
+- 7 October: Progress Ring, Progress Bar, Info Bar, Info Badge
+- 15 October: Slider, Radio Button, ComboBox
+- In near future (from 15 October to 1 January): Color Picker, Auto Suggests Box, Input (Number box, Password box, Text Box)
 
 - ListView, GridView, TreeView
 - NavigationView (left & top variants), BreadcrumbBar
@@ -16,9 +16,9 @@
 
 | Type of components  | Current development status | Estimated release date |
 |---------------------|----------------------------|------------------------|
-| Basic Inputs        | 🚧🏗️                         | 4 October              |
-| Text                | 🚧🏗️                         | 11 October             |
-| Status and info     | 🚧🏗️                         | This week              |
+| Basic Inputs        | 🚧🏗️                         | 15 October              |
+| Text                | 🚧🏗️                         | In near future             |
+| Status and info     | 🚧🏗️                         | 7 October              |
 | Navigation          | ❌                          | In near future         |
 | Dialogs and Flyouts | ❌                          | In near future         |
 | Collections         | ❌                          | In near future         |
