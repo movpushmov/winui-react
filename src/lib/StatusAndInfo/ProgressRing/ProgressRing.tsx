@@ -26,7 +26,10 @@ export const ProgressRing = (props: ProgressRingProps) => {
 
     if (props.indeterminate) {
         return (
-            <div className={styles['loader']}>
+            <div
+                className={`${styles['loader']} ${props.className || ''}`}
+                style={props.style}
+            >
                 <svg viewBox="25 25 50 50" style={{ transform: 'rotate(-90deg)' }}>
                     <circle
                         ref={(ref) => {
