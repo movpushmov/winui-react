@@ -1,18 +1,26 @@
-import React, {CSSProperties, useEffect, useRef, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles.module.css'
+import { ProgressProps } from '../types'
 
-interface ProgressRingProps {
-    className?: string
-    style?: CSSProperties
+interface ProgressRingProps extends ProgressProps {
+    size?: 's' | 'm' | 'l'
+}
 
-    active?: boolean
-    indeterminate?: true
-    value?: number
+const letterToSize = {
+    s : 16,
+    m : 32,
+    l : 64
 }
 
 export const ProgressRing = (props: ProgressRingProps) => {
     const [percentage, setPercentage] = useState(0)
     const [length, setLength] = useState(0)
+
+    const [size, setSize] = useState(letterToSize[props.size ? props.size : 'm'])
+
+    useEffect(() => {
+        setSize(letterToSize[props.size ? props.size : 'm'])
+    }, [props.size])
 
     useEffect(() => {
         if (props.value && props.value > 100) {
@@ -27,10 +35,16 @@ export const ProgressRing = (props: ProgressRingProps) => {
     if (props.indeterminate) {
         return (
             <div
-                className={`${styles['loader']} ${props.className || ''}`}
-                style={props.style}
+                className={props.className}
+                style={Object.assign({
+                    width: size,
+                    height: size
+                }, props.style)}
             >
-                <svg viewBox="25 25 50 50" style={{ transform: 'rotate(-90deg)' }}>
+                <svg
+                    viewBox={`${size / 2} ${size / 2} ${size + 8} ${size + 8}`}
+                    style={{ transform: 'rotate(-90deg)' }}
+                >
                     <circle
                         ref={(ref) => {
                             if (ref) {
@@ -43,10 +57,9 @@ export const ProgressRing = (props: ProgressRingProps) => {
                             stroke: 'var(--accent-color)',
                             strokeLinecap: 'round'
                         }}
-                        className="path"
-                        cx="50"
-                        cy="50"
-                        r="20"
+                        cx={size + 4}
+                        cy={size + 4}
+                        r={size / 2}
                         fill="none"
                         strokeWidth="4"
                         strokeMiterlimit="10"
@@ -59,10 +72,27 @@ export const ProgressRing = (props: ProgressRingProps) => {
     }
 
     return (
-        <div className={styles['loader']}>
-            <svg className={styles['circular']} viewBox="25 25 50 50">
-                <circle className="path" cx="50" cy="50" r="20" fill="none" strokeWidth="4"
-                        strokeMiterlimit="10"/>
+        <div
+            className={props.className}
+            style={Object.assign({
+                width: size,
+                height: size
+            }, props.style)}
+        >
+            <svg
+                className={
+                    `${styles['circular-' + (props.size ? props.size : 'm')]} ${styles['circular']}`
+                }
+                viewBox={`${size / 2} ${size / 2} ${size + 8} ${size + 8}`}
+            >
+                <circle
+                    cx={size + 4}
+                    cy={size + 4}
+                    r={size / 2}
+                    fill="none"
+                    strokeWidth="4"
+                    strokeMiterlimit="10"
+                />
             </svg>
         </div>
     )

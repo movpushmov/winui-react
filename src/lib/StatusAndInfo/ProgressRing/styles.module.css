@@ -1,14 +1,23 @@
-.loader {
-    width: 50px;
-    height: 50px;
-}
-
 .circular {
     animation: ProgressRing-Rotate-Animation .9s linear infinite;
 }
 
-.circular>circle {
-    animation: ProgressRing-Animation 2.4s linear infinite;
+.circular-s>circle {
+    animation: ProgressRing-Animation-S 2.4s linear infinite;
+    stroke-linecap: round;
+
+    stroke: var(--accent-color);
+}
+
+.circular-m>circle {
+    animation: ProgressRing-Animation-M 2.4s linear infinite;
+    stroke-linecap: round;
+
+    stroke: var(--accent-color);
+}
+
+.circular-l>circle {
+    animation: ProgressRing-Animation-L 2.4s linear infinite;
     stroke-linecap: round;
 
     stroke: var(--accent-color);
@@ -20,7 +29,18 @@
     }
 }
 
-@keyframes ProgressRing-Animation {
+@keyframes ProgressRing-Animation-S {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -45px;
+    }
+}
+
+@keyframes ProgressRing-Animation-M {
     0% {
         stroke-dasharray: 1, 200;
         stroke-dashoffset: 0;
@@ -31,6 +51,21 @@
     }
     100% {
         stroke-dasharray: 89, 200;
-        stroke-dashoffset: -124px;
+        stroke-dashoffset: -100px;
+    }
+}
+
+@keyframes ProgressRing-Animation-L {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    66% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -100px;
+    }
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -200px;
     }
 }

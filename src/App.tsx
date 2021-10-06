@@ -280,7 +280,11 @@ function App() {
             <div style={columnStyle}>
                 <ProgressRing active={true}/>
                 <ProgressRing indeterminate value={100} />
+                <ProgressRing active={true} size="l" />
+                <ProgressRing active={true} size="s" />
             </div>
+
+            <TitleBlock type="title">Progress Bar</TitleBlock>
         </div>
     );
 }
