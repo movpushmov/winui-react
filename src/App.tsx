@@ -16,6 +16,7 @@ import {TextBlock} from "./lib/Text/TextBlock";
 import {InfoBar} from "./lib/StatusAndInfo/InfoBar/InfoBar";
 import {InfoBadge} from "./lib/StatusAndInfo/InfoBadge/InfoBadge";
 import {ProgressRing} from "./lib/StatusAndInfo/ProgressRing/ProgressRing";
+import {ProgressBar} from "./lib/StatusAndInfo/ProgressBar/ProgressBar";
 
 const rowStyle: CSSProperties = {
     display: 'flex',
@@ -279,12 +280,17 @@ function App() {
 
             <div style={columnStyle}>
                 <ProgressRing active={true}/>
-                <ProgressRing indeterminate value={100} />
+                <ProgressRing determinate value={100} />
                 <ProgressRing active={true} size="l" />
                 <ProgressRing active={true} size="s" />
             </div>
 
             <TitleBlock type="title">Progress Bar</TitleBlock>
+
+            <div style={columnStyle}>
+                <ProgressBar active={true}/>
+                <ProgressBar determinate={true} value={50}/>
+            </div>
         </div>
     );
 }

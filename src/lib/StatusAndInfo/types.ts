@@ -5,6 +5,6 @@ export interface ProgressProps {
     style?: CSSProperties
 
     active?: boolean
-    indeterminate?: true
+    determinate?: true
     value?: number
 }

@@ -16,10 +16,10 @@ export const ProgressRing = (props: ProgressRingProps) => {
     const [percentage, setPercentage] = useState(0)
     const [length, setLength] = useState(0)
 
-    const [size, setSize] = useState(letterToSize[props.size ? props.size : 'm'])
+    const [size, setSize] = useState(letterToSize[props.size || 'm'])
 
     useEffect(() => {
-        setSize(letterToSize[props.size ? props.size : 'm'])
+        setSize(letterToSize[props.size || 'm'])
     }, [props.size])
 
     useEffect(() => {
@@ -32,7 +32,7 @@ export const ProgressRing = (props: ProgressRingProps) => {
         }
     }, [props.value])
 
-    if (props.indeterminate) {
+    if (props.determinate) {
         return (
             <div
                 className={props.className}
@@ -81,7 +81,7 @@ export const ProgressRing = (props: ProgressRingProps) => {
         >
             <svg
                 className={
-                    `${styles['circular-' + (props.size ? props.size : 'm')]} ${styles['circular']}`
+                    `${styles['circular-' + (props.size || 'm')]} ${styles['circular']}`
                 }
                 viewBox={`${size / 2} ${size / 2} ${size + 8} ${size + 8}`}
             >

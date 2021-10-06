@@ -1,0 +1,74 @@
+.loader {
+    width: 150px;
+    overflow: hidden;
+    border-radius: 4px;
+
+    position: relative;
+}
+
+.indicator {
+    width: 30%;
+
+    height: 4px;
+    border-radius: 4px;
+}
+
+.indicator[data-state="running"] {
+    background-color: var(--accent-color);
+    animation: Indicator-Move-Animation 1.2s linear infinite, Indicator-Size-Change-Animation 2.4s infinite;
+}
+
+.indicator[data-state="error"] {
+    width: 100%;
+    background-color: var(--system-critical);
+}
+
+.indicator[data-state="paused"] {
+    width: 100%;
+    background-color: var(--system-caution);
+}
+
+@keyframes Indicator-Move-Animation {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(360%);
+    }
+}
+
+@keyframes Indicator-Size-Change-Animation {
+    0% {
+        width: 30%;
+    }
+
+    50% {
+        width: 60%;
+    }
+
+    100% {
+        width: 30%;
+    }
+}
+
+.determinate-indicator {
+    background-color: var(--accent-color);
+    height: 4px;
+    border-radius: 4px;
+
+    z-index: 3;
+    position: relative;
+}
+
+.determinate-background {
+    position: absolute;
+    background-color: var(--fill-color-control-strong-default);
+
+    height: 1px;
+    width: 100%;
+
+    transform: translateY(-250%);
+    z-index: 2;
+    border-radius: 4px;
+}

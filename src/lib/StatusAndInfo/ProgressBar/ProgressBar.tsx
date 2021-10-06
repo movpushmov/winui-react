@@ -2,9 +2,15 @@ import React, {useEffect, useState} from 'react'
 import styles from './styles.module.css'
 import { ProgressProps } from '../types'
 
-export const ProgressBar = (props: ProgressProps) => {
+interface ProgressBarProps extends ProgressProps {
+    state?: 'running' | 'paused' | 'error'
+}
+
+export const ProgressBar = (props: ProgressBarProps) => {
     const [percentage, setPercentage] = useState(0)
     const [length, setLength] = useState(0)
+
+    const state = props.state || 'running'
 
     useEffect(() => {
         if (props.value && props.value > 100) {
@@ -16,34 +22,17 @@ export const ProgressBar = (props: ProgressProps) => {
         }
     }, [props.value])
 
-    if (props.indeterminate) {
+    if (props.determinate) {
         return (
             <div
                 className={`${styles['loader']} ${props.className || ''}`}
                 style={props.style}
             >
-                <svg viewBox="25 25 50 50" style={{ transform: 'rotate(-90deg)' }}>
-                    <circle
-                        ref={(ref) => {
-                            if (ref) {
-                                setLength(ref.getTotalLength())
-                            }
-                        }}
-                        style={{
-                            strokeDasharray: length,
-                            strokeDashoffset: (length - (length * (percentage * 0.01))),
-                            stroke: 'var(--accent-color)',
-                            strokeLinecap: 'round'
-                        }}
-                        className="path"
-                        cx="50"
-                        cy="50"
-                        r="20"
-                        fill="none"
-                        strokeWidth="4"
-                        strokeMiterlimit="10"
-                    />
-                </svg>
+                <div
+                    className={styles['determinate-indicator']}
+                    style={{ width: percentage + '%' }}
+                />
+                <div className={styles['determinate-background']}/>
             </div>
         )
     } else if (!props.active) {
@@ -51,11 +40,14 @@ export const ProgressBar = (props: ProgressProps) => {
     }
 
     return (
-        <div className={styles['loader']}>
-            <svg className={styles['circular']} viewBox="25 25 50 50">
-                <circle className="path" cx="50" cy="50" r="20" fill="none" strokeWidth="4"
-                        strokeMiterlimit="10"/>
-            </svg>
+        <div
+            className={`${styles['loader']} ${props.className || ''}`}
+            style={props.style}
+        >
+            <div
+                className={styles['indicator']}
+                data-state={state}
+            />
         </div>
     )
 }
