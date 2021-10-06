@@ -1,0 +1,93 @@
+.badge-container {
+    position: relative;
+
+    width: fit-content;
+}
+
+.badge-container:after {
+    position: absolute;
+
+    right: 0;
+    top: 0;
+
+    transform: translate(50%, -25%);
+
+    font-size: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 16px;
+
+    border-radius: 999px;
+    padding: 2px;
+
+    content: attr(badge-value);
+    font-family: 'Segoe UI Variable Small', sans-serif;
+}
+
+.badge-container[badge-type="attention"]:after {
+    background-color: var(--system-attention);
+    color: var(--text-on-accent-color-primary);
+}
+
+.badge-container[badge-type="caution"]:after {
+    background-color: var(--system-caution);
+    color: var(--text-on-accent-color-primary);
+}
+
+.badge-container[badge-type="informational"]:after {
+    background-color: var(--system-neutral);
+    color: var(--text-color-primary);
+}
+
+.badge-container[badge-type="success"]:after {
+    background-color: var(--system-success);
+    color: var(--text-on-accent-color-primary);
+}
+
+.badge-container[badge-type="critical"]:after {
+    background-color: var(--system-critical);
+    color: var(--text-on-accent-color-primary);
+}
+
+
+
+.badge-standalone {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 20px;
+
+    border-radius: 999px;
+    padding: 2px;
+    font-family: 'Segoe UI Variable Text', sans-serif;
+}
+
+.badge-standalone[badge-type="attention"] {
+    background-color: var(--system-attention);
+    color: var(--text-on-accent-color-primary);
+}
+
+.badge-standalone[badge-type="caution"] {
+    background-color: var(--system-caution);
+    color: var(--text-on-accent-color-primary);
+}
+
+.badge-standalone[badge-type="informational"] {
+    background-color: var(--system-neutral);
+    color: var(--text-color-primary);
+}
+
+.badge-standalone[badge-type="success"] {
+    background-color: var(--system-success);
+    color: var(--text-on-accent-color-primary);
+}
+
+.badge-standalone[badge-type="critical"] {
+    background-color: var(--system-critical);
+    color: var(--text-on-accent-color-primary);
+}

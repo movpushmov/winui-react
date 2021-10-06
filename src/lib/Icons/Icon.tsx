@@ -1405,6 +1405,9 @@ export enum IconType {
     MicrophoneSolidBold = '',
     SpeechSolidBold = '',
     ClickedOutLoudSolidBold = '',
+
+    CheckMarkBadge12 = '',
+    InfoBadge12 = '',
 }
 
 export interface IconProps extends Omit<
