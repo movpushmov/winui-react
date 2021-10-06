@@ -280,16 +280,16 @@ function App() {
 
             <div style={columnStyle}>
                 <ProgressRing active={true}/>
-                <ProgressRing determinate value={100} />
-                <ProgressRing active={true} size="l" />
-                <ProgressRing active={true} size="s" />
+                <ProgressRing determinate value={100} style={{ marginTop: '2%' }} />
+                <ProgressRing active={true} size="l" style={{ marginTop: '2%' }} />
+                <ProgressRing active={true} size="s" style={{ marginTop: '2%' }} />
             </div>
 
             <TitleBlock type="title">Progress Bar</TitleBlock>
 
             <div style={columnStyle}>
                 <ProgressBar active={true}/>
-                <ProgressBar determinate={true} value={50}/>
+                <ProgressBar determinate={true} style={{ marginTop: '5%' }} value={50}/>
             </div>
         </div>
     );
