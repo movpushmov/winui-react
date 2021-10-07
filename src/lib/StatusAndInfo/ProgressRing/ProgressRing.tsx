@@ -90,7 +90,7 @@ export const ProgressRing = (props: ProgressRingProps) => {
                     cy={size + 4}
                     r={size / 2}
                     fill="none"
-                    strokeWidth="4"
+                    strokeWidth={props.size === 'l' ? '6' : '4'}
                     strokeMiterlimit="10"
                 />
             </svg>
