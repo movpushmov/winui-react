@@ -96,7 +96,7 @@ body {
 
     --noise-image-url: url('./noise.png');
     --fill-color-acrylic-base: rgba(243, 243, 243, .9);
-    --fill-color-acrylic-default: rgba(252, 252, 252, .85);
+    --fill-color-acrylic-default: rgba(252, 252, 252);
 
     background-color: #FAFAFA;
 }
@@ -182,8 +182,8 @@ body {
         --infobar-neutral: rgba(255, 255, 255, .0326);
         --infobar-solid-neutral: #2E2E2E;
 
-        --fill-color-acrylic-base: linear-gradient(0deg, rgba(44, 44, 44, 0.15), rgba(44, 44, 44, 0.15)), rgba(44, 44, 44, 0.96);
-        --fill-color-acrylic-default: rgba(44, 44, 44, 0.96);
+        --fill-color-acrylic-base: linear-gradient(0deg, rgb(44, 44, 44), rgba(44, 44, 44)), rgba(44, 44, 44);
+        --fill-color-acrylic-default: rgb(44, 44, 44);
 
         background-color: #1C1C1C;
     }

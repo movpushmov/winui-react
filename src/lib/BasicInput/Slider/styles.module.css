@@ -1,0 +1,12 @@
+.tooltip {
+    padding: 4px 6px;
+    transform: translate(-50%, -40%);
+    left: 0;
+
+    color: white;
+    font-size: 14px;
+}
+
+.slider {
+
+}

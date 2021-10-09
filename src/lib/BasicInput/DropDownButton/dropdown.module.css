@@ -72,7 +72,6 @@
     box-shadow: 0 8px 16px rgba(0,0,0,.26);
     border-width: 1px;
 
-    backdrop-filter: blur(60px);
     background: rgba(252, 252, 252, 0.85);
 
     border-radius: 7px;
@@ -81,6 +80,6 @@
 
 @media (prefers-color-scheme: dark) {
     .dropdown-content {
-        background: linear-gradient(0deg, rgba(44, 44, 44, 0.15), rgba(44, 44, 44, 0.15)), rgba(44, 44, 44, 0.96);
+        background: linear-gradient(0deg, rgb(44, 44, 44), rgb(44, 44, 44)), rgb(44, 44, 44);
     }
 }
