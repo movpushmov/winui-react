@@ -2,7 +2,7 @@
 
 ### Current roadmap:
 
-- 15 October: Slider, Radio Button, ComboBox
+- 15 October: ✅ Slider, Radio Button, ComboBox
 - In near future (from 15 October to 1 January): Color Picker, Auto Suggests Box, Input (Number box, Password box, Text Box)
 
 - ListView, GridView, TreeView
