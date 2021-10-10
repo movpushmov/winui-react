@@ -1,18 +1,18 @@
 import React, {useEffect, useState} from 'react'
 import styles from './styles.module.css'
 import {Tooltip} from "../../StatusAndInfo/Tooltip/Tooltip";
+import {TextBlock} from "../../Text/TextBlock";
 
 interface SliderProps extends Omit<
     React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
     'type'
 > {
-    tick?: number
     step?: number
 
     value?: number
     initialValue?: number
 
-    orientation?: 'horizontal' | 'vertical'
+    header?: string
 }
 
 export const Slider = (props: SliderProps) => {
@@ -30,6 +30,7 @@ export const Slider = (props: SliderProps) => {
         value,
         initialValue,
         className,
+        style,
         onMouseDown,
         onMouseUp,
         onChange,
@@ -37,48 +38,67 @@ export const Slider = (props: SliderProps) => {
     } = defaultProps
 
     const [currentValue, setCurrentValue] = useState(value ?? initialValue ?? 0)
-    const [visible, setIsVisible] = useState(true)
+    const [visible, setIsVisible] = useState(false)
 
     function getPercentage() {
         return ((currentValue - defaultProps.min) * 100) / range
     }
 
+    function getGradient() {
+        return `linear-gradient(to right, ${
+            defaultProps.disabled ? 'var(--slider-disabled-thumb-color)' : 'var(--accent-color)'
+        } ${getPercentage()}%, var(--fill-color-control-strong-default) ${getPercentage()}%)`
+    }
+
     return (
-        <Tooltip
-            content={currentValue}
-            visible={visible}
-            className={styles['tooltip']}
-            style={{
-                left: getPercentage() + '%',
-                transform: `translate(${
-                    // center tooltip by center: transform(-88%, -40%) for max value (100%)
-                    ((getPercentage() * -80 / 100) + defaultProps.min - 8) + '%'
-                }, -40%)`
-            }}
-        >
-            <input
-                type="range"
-                {...otherProps}
-                value={currentValue}
-                onMouseDown={e => {
-                    setIsVisible(true)
+        <>
+            {defaultProps.header ? <TextBlock>{defaultProps.header}</TextBlock> : <></>}
 
-                    onMouseDown?.(e)
+            <Tooltip
+                content={currentValue}
+                visible={visible}
+                className={styles['tooltip']}
+                style={{
+                    left: getPercentage() + '%',
+                    transform: `translate(${
+                        // center tooltip by center: transform(-88%, -40%) for max value (100%)
+                        ((getPercentage() * -80 / 100) + defaultProps.min - 8) + '%'
+                    }, -40%)`
                 }}
+            >
+                <div
+                    className={`${styles['slider']} ${className || ''}`}
+                    style={style}
+                >
+                    <input
+                        style={{
+                            background: getGradient()
+                        }}
+                        type="range"
+                        {...otherProps}
+                        value={currentValue}
+                        onMouseDown={e => {
+                            setIsVisible(true)
 
-                onMouseUp={e => {
+                            onMouseDown?.(e)
+                        }}
 
-                    onMouseUp?.(e)
-                }}
+                        onMouseUp={e => {
+                            setIsVisible(false)
 
-                onChange={e => {
-                    if (value === undefined) {
-                        setCurrentValue(parseInt(e.currentTarget.value))
-                    }
+                            onMouseUp?.(e)
+                        }}
 
-                    onChange?.(e)
-                }}
-            />
-        </Tooltip>
+                        onChange={e => {
+                            if (value === undefined) {
+                                setCurrentValue(parseInt(e.currentTarget.value))
+                            }
+
+                            onChange?.(e)
+                        }}
+                    />
+                </div>
+            </Tooltip>
+        </>
     )
 }

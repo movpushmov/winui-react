@@ -182,7 +182,9 @@ function App() {
             <TitleBlock type="title">Slider</TitleBlock>
 
             <div style={columnStyle}>
-                <Slider/>
+                <Slider max={1000} disabled/>
+
+                <Slider header="Slider with header"/>
             </div>
 
             <TitleBlock type="title">Color Picker</TitleBlock>
