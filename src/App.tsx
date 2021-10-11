@@ -18,6 +18,8 @@ import {InfoBadge} from "./lib/StatusAndInfo/InfoBadge/InfoBadge";
 import {ProgressRing} from "./lib/StatusAndInfo/ProgressRing/ProgressRing";
 import {ProgressBar} from "./lib/StatusAndInfo/ProgressBar/ProgressBar";
 import {Slider} from "./lib/BasicInput/Slider/Slider";
+import {RadioButtonGroup} from "./lib/BasicInput/RadioButton/RadioButtonGroup";
+import {RadioButton} from "./lib/BasicInput/RadioButton/RadioButton";
 
 const rowStyle: CSSProperties = {
     display: 'flex',
@@ -179,6 +181,13 @@ function App() {
             </div>
 
             <TitleBlock type="title">Radio Button</TitleBlock>
+
+            <RadioButtonGroup>
+                <RadioButton content="First"/>
+                <RadioButton content="Second"/>
+                <RadioButton content="Third"/>
+            </RadioButtonGroup>
+
             <TitleBlock type="title">Slider</TitleBlock>
 
             <div style={columnStyle}>

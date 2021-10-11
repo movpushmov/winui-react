@@ -2,19 +2,16 @@ import React, {CSSProperties, useEffect, useState} from "react";
 import styles from './styles.module.css'
 import {TextBlock} from "../../Text/TextBlock";
 
-interface CheckBoxProps {
-    style?: CSSProperties
-
-    className?: string
+interface CheckBoxProps extends Omit<
+    React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+    'type' | 'value'
+>  {
     content?: string
 
     isThreeState?: boolean
-    disabled?: boolean
 
     value?: CheckBoxState
     initialValue?: CheckBoxState
-
-    onChanged?: (value: CheckBoxState) => void
 }
 
 export enum CheckBoxState {
@@ -28,12 +25,6 @@ export function CheckBox(props: CheckBoxProps) {
         props.value !== undefined ?
             props.value : (props.initialValue || CheckBoxState.Unchecked)
     )
-
-    useEffect(() => {
-        if (props.onChanged) {
-            props.onChanged(state)
-        }
-    }, [state, props])
 
     function onClick() {
         if (props.disabled) {
@@ -74,6 +65,7 @@ export function CheckBox(props: CheckBoxProps) {
                     className={styles['input']}
                     checkbox-data={state}
                     disabled={props.disabled}
+                    onChange={e => props.onChange?.(e)}
                 />
                 <span className={styles['checkmark']} />
 
