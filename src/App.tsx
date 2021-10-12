@@ -186,6 +186,8 @@ function App() {
                 <RadioButton content="First"/>
                 <RadioButton content="Second"/>
                 <RadioButton content="Third"/>
+                <RadioButton content="Disabled radio" disabled/>
+                <RadioButton content="Disabled radio active" disabled checked={true}/>
             </RadioButtonGroup>
 
             <TitleBlock type="title">Slider</TitleBlock>

@@ -7,6 +7,10 @@
     font-size: 14px;
 }
 
+.slider {
+    user-select: none;
+}
+
 .slider [type="range"] {
     width: 100%;
     -webkit-appearance: none;
@@ -39,7 +43,7 @@
 }
 
 .slider [type="range"]::-webkit-slider-thumb {
-    cursor: default;
+    cursor: pointer;
 
     background: #AEAEAE;
 }

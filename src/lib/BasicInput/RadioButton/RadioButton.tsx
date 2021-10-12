@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react"
 import styles from './styles.module.css'
+import {TextBlock} from "../../Text/TextBlock";
 
 export interface RadioButtonProps extends Omit<
     React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
@@ -29,7 +30,7 @@ export const RadioButton = (props: RadioButtonProps) => {
     }, [props.value])
 
     return (
-        <>
+        <label className={styles['radio-label']} style={{ cursor: props.disabled ? 'default' : 'pointer' }}>
             <input
                 type="radio"
                 className={`${styles['radio']} ${className || ''}`}
@@ -43,6 +44,10 @@ export const RadioButton = (props: RadioButtonProps) => {
                     return onChange?.(e)
                 }}
             />
-        </>
+
+            <span className={styles['radio-button']}/>
+
+            {content ? <TextBlock>{content}</TextBlock> : <></>}
+        </label>
     )
 }

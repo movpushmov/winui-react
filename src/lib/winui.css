@@ -150,6 +150,12 @@ body {
         --fill-color-control-disabled: rgba(255, 255, 255, .0419);
         --fill-color-control-transparent: transparent;
 
+        --fill-control-alt-transparent: transp  arent;
+        --fill-control-alt-disabled: rgba(255, 255, 255, 0);
+        --fill-control-alt-secondary: rgba(0, 0, 0, .1);
+        --fill-control-alt-tertiary: rgba(255, 255, 255, .0419);
+        --fill-control-alt-quarternary: rgba(255, 255, 255, .0698);
+
         --stroke-color-default: rgba(117, 117, 117, .4);
         --stroke-color-flyout: rgba(0, 0, 0, .2);
 
@@ -189,7 +195,7 @@ body {
         --infobar-neutral: rgba(255, 255, 255, .0326);
         --infobar-solid-neutral: #2E2E2E;
 
-        --fill-color-acrylic-base: linear-gradient(0deg, rgb(44, 44, 44), rgba(44, 44, 44)), rgba(44, 44, 44);
+        --fill-color-acrylic-base: rgb(44, 44, 44);
         --fill-color-acrylic-default: rgb(44, 44, 44);
 
         --elevation-circle: rgba(255, 255, 255, 0.0698);
