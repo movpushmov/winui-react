@@ -64,6 +64,22 @@
     transition: border-width .1s ease;
 }
 
+.radio:disabled ~ p {
+    color: var(--text-color-disabled);
+}
+
+.radio:disabled:not(:checked) ~ .radio-button {
+    border-color: var(--fill-color-control-strong-disabled);
+    background-color: var(--fill-control-alt-disabled);
+}
+
+.radio:checked:disabled ~ .radio-button {
+    background-color: var(--text-on-accent-color-primary);
+
+    border-color: var(--accent-color-disabled);
+    border-width: 4px;
+}
+
 .radio-buttons-group {
     display: flex;
     flex-direction: column;

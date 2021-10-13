@@ -19,7 +19,11 @@ export const RadioButtonGroup = (props: RadioButtonGroupProps) => {
 
     function returnGroup(radioButtons: React.ReactElement<RadioButtonProps>[]): React.ReactNode {
         return React.Children.map(radioButtons, (child, index) => {
-            const { value, onChange, ...otherChildProps } = child.props
+            const { checked, onChange, ...otherChildProps } = child.props
+
+            if (checked && index !== selectedRadio) {
+                setSelectedRadio(index)
+            }
 
             return (
                 <RadioButton
