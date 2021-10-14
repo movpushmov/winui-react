@@ -20,7 +20,7 @@ export function DropDown(props: DropDownProps) {
             {props.visible ? (
                 <div className={styles['dropdown-content']}>
                     {props.items && props.items.length ? (
-                        props.items.map(i => {
+                        props.items.map((i, index) => {
                             if (React.isValidElement(i)) {
                                 return i
                             }
@@ -35,6 +35,7 @@ export function DropDown(props: DropDownProps) {
 
                                         props.close()
                                     }}
+                                    key={index}
                                 >
                                     {i.icon ? <Icon type={i.icon} style={{ marginRight: '8px' }} /> : <></>}
 
