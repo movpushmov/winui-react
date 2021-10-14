@@ -1,5 +1,7 @@
 .tooltip-container {
     position: relative;
+
+    width: fit-content;
 }
 
 .tooltip-box {
@@ -9,15 +11,11 @@
     padding: 4px 12px;
 
     background: var(--fill-color-acrylic-default);
-    background-blend-mode: overlay;
-    /* Dark/Shadow/Tooltip */
 
     border: 1px solid var(--surface-stroke-flyout);
 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.26);
     border-radius: 4px;
-
-    backdrop-filter: blur(60px);
 
     bottom: 120%;
     left: 50%;

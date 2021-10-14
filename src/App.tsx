@@ -17,6 +17,9 @@ import {InfoBar} from "./lib/StatusAndInfo/InfoBar/InfoBar";
 import {InfoBadge} from "./lib/StatusAndInfo/InfoBadge/InfoBadge";
 import {ProgressRing} from "./lib/StatusAndInfo/ProgressRing/ProgressRing";
 import {ProgressBar} from "./lib/StatusAndInfo/ProgressBar/ProgressBar";
+import {Slider} from "./lib/BasicInput/Slider/Slider";
+import {RadioButtonGroup} from "./lib/BasicInput/RadioButton/RadioButtonGroup";
+import {RadioButton} from "./lib/BasicInput/RadioButton/RadioButton";
 
 const rowStyle: CSSProperties = {
     display: 'flex',
@@ -178,7 +181,23 @@ function App() {
             </div>
 
             <TitleBlock type="title">Radio Button</TitleBlock>
+
+            <RadioButtonGroup>
+                <RadioButton content="First"/>
+                <RadioButton content="Second"/>
+                <RadioButton content="Third"/>
+                <RadioButton content="Disabled radio" disabled/>
+                <RadioButton content="Disabled radio active" disabled checked={true}/>
+            </RadioButtonGroup>
+
             <TitleBlock type="title">Slider</TitleBlock>
+
+            <div style={columnStyle}>
+                <Slider max={1000} disabled/>
+
+                <Slider header="Slider with header"/>
+            </div>
+
             <TitleBlock type="title">Color Picker</TitleBlock>
 
             <TitleBlock type="title">Simple Tooltip</TitleBlock>

@@ -95,8 +95,15 @@ body {
     --infobar-solid-neutral: #EEEEEE;
 
     --noise-image-url: url('./noise.png');
-    --fill-color-acrylic-base: rgba(243, 243, 243, .9);
-    --fill-color-acrylic-default: rgba(252, 252, 252, .85);
+    --fill-color-acrylic-base: rgb(243, 243, 243);
+    --fill-color-acrylic-default: rgb(252, 252, 252);
+
+    --elevation-circle: rgba(0,0,0,0.0578);
+
+    --fill-control-solid: #FFFFFF;
+
+    /* Special styles */
+    --slider-disabled-thumb-color: var(--accent-color-disabled);
 
     background-color: #FAFAFA;
 }
@@ -143,6 +150,12 @@ body {
         --fill-color-control-disabled: rgba(255, 255, 255, .0419);
         --fill-color-control-transparent: transparent;
 
+        --fill-control-alt-transparent: transp  arent;
+        --fill-control-alt-disabled: rgba(255, 255, 255, 0);
+        --fill-control-alt-secondary: rgba(0, 0, 0, .1);
+        --fill-control-alt-tertiary: rgba(255, 255, 255, .0419);
+        --fill-control-alt-quarternary: rgba(255, 255, 255, .0698);
+
         --stroke-color-default: rgba(117, 117, 117, .4);
         --stroke-color-flyout: rgba(0, 0, 0, .2);
 
@@ -182,8 +195,15 @@ body {
         --infobar-neutral: rgba(255, 255, 255, .0326);
         --infobar-solid-neutral: #2E2E2E;
 
-        --fill-color-acrylic-base: linear-gradient(0deg, rgba(44, 44, 44, 0.15), rgba(44, 44, 44, 0.15)), rgba(44, 44, 44, 0.96);
-        --fill-color-acrylic-default: rgba(44, 44, 44, 0.96);
+        --fill-color-acrylic-base: rgb(44, 44, 44);
+        --fill-color-acrylic-default: rgb(44, 44, 44);
+
+        --elevation-circle: rgba(255, 255, 255, 0.0698);
+
+        --fill-control-solid: #454545;
+
+        /* Special styles */
+        --slider-disabled-thumb-color: var(--accent-color-tertiary);
 
         background-color: #1C1C1C;
     }

@@ -1,16 +1,14 @@
-import React, {CSSProperties, useEffect, useState} from "react";
+import React, {CSSProperties, useState} from "react";
 import styles from './styles.module.css'
 import {TextBlock} from "../../Text/TextBlock";
 
-interface ToggleSwitchProps {
+interface ToggleSwitchProps extends Omit<
+    React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+    'type' | 'value'
+> {
     header?: string
     offContent?: string
     onContent?: string
-
-    style?: CSSProperties
-    className?: string
-
-    disabled?: boolean
 
     initialValue?: boolean
     value?: boolean
@@ -18,10 +16,7 @@ interface ToggleSwitchProps {
 }
 
 export function ToggleSwitch(props: ToggleSwitchProps) {
-    const [toggled, setIsToggled] = useState(
-        props.value !== undefined ?
-            props.value : Boolean(props.initialValue)
-    )
+    const [toggled, setIsToggled] = useState(props.value ?? props.initialValue ?? false)
 
     return (
         <div style={props.style} className={props.className}>
@@ -34,7 +29,7 @@ export function ToggleSwitch(props: ToggleSwitchProps) {
                     <input
                         disabled={props.disabled}
                         checked={toggled}
-                        onChange={() => {
+                        onChange={e => {
                             if (props.onToggled) {
                                 props.onToggled(!toggled)
                             }
@@ -42,6 +37,8 @@ export function ToggleSwitch(props: ToggleSwitchProps) {
                             if (props.value === undefined) {
                                 setIsToggled(!toggled)
                             }
+
+                            return props.onChange?.(e)
                         }}
                         type="checkbox"
                         className={styles['input']}

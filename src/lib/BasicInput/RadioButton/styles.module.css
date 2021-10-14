@@ -1,0 +1,101 @@
+.radio {
+    display: none;
+    appearance: none;
+}
+
+.radio-button {
+    display: inline-block;
+
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+
+    border-color: var(--fill-color-control-strong-default);
+    border-width: 1px;
+    border-style: solid;
+    box-sizing: border-box;
+
+    background-color: var(--fill-control-alt-secondary);
+
+    transition: border-width .2s ease;
+}
+
+.radio:not(:disabled) {
+    cursor: pointer;
+}
+
+.radio:hover:not(:disabled) ~ .radio-button {
+    background-color: var(--fill-control-alt-tertiary);
+}
+
+.radio:active:not(:disabled):not(:checked) ~ .radio-button {
+    box-shadow: 0 0 0 1px var(--fill-color-control-strong-disabled);
+
+    background-clip: content-box;
+
+    border-color: var(--fill-control-alt-quarternary);
+    border-width: 4px;
+    border-style: solid;
+
+    background-color: var(--text-on-accent-color-primary);
+
+    transition: border-width .2s ease;
+}
+
+.radio:checked ~ .radio-button {
+    border-color: var(--accent-color);
+    border-width: 3px;
+    border-style: solid;
+
+    background-color: var(--text-on-accent-color-primary);
+
+    transition: border-width .2s ease;
+}
+
+.radio:checked:hover ~ .radio-button {
+    border-width: 2px;
+    border-color: var(--accent-color-secondary);
+}
+
+.radio:checked:active ~ .radio-button {
+    border-width: 4px;
+    border-color: var(--accent-color-tertiary);
+
+    transition: border-width .1s ease;
+}
+
+.radio:disabled ~ p {
+    color: var(--text-color-disabled);
+}
+
+.radio:disabled:not(:checked) ~ .radio-button {
+    border-color: var(--fill-color-control-strong-disabled);
+    background-color: var(--fill-control-alt-disabled);
+}
+
+.radio:checked:disabled ~ .radio-button {
+    background-color: var(--text-on-accent-color-primary);
+
+    border-color: var(--accent-color-disabled);
+    border-width: 4px;
+}
+
+.radio-buttons-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-label {
+    width: fit-content;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+}
+
+.radio-label>p {
+    margin: 4px 8px;
+
+    user-select: none;
+}
