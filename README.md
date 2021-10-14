@@ -2,20 +2,18 @@
 
 ### Current roadmap:
 
-- 15 October: ✅ Slider, Radio Button, ComboBox
-- In near future (from 15 October to 1 January): Color Picker, Auto Suggests Box, Input (Number box, Password box, Text Box)
-
 - ListView, GridView, TreeView
+- Input (Number box, Password box, Text Box)
+- Color Picker, ComboBox, Auto Suggests Box
 - NavigationView (left & top variants), BreadcrumbBar
 - Dialog, Flyout, Teaching Tip
 - RichEditBox
-
 
 ### Project status:
 
 | Type of components  | Current development status | Estimated release date |
 |---------------------|----------------------------|------------------------|
-| Basic Inputs        | 🚧🏗️                         | 15 October              |
+| Basic Inputs        | 🧪                         | Released              |
 | Text                | 🚧🏗️                         | In near future             |
 | Status and info     | 🧪                         | Released              |
 | Navigation          | ❌                          | In near future         |
