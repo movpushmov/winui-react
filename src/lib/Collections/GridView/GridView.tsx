@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react'
+import { SelectionMode } from '../ListView/ListView'
 import styles from './styles.module.css'
-import {CheckBox, CheckBoxState} from "../../BasicInput/CheckBox/CheckBox";
+import { CheckBox, CheckBoxState } from '../../BasicInput/CheckBox/CheckBox'
 
-export type SelectionMode = 'none' | 'single' | 'multiply'
-
-interface ListViewItemProps extends React.DetailedHTMLProps<
+interface GridViewItemProps extends React.DetailedHTMLProps<
     React.BaseHTMLAttributes<HTMLDivElement>, HTMLDivElement
     > {
     listKey?: string | number
@@ -15,24 +14,24 @@ interface ListViewItemProps extends React.DetailedHTMLProps<
     selectionMode?: SelectionMode
 }
 
-export type PublicListViewItemProps = Omit<ListViewItemProps, 'selected' | 'selectionMode'>
+export type PublicGridViewItemProps = Omit<GridViewItemProps, 'selected' | 'selectionMode'>
 
-export interface ListViewProps extends Omit<
+export interface GridViewProps extends Omit<
     React.DetailedHTMLProps<
         React.BaseHTMLAttributes<HTMLDivElement>, HTMLDivElement
-    >,
+        >,
     'children'
-> {
+    > {
     children?:
-        React.ReactElement<PublicListViewItemProps> |
-        React.ReactElement<PublicListViewItemProps>[]
+        React.ReactElement<PublicGridViewItemProps> |
+        React.ReactElement<PublicGridViewItemProps>[]
 
     defaultSelectedItems?: (string | number)[]
     selectedItems?: (string | number)[]
     selectionMode?: SelectionMode
 }
 
-export const ListView = (props: ListViewProps) => {
+export const GridView = (props: GridViewProps) => {
     const [defaultProps, setDefaultProps] = useState(Object.assign({
         selectedItems: [],
         selectionMode: 'single'
@@ -56,7 +55,7 @@ export const ListView = (props: ListViewProps) => {
         }
     }, [props])
 
-    function getChildren(): React.ReactElement<ListViewItemProps>[] {
+    function getChildren(): React.ReactElement<GridViewItemProps>[] {
         if (defaultProps.children) {
             return Array.isArray(defaultProps.children) ?
                 defaultProps.children : [defaultProps.children]
@@ -66,7 +65,7 @@ export const ListView = (props: ListViewProps) => {
     }
 
     return (
-        <div className={`${styles['list-view']} `} {...otherProps}>
+        <div className={`${styles['grid-view']} `} {...otherProps}>
             {React.Children.map(getChildren(), (c, i) => {
                 let { selected, listKey, onClick, disabled, ...otherProps } = c.props
 
@@ -107,7 +106,7 @@ export const ListView = (props: ListViewProps) => {
                 }
 
                 return (
-                    <ListViewItem
+                    <GridViewItem
                         selected={selected || selectedKeys.includes(listKey ?? i)}
                         listKey={listKey}
                         disabled={disabled}
@@ -121,7 +120,7 @@ export const ListView = (props: ListViewProps) => {
     )
 }
 
-const ListViewItem = (props: ListViewItemProps) => {
+const GridViewItem = (props: GridViewItemProps) => {
     const {
         selectionMode,
         selected,
@@ -132,7 +131,7 @@ const ListViewItem = (props: ListViewItemProps) => {
     } = props
 
     function getClassName() {
-        let base = 'list-view-item'
+        let base = 'grid-view-item'
 
         if (selected)
             base += '-selected'
@@ -151,6 +150,7 @@ const ListViewItem = (props: ListViewItemProps) => {
             {selectionMode === 'multiply' ? (
                 <CheckBox
                     disabled={disabled}
+                    className={styles['check-box']}
                     value={selected ? CheckBoxState.Checked : CheckBoxState.Unchecked}
                 />
             ) : <></>}
