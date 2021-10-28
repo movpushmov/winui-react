@@ -18,7 +18,7 @@
 | Status and info     | 🧪                         | Released              |
 | Navigation          | ❌                          | In near future         |
 | Dialogs and Flyouts | ❌                          | In near future         |
-| Collections         | ❌                          | In near future         |
+| Collections         | 🚧🏗️                          | In near future         |
 | Date and Time       | ❌                          | In near future         |
 | Media               | ❌                          | In near future         |
 | Menus and Toolbars  | ❌                          | In near future         |
