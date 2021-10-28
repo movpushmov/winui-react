@@ -54,12 +54,12 @@
 }
 
 .close-button:hover {
-    background-color: var(--fill-color-subtle-secondary);
+    background-color: var(--fill-color-subtle-secondary) !important;
     border: none;
 }
 
 .close-button:active {
-    color: var(--text-color-secondary);
-    background-color: var(--fill-color-subtle-tertiary);
+    color: var(--text-color-secondary) !important;
+    background-color: var(--fill-color-subtle-tertiary) !important;
     border: none;
 }
