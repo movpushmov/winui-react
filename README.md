@@ -2,7 +2,7 @@
 
 ### Current roadmap:
 
-- ListView, GridView, TreeView
+- ListView ✅, GridView ✅, TreeView
 - Input (Number box, Password box, Text Box)
 - Color Picker, ComboBox, Auto Suggests Box
 - NavigationView (left & top variants), BreadcrumbBar
