@@ -9,8 +9,6 @@
 
     margin: 4px 0;
 
-    cursor: pointer;
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -18,6 +16,8 @@
 
 .list-view-item {
     composes: list-view-item-base;
+
+    cursor: pointer;
 }
 
 .list-view-item:after {
@@ -56,6 +56,8 @@
     composes: list-view-item-base;
 
     background-color: var(--fill-color-subtle-secondary);
+
+    cursor: pointer;
 }
 
 .list-view-item-selected:after {
@@ -71,6 +73,36 @@
 
     border-radius: 20%;
     background-color: var(--accent-color);
+
+    transition: height .2s ease;
+}
+
+.list-view-item-disabled {
+    composes: list-view-item-base;
+
+    color: var(--text-color-disabled);
+}
+
+.list-view-item-selected-disabled {
+    composes: list-view-item-base;
+
+    color: var(--text-color-disabled);
+    background-color: var(--fill-color-subtle-secondary);
+}
+
+.list-view-item-selected-disabled:after {
+    content: '';
+    position: absolute;
+
+    left: 0;
+    width: 4px;
+    height: 50%;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    border-radius: 20%;
+    background-color: var(--accent-color-disabled);
 
     transition: height .2s ease;
 }

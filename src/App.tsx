@@ -320,10 +320,10 @@ function App() {
             <TitleBlock type="title">ListView</TitleBlock>
 
             <div style={columnStyle}>
-                <ListView selectedItems={[1]}>
+                <ListView>
+                    <ListViewItem disabled>Hello!</ListViewItem>
                     <ListViewItem>Hello!</ListViewItem>
-                    <ListViewItem>Hello!</ListViewItem>
-                    <ListViewItem>Hello!</ListViewItem>
+                    <ListViewItem disabled>Hello!</ListViewItem>
                     <ListViewItem>Hello!</ListViewItem>
                 </ListView>
             </div>

@@ -8,6 +8,7 @@ interface ListViewItemProps extends React.DetailedHTMLProps<
     React.BaseHTMLAttributes<HTMLDivElement>, HTMLDivElement
     > {
     listKey?: string | number
+    disabled?: boolean
 
     // private listview props
     selected?: boolean
@@ -67,10 +68,15 @@ export const ListView = (props: ListViewProps) => {
     return (
         <div className={`${styles['list-view']} `} {...otherProps}>
             {React.Children.map(getChildren(), (c, i) => {
-                let { selected, listKey, onClick, ...otherProps } = c.props
+                let { selected, listKey, onClick, disabled, ...otherProps } = c.props
 
                 const newOnClick: React.MouseEventHandler<HTMLDivElement> = e => {
-                    if (selectedKeys.includes(listKey ?? i) && defaultProps.selectionMode === 'single') {
+                    onClick?.(e)
+
+                    if (
+                        (selectedKeys.includes(listKey ?? i) && defaultProps.selectionMode === 'single') ||
+                        disabled
+                    ) {
                         return;
                     } else {
                         switch (defaultProps.selectionMode) {
@@ -98,14 +104,13 @@ export const ListView = (props: ListViewProps) => {
                             }
                         }
                     }
-
-                    onClick?.(e)
                 }
 
                 return (
                     <ListViewItem
                         selected={selected || selectedKeys.includes(listKey ?? i)}
                         listKey={listKey}
+                        disabled={disabled}
                         onClick={newOnClick}
                         selectionMode={props.selectionMode}
                         {...otherProps}
@@ -117,11 +122,30 @@ export const ListView = (props: ListViewProps) => {
 }
 
 const ListViewItem = (props: ListViewItemProps) => {
-    const { selectionMode, selected, className, children, ...otherProps } = props
+    const {
+        selectionMode,
+        selected,
+        disabled,
+        className,
+        children,
+        ...otherProps
+    } = props
+
+    function getClassName() {
+        let base = 'list-view-item'
+
+        if (selected)
+            base += '-selected'
+
+        if (disabled)
+            base += '-disabled'
+
+        return base;
+    }
 
     return (
         <div
-            className={`${styles[`list-view-item${selected ? '-selected' : ''}`]} ${className || ''}`}
+            className={`${styles[getClassName()]} ${className || ''}`}
             {...otherProps}
         >
             {selectionMode === 'multiply' ? (
