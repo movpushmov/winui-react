@@ -72,7 +72,8 @@
     box-shadow: 0 8px 16px rgba(0,0,0,.26);
     border-width: 1px;
 
-    background: rgba(252, 252, 252, 0.85);
+    background: rgba(252, 252, 252, .85);
+    backdrop-filter: blur(15px);
 
     border-radius: 7px;
     background-blend-mode: normal, color, luminosity;

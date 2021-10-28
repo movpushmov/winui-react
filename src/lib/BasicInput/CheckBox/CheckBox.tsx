@@ -26,8 +26,14 @@ export function CheckBox(props: CheckBoxProps) {
             props.value : (props.initialValue || CheckBoxState.Unchecked)
     )
 
+    useEffect(() => {
+        if (props.value !== undefined) {
+            setState(props.value)
+        }
+    }, [props])
+
     function onClick() {
-        if (props.disabled) {
+        if (props.disabled || props.value !== undefined) {
             return
         }
 

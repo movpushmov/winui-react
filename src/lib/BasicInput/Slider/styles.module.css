@@ -3,7 +3,7 @@
     transform: translate(-50%, -40%);
     left: 0;
 
-    color: white;
+    color: var(--text-color-primary);
     font-size: 14px;
 }
 

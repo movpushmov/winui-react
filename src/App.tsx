@@ -20,6 +20,8 @@ import {ProgressBar} from "./lib/StatusAndInfo/ProgressBar/ProgressBar";
 import {Slider} from "./lib/BasicInput/Slider/Slider";
 import {RadioButtonGroup} from "./lib/BasicInput/RadioButton/RadioButtonGroup";
 import {RadioButton} from "./lib/BasicInput/RadioButton/RadioButton";
+import {ListView} from "./lib/Collections/ListView/ListView";
+import {ListViewItem} from "./lib/Collections/ListView/ListViewItem";
 
 const rowStyle: CSSProperties = {
     display: 'flex',
@@ -186,7 +188,11 @@ function App() {
                 <RadioButton content="First"/>
                 <RadioButton content="Second"/>
                 <RadioButton content="Third"/>
+            </RadioButtonGroup>
+
+            <RadioButtonGroup>
                 <RadioButton content="Disabled radio" disabled/>
+                <RadioButton content="Disabled radio second" disabled/>
                 <RadioButton content="Disabled radio active" disabled checked={true}/>
             </RadioButtonGroup>
 
@@ -310,6 +316,18 @@ function App() {
                 <ProgressBar active={true}/>
                 <ProgressBar determinate={true} style={{ marginTop: '5%' }} value={50}/>
             </div>
+
+            <TitleBlock type="title">ListView</TitleBlock>
+
+            <div style={columnStyle}>
+                <ListView selectedItems={[1]}>
+                    <ListViewItem>Hello!</ListViewItem>
+                    <ListViewItem>Hello!</ListViewItem>
+                    <ListViewItem>Hello!</ListViewItem>
+                    <ListViewItem>Hello!</ListViewItem>
+                </ListView>
+            </div>
+
         </div>
     );
 }
