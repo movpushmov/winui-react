@@ -1,4 +1,4 @@
-import React, {CSSProperties, useState} from "react";
+import React, {useState} from "react";
 import styles from './styles.module.css'
 import {TextBlock} from "../../Text/TextBlock";
 

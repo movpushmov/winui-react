@@ -1,53 +1,43 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import styles from './styles.module.css'
 import { ProgressProps } from '../types'
+import { useProgressBarLogic } from './useProgressBarLogic'
 
-interface ProgressBarProps extends ProgressProps {
-    state?: 'running' | 'paused' | 'error'
+export interface ProgressBarProps extends ProgressProps {
+	state?: 'running' | 'paused' | 'error'
 }
 
-export const ProgressBar = (props: ProgressBarProps) => {
-    const [percentage, setPercentage] = useState(0)
-    const [length, setLength] = useState(0)
+export const ProgressBar = (props: ProgressBarProps): React.ReactElement | null => {
+	const progressBarLogic = useProgressBarLogic(props)
 
-    const state = props.state || 'running'
+	if (props.determinate) {
+		return (
+			<div
+				className={`${styles['loader']} ${props.className || ''}`}
+				style={props.style}
+			>
+				<div
+					className={styles['determinate-indicator']}
+					style={{ width: `${progressBarLogic.percentage}%` }}
+				/>
+				<div className={styles['determinate-background']}/>
+			</div>
+		)
+	}
 
-    useEffect(() => {
-        if (props.value && props.value > 100) {
-            setPercentage(100)
-        } else if (props.value && props.value < 0) {
-            setPercentage(0)
-        } else if (props.value) {
-            setPercentage(props.value)
-        }
-    }, [props.value])
+	if (!props.active) {
+		return null
+	}
 
-    if (props.determinate) {
-        return (
-            <div
-                className={`${styles['loader']} ${props.className || ''}`}
-                style={props.style}
-            >
-                <div
-                    className={styles['determinate-indicator']}
-                    style={{ width: percentage + '%' }}
-                />
-                <div className={styles['determinate-background']}/>
-            </div>
-        )
-    } else if (!props.active) {
-        return <></>
-    }
-
-    return (
-        <div
-            className={`${styles['loader']} ${props.className || ''}`}
-            style={props.style}
-        >
-            <div
-                className={styles['indicator']}
-                data-state={state}
-            />
-        </div>
-    )
+	return (
+		<div
+			className={`${styles['loader']} ${props.className || ''}`}
+			style={props.style}
+		>
+			<div
+				className={styles['indicator']}
+				data-state={progressBarLogic.state}
+			/>
+		</div>
+	)
 }

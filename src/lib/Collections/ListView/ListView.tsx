@@ -1,6 +1,6 @@
-import React, {Children, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import styles from './styles.module.css'
-import {CheckBox, CheckBoxState} from "../../BasicInput/CheckBox/CheckBox";
+import {CheckBoxState} from "../../BasicInput/CheckBox/CheckBox";
 import {ListViewItem} from "./ListViewItem";
 
 export type SelectionMode = 'none' | 'single' | 'multiply'
@@ -45,11 +45,19 @@ export const ListView = (props: ListViewProps) => {
         defaultProps.defaultSelectedItems ??
         defaultProps.selectedItems
     )
-    const { children, className, onValueSelect, ...otherProps } = props
+
+    const {
+        children,
+        className,
+        onValueSelect,
+        selectedItems,
+        selectionMode,
+        ...otherProps
+    } = props
 
     useEffect(() => {
         onValueSelect?.(selectedKeys)
-    }, [selectedKeys])
+    }, [onValueSelect, selectedKeys])
 
     useEffect(() => {
         setDefaultProps(Object.assign({
@@ -72,7 +80,7 @@ export const ListView = (props: ListViewProps) => {
     }
 
     return (
-        <ul className={`${styles['list-view']} `} {...otherProps}>
+        <ul className={`${styles['list-view']} ${className || ''}`} {...otherProps}>
             {React.Children.map(getChildren(), (c, i) => {
                 let {
                     selected,

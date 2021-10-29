@@ -10,6 +10,8 @@ export const ListViewItem = (props: ListViewItemProps) => {
         disabled,
         className,
         children,
+        checkBoxState,
+        listKey,
         ...otherProps
     } = props
 
@@ -34,8 +36,7 @@ export const ListViewItem = (props: ListViewItemProps) => {
                 <CheckBox
                     disabled={disabled}
                     value={
-                        props.checkBoxState ??
-                        (selected ? CheckBoxState.Checked : CheckBoxState.Unchecked)
+                        checkBoxState ?? (selected ? CheckBoxState.Checked : CheckBoxState.Unchecked)
                     }
                 />
             ) : <></>}

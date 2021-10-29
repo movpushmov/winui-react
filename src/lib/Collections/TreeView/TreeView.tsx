@@ -1,9 +1,12 @@
-import {IconType} from '../../Icons/Icon'
+import {Icon, IconType} from '../../Icons/Icon'
 import React, {useEffect, useState} from 'react'
 import {SelectionMode} from '../ListView/ListView'
 import {ListViewItem} from "../ListView/ListViewItem";
 import {TreeListView} from "./TreeListView";
 import {CheckBoxState} from "../../BasicInput/CheckBox/CheckBox";
+
+import styles from './styles.module.css'
+import {Button} from "../../BasicInput/Button/Button";
 
 type Key = string | number
 
@@ -66,6 +69,13 @@ export const TreeView = (props: TreeViewProps) => {
     )
 
     const [treeNodes, setNodes] = useState<TreeViewNode[]>([])
+
+    useEffect(() => {
+        setDefaultProps(Object.assign({
+            selectedItems: [],
+            selectionMode: 'single'
+        }, props))
+    }, [props])
 
     function handleClick(keys: Key[], checkBoxState?: CheckBoxState) {
         switch (defaultProps.selectionMode) {
@@ -181,6 +191,7 @@ export const TreeView = (props: TreeViewProps) => {
 
         setNodes(nodes)
 
+        // eslint-disable-next-line
     }, [props.children])
 
     return (
@@ -194,6 +205,8 @@ export const TreeView = (props: TreeViewProps) => {
 }
 
 const TreeNode = (props: TreeNodeProps) => {
+    const [visibleSubLists, setVisibleSubLists] = useState<Key[]>([]);
+
     function selectedChildrenCount(childrenKeys: Key[]): number {
         let count = 0
 
@@ -218,6 +231,18 @@ const TreeNode = (props: TreeNodeProps) => {
         }
     }
 
+    function subOpenHandle(key: Key) {
+        if (visibleSubLists.includes(key)) {
+            setVisibleSubLists(visibleSubLists.filter(k => k !== key))
+        } else {
+            setVisibleSubLists(visibleSubLists.concat(key))
+        }
+    }
+
+    function isVisible(key: Key) {
+        return visibleSubLists.includes(key)
+    }
+
     function treeToReact(
         node: TreeViewNode,
         selectedKeys: Key[],
@@ -227,18 +252,19 @@ const TreeNode = (props: TreeNodeProps) => {
 
         if (node.root && node.children) {
             return node.children.map(n => (
-                <TreeListView key={`tree-view-sub-item-${depth}`}>
+                <TreeListView key={`tree-view-sub-list-${depth}`}>
                     {treeToReact(n, selectedKeys, depth)}
                 </TreeListView>
             ))
         }
 
         if (node.children && node.children.length > 0) {
-             const checkBoxState = getItemCheckBoxState(node.childrenValues)
+            const checkBoxState = getItemCheckBoxState(node.childrenValues)
 
             return (
                 <>
                     <ListViewItem
+                        className={styles['list-view-item-no-effects']}
                         key={node.value}
                         selectionMode={props.selectionMode}
                         listKey={node.value}
@@ -246,11 +272,32 @@ const TreeNode = (props: TreeNodeProps) => {
                         selected={false}
                         onClick={() => props.select(node.childrenValues, checkBoxState)}
                     >
+                        <Button
+                            className={styles['chevron-button']}
+                            iconLeft={
+                                <Icon type={
+                                    isVisible(
+                                        `tree-view-sub-open-list-${depth}-${node.value}`
+                                    ) ? IconType.ChevronDown : IconType.ChevronRight
+                                }/>
+                            }
+                            onClick={e => {
+                                subOpenHandle(`tree-view-sub-open-list-${depth}-${node.value}`)
+
+                                e.stopPropagation()
+                            }}
+                        />
+
                         {node.title}
                     </ListViewItem>
 
                     {node.children.map((n, i) => (
-                        <TreeListView key={`tree-view-sub-item-${depth}-${i}`}>
+                        <TreeListView
+                            className={isVisible(`tree-view-sub-open-list-${depth}-${node.value}`) ?
+                                styles['sublist-visible'] : styles['sublist-hidden']
+                            }
+                            key={`tree-view-sub-item-${depth}-${i}`}
+                        >
                             {treeToReact(n, selectedKeys, depth)}
                         </TreeListView>
                     ))}

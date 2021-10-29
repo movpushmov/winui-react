@@ -2,7 +2,6 @@ import React, {CSSProperties, useEffect, useState} from "react";
 import {Button} from "../Button/Button";
 import styles from './styles.module.css'
 import {Icon, IconType} from "../../Icons/Icon";
-import {TextBlock} from "../../Text/TextBlock";
 import {DropDown} from "./DropDown";
 
 export type DropDownItem = {

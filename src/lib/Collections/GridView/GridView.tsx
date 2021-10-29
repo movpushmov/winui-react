@@ -44,11 +44,19 @@ export const GridView = (props: GridViewProps) => {
         defaultProps.defaultSelectedItems ??
         defaultProps.selectedItems
     )
-    const { children, className, onValueSelect, ...otherProps } = props
+
+    const {
+        children,
+        className,
+        onValueSelect,
+        selectedItems,
+        selectionMode,
+        ...otherProps
+    } = props
 
     useEffect(() => {
         onValueSelect?.(selectedKeys)
-    }, [selectedKeys])
+    }, [onValueSelect, selectedKeys])
 
     useEffect(() => {
         setDefaultProps(Object.assign({
@@ -133,6 +141,7 @@ const GridViewItem = (props: GridViewItemProps) => {
         disabled,
         className,
         children,
+        listKey,
         ...otherProps
     } = props
 

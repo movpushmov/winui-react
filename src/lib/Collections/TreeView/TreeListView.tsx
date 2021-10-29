@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import styles from "../ListView/styles.module.css";
-import {ListViewItem} from "../ListView/ListViewItem";
-import {ListViewItemProps, ListViewProps} from "../ListView/ListView";
+import { ListViewProps } from "../ListView/ListView";
 
 export const TreeListView = (props: ListViewProps) => {
     const [defaultProps, setDefaultProps] = useState(Object.assign({
@@ -14,11 +13,19 @@ export const TreeListView = (props: ListViewProps) => {
         defaultProps.defaultSelectedItems ??
         defaultProps.selectedItems
     )
-    const { children, className, onValueSelect, ...otherProps } = props
+
+    const {
+        children,
+        className,
+        onValueSelect,
+        selectedItems,
+        selectionMode,
+        ...otherProps
+    } = props
 
     useEffect(() => {
         onValueSelect?.(selectedKeys)
-    }, [selectedKeys])
+    }, [onValueSelect, selectedKeys])
 
     useEffect(() => {
         setDefaultProps(Object.assign({
@@ -32,7 +39,7 @@ export const TreeListView = (props: ListViewProps) => {
     }, [props])
 
     return (
-        <ul className={`${styles['list-view']} `} {...otherProps}>
+        <ul className={`${styles['list-view']} ${className || ''}`} {...otherProps}>
             {children}
         </ul>
     )
