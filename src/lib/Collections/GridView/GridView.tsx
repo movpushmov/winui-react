@@ -26,6 +26,8 @@ export interface GridViewProps extends Omit<
         React.ReactElement<PublicGridViewItemProps> |
         React.ReactElement<PublicGridViewItemProps>[]
 
+    onValueSelect?: (selectedItems: (string | number)[]) => void;
+
     defaultSelectedItems?: (string | number)[]
     selectedItems?: (string | number)[]
     selectionMode?: SelectionMode
@@ -42,7 +44,11 @@ export const GridView = (props: GridViewProps) => {
         defaultProps.defaultSelectedItems ??
         defaultProps.selectedItems
     )
-    const { children, className, ...otherProps } = props
+    const { children, className, onValueSelect, ...otherProps } = props
+
+    useEffect(() => {
+        onValueSelect?.(selectedKeys)
+    }, [selectedKeys])
 
     useEffect(() => {
         setDefaultProps(Object.assign({

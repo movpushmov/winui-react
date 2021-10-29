@@ -1,31 +1,33 @@
-import React, {useEffect, useState} from 'react'
+import React, {Children, useEffect, useState} from 'react'
 import styles from './styles.module.css'
 import {CheckBox, CheckBoxState} from "../../BasicInput/CheckBox/CheckBox";
+import {ListViewItem} from "./ListViewItem";
 
 export type SelectionMode = 'none' | 'single' | 'multiply'
 
-interface ListViewItemProps extends React.DetailedHTMLProps<
-    React.BaseHTMLAttributes<HTMLDivElement>, HTMLDivElement
+export interface ListViewItemProps extends React.DetailedHTMLProps<
+    React.BaseHTMLAttributes<HTMLLIElement>, HTMLLIElement
     > {
     listKey?: string | number
     disabled?: boolean
 
-    // private listview props
     selected?: boolean
     selectionMode?: SelectionMode
-}
 
-export type PublicListViewItemProps = Omit<ListViewItemProps, 'selected' | 'selectionMode'>
+    checkBoxState?: CheckBoxState
+}
 
 export interface ListViewProps extends Omit<
     React.DetailedHTMLProps<
-        React.BaseHTMLAttributes<HTMLDivElement>, HTMLDivElement
+        React.BaseHTMLAttributes<HTMLUListElement>, HTMLUListElement
     >,
     'children'
 > {
     children?:
-        React.ReactElement<PublicListViewItemProps> |
-        React.ReactElement<PublicListViewItemProps>[]
+        React.ReactElement<ListViewItemProps> |
+        React.ReactElement<ListViewItemProps>[]
+
+    onValueSelect?: (selectedItems: (string | number)[]) => void;
 
     defaultSelectedItems?: (string | number)[]
     selectedItems?: (string | number)[]
@@ -43,7 +45,11 @@ export const ListView = (props: ListViewProps) => {
         defaultProps.defaultSelectedItems ??
         defaultProps.selectedItems
     )
-    const { children, className, ...otherProps } = props
+    const { children, className, onValueSelect, ...otherProps } = props
+
+    useEffect(() => {
+        onValueSelect?.(selectedKeys)
+    }, [selectedKeys])
 
     useEffect(() => {
         setDefaultProps(Object.assign({
@@ -66,11 +72,17 @@ export const ListView = (props: ListViewProps) => {
     }
 
     return (
-        <div className={`${styles['list-view']} `} {...otherProps}>
+        <ul className={`${styles['list-view']} `} {...otherProps}>
             {React.Children.map(getChildren(), (c, i) => {
-                let { selected, listKey, onClick, disabled, ...otherProps } = c.props
+                let {
+                    selected,
+                    listKey,
+                    onClick,
+                    disabled,
+                    ...otherProps
+                } = c.props
 
-                const newOnClick: React.MouseEventHandler<HTMLDivElement> = e => {
+                const newOnClick: React.MouseEventHandler<HTMLLIElement> = e => {
                     onClick?.(e)
 
                     if (
@@ -84,7 +96,7 @@ export const ListView = (props: ListViewProps) => {
                                 return;
                             }
                             case 'single': {
-                                if (defaultProps.selectedItems.length > 0) {
+                                if (defaultProps.selectedItems.length > 0 || props.selectedItems !== undefined) {
                                     return;
                                 }
 
@@ -115,47 +127,9 @@ export const ListView = (props: ListViewProps) => {
                         selectionMode={props.selectionMode}
                         {...otherProps}
                     />
-                );
+                )
             })}
-        </div>
+        </ul>
     )
 }
 
-const ListViewItem = (props: ListViewItemProps) => {
-    const {
-        selectionMode,
-        selected,
-        disabled,
-        className,
-        children,
-        ...otherProps
-    } = props
-
-    function getClassName() {
-        let base = 'list-view-item'
-
-        if (selected)
-            base += '-selected'
-
-        if (disabled)
-            base += '-disabled'
-
-        return base;
-    }
-
-    return (
-        <div
-            className={`${styles[getClassName()]} ${className || ''}`}
-            {...otherProps}
-        >
-            {selectionMode === 'multiply' ? (
-                <CheckBox
-                    disabled={disabled}
-                    value={selected ? CheckBoxState.Checked : CheckBoxState.Unchecked}
-                />
-            ) : <></>}
-
-            {children}
-        </div>
-    )
-}

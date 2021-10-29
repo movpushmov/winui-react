@@ -20,10 +20,12 @@ import {ProgressBar} from "./lib/StatusAndInfo/ProgressBar/ProgressBar";
 import {Slider} from "./lib/BasicInput/Slider/Slider";
 import {RadioButtonGroup} from "./lib/BasicInput/RadioButton/RadioButtonGroup";
 import {RadioButton} from "./lib/BasicInput/RadioButton/RadioButton";
-import {ListView} from "./lib/Collections/ListView/ListView";
-import {ListViewItem} from "./lib/Collections/ListView/ListViewItem";
+import { ListView } from "./lib/Collections/ListView/ListView";
+import { ListViewItem } from "./lib/Collections/ListView/ListViewItem";
 import {GridView} from "./lib/Collections/GridView/GridView";
 import {GridViewItem} from './lib/Collections/GridView/GridViewItem';
+import {TreeView} from "./lib/Collections/TreeView/TreeView";
+import {TreeNode} from "./lib/Collections/TreeView/TreeNode";
 
 const rowStyle: CSSProperties = {
     display: 'flex',
@@ -599,6 +601,20 @@ function App() {
                     <GridViewItem style={{ backgroundSize: 'cover', backgroundImage: 'url("https://s3-alpha-sig.figma.com/img/83e2/21e9/0389d8542294d58696523798c6e43b76?Expires=1636329600&Signature=dKMr29ubVDSiTjW-7HVseZvwDVAz~0Fkws3jNkK3YaTJOologr3CiQ6P13VsvKZ2LpcVcbcT5TMdL3D7PoDq6n8AJgXQk5GYC-FRjOAlzPtsToRvrCTmYWV4EhT0OLmXt2-XptMW7YSv5Saq3wiOKGNk3qXBlro4h8lbIpJqhXuPYQ5AmHK2pMjEfWLMoAfS7NW5BNCBi-UCQW62gCVCZ9pz9jqkn34dJ2KrCjDm3FOX2RplyQQ2dg7EkIPtpHW-THcpdXwM4NcZkuqtbro-rgSKkBZlRqESYFREiDJXkoICZjFNhnL4sGEzG1mjlPsoibg5ppOVXnY73QUARHytkg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA")' }}/>
                     <GridViewItem disabled style={{ backgroundSize: 'cover', backgroundImage: 'url("https://s3-alpha-sig.figma.com/img/9984/59dc/b2ab2fcf8a38f56e8e5ba555f7d5afe4?Expires=1636329600&Signature=AccMLM1uisyGiwElGdG9J77N7G8qyZo19lZDClewJkYDqKBRcTzT27ZFRv~1CXUzNCkZK2vnVfeqRfjc5qfmc7-eKP6CqjfzYCTNPvJwzZiAQhnFojmCxQtoi~KJD65q3MwAKIMixmnYOP-1t8c4zJjw0PH82wmr7ZBEb1VZeYGEArWtHt8LXZaSTIfOP8yX~-DI4s9Stlfz45Qy7~RiWFiPZZmduOTiACv5G9rJk4WBL~vE2ocbWZqTY0Y2VQklH4v3MwNsR~cGhgG1aM6o9qSvYV3JbJ3ISOg2KrB9Wej5hTFZEpqxL2wROBBD8veX2F0NdIOBInH77CDH3SyN9Q__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA")' }}/>
                 </GridView>
+            </div>
+
+            <div style={columnStyle}>
+                <TreeView selectionMode="multiply">
+                    <TreeNode value="parent 1" title="parent 1">
+                        <TreeNode value="parent 1-0" title="parent 1-0">
+                            <TreeNode value="leaf1" title="leaf1" />
+                            <TreeNode value="leaf2" title="leaf2" />
+                        </TreeNode>
+                        <TreeNode value="parent 1-1" title="parent 1-1">
+                            <TreeNode value="leaf3" title="HEllo!" />
+                        </TreeNode>
+                    </TreeNode>
+                </TreeView>
             </div>
         </div>
     );
