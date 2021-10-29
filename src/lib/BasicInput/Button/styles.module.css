@@ -54,7 +54,7 @@
 }
 
 .btn:active:not(:disabled) {
-    background-color: var(--fill-color-tertiary) !important;
+    background-color: var(--fill-color-tertiary);
     color: var(--text-color-secondary);
 }
 

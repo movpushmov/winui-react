@@ -46,7 +46,7 @@
     100% { clip-path: polygon(0% 0%, 100% 0%, 50% 100%, 0% 100%); }
 }
 
-.container input[checkbox-data="1"]:not(:disabled) ~ .checkmark:after {
+.container input[checkbox-data="1"] ~ .checkmark:after {
     color: var(--text-on-accent-color-primary);
     content: '';
 
@@ -58,7 +58,7 @@
     animation-name: Icon-Animation;
 }
 
-.container input[checkbox-data="2"]:not(:disabled) ~ .checkmark:after {
+.container input[checkbox-data="2"] ~ .checkmark:after {
     color: var(--text-on-accent-color-primary);
     content: '';
 
@@ -74,6 +74,10 @@
 .container input:disabled ~ .checkmark {
     border-color: var(--fill-color-control-strong-disabled);
     background-color: var(--fill-control-alt-quarternary);
+}
+
+.container input[checkbox-data="1"]:disabled ~ .checkmark {
+    background-color: var(--accent-color-disabled);
 }
 
 input:not(:disabled) ~ .checkmark {
