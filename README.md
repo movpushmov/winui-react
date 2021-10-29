@@ -2,7 +2,6 @@
 
 ### Current roadmap:
 
-- ListView ✅, GridView ✅, TreeView
 - Input (Number box, Password box, Text Box)
 - Color Picker, ComboBox, Auto Suggests Box
 - NavigationView (left & top variants), BreadcrumbBar
@@ -13,15 +12,15 @@
 
 | Type of components  | Current development status | Estimated release date |
 |---------------------|----------------------------|------------------------|
-| Basic Inputs        | 🧪                         | Released              |
-| Text                | 🚧🏗️                         | In near future             |
-| Status and info     | 🧪                         | Released              |
-| Navigation          | ❌                          | In near future         |
-| Dialogs and Flyouts | ❌                          | In near future         |
-| Collections         | 🚧🏗️                          | In near future         |
-| Date and Time       | ❌                          | In near future         |
-| Media               | ❌                          | In near future         |
-| Menus and Toolbars  | ❌                          | In near future         |
+| Basic Inputs        | 🧪                         | Released               |
+| Text                | 🚧🏗️                      | In near future         |
+| Status and info     | 🧪                         | Released               |
+| Navigation          | ❌                         | In near future         |
+| Dialogs and Flyouts | ❌                         | In near future         |
+| Collections         | 🧪                         | Released               |
+| Date and Time       | ❌                         | In near future         |
+| Media               | ❌                         | In near future         |
+| Menus and Toolbars  | ❌                         | In near future         |
 
 - ✅ - Stable release
 - 🧪 - Unstable release (Experemental)
