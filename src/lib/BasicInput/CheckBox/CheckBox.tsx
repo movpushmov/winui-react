@@ -56,8 +56,7 @@ export function CheckBox(props: CheckBoxProps): React.ReactElement {
 		} else {
 			setState(CheckBoxState.Unchecked)
 		}
-		// eslint-disable-next-line
-	}, [])
+	}, [props.disabled, props.isThreeState, props.value, state])
 
 	return (
 		<div>

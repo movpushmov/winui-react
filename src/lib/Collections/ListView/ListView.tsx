@@ -144,7 +144,7 @@ export const ListView = (props: ListViewProps): React.ReactElement => {
 					defaultProps.selectionMode,
 					setSelectedKeys,
 					disabled,
-					defaultProps.selectedItems,
+					props.selectedItems,
 					onClick,
 				)
 

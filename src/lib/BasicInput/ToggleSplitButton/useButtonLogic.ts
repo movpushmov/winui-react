@@ -3,13 +3,12 @@ import { DropDownButtonProps } from './ToggleSplitButton'
 import { useOuterClick } from '../../utils/useOuterClick'
 
 interface UseButtonLogicResult {
-	elementRef: React.Ref<HTMLDivElement>
-
 	toggled: boolean
 	visible: boolean
 	animateIcon: boolean
 
 	closeHandler: () => void
+	openHandler: () => void
 	toggleHandler: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
@@ -24,8 +23,6 @@ export function useButtonLogic(props: PropsType): UseButtonLogicResult {
 	)
 	const [visible, setIsVisible] = useState(false)
 	const [animateIcon, setIsAnimateIcon] = useState(false)
-
-	const elementRef = useOuterClick(() => setIsVisible(false))
 
 	useEffect(() => {
 		setIsAnimateIcon(false)
@@ -49,17 +46,18 @@ export function useButtonLogic(props: PropsType): UseButtonLogicResult {
 		if (props.value === void 0) {
 			setIsToggled(t => !t)
 		}
-		// eslint-disable-next-line
-	}, [])
 
-	const closeHandler = useCallback(() => setIsToggled(false), [])
+	}, [props])
+
+	const openHandler = useCallback(() => setIsVisible(true), [])
+	const closeHandler = useCallback(() => setIsVisible(false), [])
 
 	return {
-		elementRef,
 		toggled,
 		visible,
 		animateIcon,
 		toggleHandler,
 		closeHandler,
+		openHandler,
 	}
 }

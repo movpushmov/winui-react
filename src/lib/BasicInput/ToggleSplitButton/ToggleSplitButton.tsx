@@ -26,6 +26,7 @@ export function ToggleSplitButton(props: DropDownButtonProps): React.ReactElemen
 		className,
 		children,
 		onClick,
+		emptyMessage,
 		disabled,
 		...otherProps
 	} = defaultProps
@@ -49,7 +50,7 @@ export function ToggleSplitButton(props: DropDownButtonProps): React.ReactElemen
 					value={buttonLogic.toggled}
 					disabled={disabled}
 					className={`${styles['dropdown-button']} ${buttonLogic.animateIcon ? styles['animate-icon'] : ''}`}
-					onClick={buttonLogic.toggleHandler}
+					onClick={buttonLogic.openHandler}
 
 					style={{
 						padding: 0,
@@ -70,8 +71,7 @@ export function ToggleSplitButton(props: DropDownButtonProps): React.ReactElemen
 			<DropDown
 				visible={buttonLogic.visible}
 				close={buttonLogic.closeHandler}
-				ref={buttonLogic.elementRef}
-				emptyMessage={defaultProps.emptyMessage}
+				emptyMessage={emptyMessage}
 				onSelect={onSelect}
 				items={items}
 			/>

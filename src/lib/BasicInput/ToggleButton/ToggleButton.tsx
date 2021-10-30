@@ -40,8 +40,8 @@ export function ToggleButton(props: ToggleButtonProps): React.ReactElement {
 		if (value === void 0) {
 			setIsToggled(!toggled)
 		}
-		// eslint-disable-next-line
-	}, [])
+
+	}, [onClick, toggled, value])
 
 	return (
 		<Button

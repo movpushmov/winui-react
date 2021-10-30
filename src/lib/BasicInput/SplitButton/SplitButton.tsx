@@ -36,7 +36,6 @@ export function SplitButton(props: SplitButtonProps): React.ReactElement {
 
 	const [visible, setIsVisible] = useState(false)
 	const [animateIcon, setIsAnimateIcon] = useState(false)
-	const elementRef = useOuterClick(() => setIsVisible(false))
 
 	useEffect(() => {
 		setIsAnimateIcon(false)
@@ -50,6 +49,8 @@ export function SplitButton(props: SplitButtonProps): React.ReactElement {
 		() => setIsVisible(v => !v),
 		[],
 	)
+
+	const closeHandler = useCallback(() => setIsVisible(false), [])
 
 	return (
 		<div className={`${styles['dropdown']} ${defaultProps.className}`}>
@@ -70,7 +71,7 @@ export function SplitButton(props: SplitButtonProps): React.ReactElement {
 
 			<DropDown
 				visible={visible}
-				ref={elementRef}
+				close={closeHandler}
 				emptyMessage={defaultProps.emptyMessage}
 				onSelect={onSelect}
 				items={items}

@@ -3,6 +3,7 @@ import React from 'react'
 import { Icon, IconType } from '../../Icons/Icon'
 import { TextBlock } from '../../Text/TextBlock'
 import { DropDownItem } from './DropDownButton'
+import { useOuterClick } from '../../utils/useOuterClick'
 
 interface DropDownProps {
 	visible: boolean
@@ -28,8 +29,14 @@ function prepareClickHandler(
 }
 
 export function DropDown(props: DropDownProps): React.ReactElement {
+	const ref = useOuterClick(() => {
+		if (props.visible) {
+			props.close?.()
+		}
+	})
+
 	return (
-		<div className={styles['dropdown-menu']} ref={props.ref}>
+		<div className={styles['dropdown-menu']} ref={ref}>
 			{props.visible ?
 				<div className={styles['dropdown-content']}>
 					{props.items && props.items.length ?

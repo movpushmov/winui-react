@@ -48,14 +48,6 @@ interface TreeViewNode {
 	children?: TreeViewNode[]
 }
 
-interface TreeNodeProps {
-	selectedKeys: Key[]
-	nodes: TreeViewNode[]
-	selectionMode: SelectionMode
-
-	select: (values: Key[], checkBoxState?: CheckBoxState) => void
-}
-
 export const TreeView = (props: TreeViewProps): React.ReactElement => {
 	const [defaultProps, setDefaultProps] = useState(Object.assign({
 		selectedItems: [],

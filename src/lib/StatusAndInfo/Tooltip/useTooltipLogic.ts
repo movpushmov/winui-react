@@ -50,8 +50,8 @@ export function useTooltipLogic(props: TooltipProps): UseTooltipLogicResult {
 				) as unknown as number,
 			)
 		}
-		// eslint-disable-next-line
-	}, [])
+
+	}, [props.visible, show])
 
 	const onMouseLeaveHandler = useCallback(() => {
 		if (props.visible === void 0) {
@@ -63,8 +63,8 @@ export function useTooltipLogic(props: TooltipProps): UseTooltipLogicResult {
 			setShow(false)
 			setTime(0)
 		}
-		// eslint-disable-next-line
-	}, [])
+
+	}, [props.visible, timeInterval])
 
 	return {
 		show,
