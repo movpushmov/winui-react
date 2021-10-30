@@ -44,7 +44,7 @@ const literals = {
 	selectDate: 'Select date',
 }
 
-function App(): React.ReactNode {
+function App(): React.ReactElement {
 	return (
 		<div style={{ display: 'flex', flexDirection: 'column', margin: '24px' }}>
 			<TitleBlock type="title-large">WinUI 2.7 React Components</TitleBlock>

@@ -1,57 +1,69 @@
-import styles from './dropdown.module.css';
-import React from "react";
-import {Icon, IconType} from "../../Icons/Icon";
-import {TextBlock} from "../../Text/TextBlock";
-import {DropDownItem} from "./DropDownButton";
+import styles from './dropdown.module.css'
+import React from 'react'
+import { Icon, IconType } from '../../Icons/Icon'
+import { TextBlock } from '../../Text/TextBlock'
+import { DropDownItem } from './DropDownButton'
 
 interface DropDownProps {
-    visible: boolean,
-    close: () => void,
+	visible: boolean
+	close: () => void
 
-    onSelect?: (value: any) => void
+	ref?: React.Ref<HTMLDivElement>
 
-    items?: DropDownItem[] | React.ReactElement[]
-    emptyMessage: string
+	onSelect?: (value: any) => void
+
+	items?: DropDownItem[] | React.ReactElement[]
+	emptyMessage: string
 }
 
-export function DropDown(props: DropDownProps) {
-    return (
-        <div className={styles['dropdown-menu']}>
-            {props.visible ? (
-                <div className={styles['dropdown-content']}>
-                    {props.items && props.items.length ? (
-                        props.items.map((i, index) => {
-                            if (React.isValidElement(i)) {
-                                return i
-                            }
+function prepareClickHandler(
+	i: DropDownItem | React.ReactElement,
+	onClose: () => void,
+	onSelect?: (value: any) => void,
+) {
+	return () => {
+		if (onSelect) {
+			onSelect(i)
+		}
 
-                            return (
-                                <div
-                                    className={styles['dropdown-item']}
-                                    onClick={() => {
-                                        if (props.onSelect) {
-                                            props.onSelect(i)
-                                        }
+		onClose()
+	}
+}
 
-                                        props.close()
-                                    }}
-                                    key={index}
-                                >
-                                    {i.icon ? <Icon type={i.icon} style={{ marginRight: '8px' }} /> : <></>}
+export function DropDown(props: DropDownProps): React.ReactElement {
+	return (
+		<div className={styles['dropdown-menu']} ref={props.ref}>
+			{props.visible ?
+				<div className={styles['dropdown-content']}>
+					{props.items && props.items.length ?
+						props.items.map((i, index) => {
+							if (React.isValidElement(i)) {
+								return i
+							}
 
-                                    <TextBlock type="body">{i.name}</TextBlock>
-                                </div>
-                            )
-                        })
-                    ) : (
-                        <TextBlock>
-                            <Icon type={IconType.Warning} />
+							const handler = prepareClickHandler(i, props.close, props.onSelect)
 
-                            {props.emptyMessage}
-                        </TextBlock>
-                    )}
-                </div>
-            ) : <></>}
-        </div>
-    )
+							return (
+								<div
+									className={styles['dropdown-item']}
+									onClick={handler}
+									key={index}
+								>
+									{i.icon ? <Icon type={i.icon} style={{ marginRight: '8px' }} /> : null}
+
+									<TextBlock type="body">{i.name}</TextBlock>
+								</div>
+							)
+						})
+						:
+						<TextBlock>
+							<Icon type={IconType.Warning} />
+
+							{props.emptyMessage}
+						</TextBlock>
+					}
+				</div>
+				: null}
+		</div>
+	)
 }

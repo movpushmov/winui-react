@@ -15,7 +15,7 @@ export interface TooltipProps {
 	children: React.ReactNode
 }
 
-export function Tooltip(props: TooltipProps): React.ReactNode {
+export function Tooltip(props: TooltipProps): React.ReactElement {
 	const tooltipLogic = useTooltipLogic(props)
 
 	return (
