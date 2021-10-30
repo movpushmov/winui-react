@@ -121,7 +121,7 @@
       }
     ],
     "@typescript-eslint/brace-style": ["error", "1tbs"],
-    "@typescript-eslint/indent": ["error", "tab", { "SwitchCase": 1 }],
+    "@typescript-eslint/indent": ["warn", "tab", { "SwitchCase": 1 }],
     "@typescript-eslint/quotes": ["error", "single", { "avoidEscape": true }],
     "@typescript-eslint/func-call-spacing": ["error", "never"],
     "@typescript-eslint/no-useless-constructor": "error",
