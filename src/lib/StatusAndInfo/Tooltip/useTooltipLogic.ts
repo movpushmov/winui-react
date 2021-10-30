@@ -36,8 +36,8 @@ export function useTooltipLogic(props: TooltipProps): UseTooltipLogicResult {
 		setTimeInterval(
 			setTimeout(
 				() => setTime(time + oneSecond),
-				1000
-			) as unknown as number
+				1000,
+			) as unknown as number,
 		)
 	}, [time, showTime])
 
@@ -46,10 +46,11 @@ export function useTooltipLogic(props: TooltipProps): UseTooltipLogicResult {
 			setTimeInterval(
 				setTimeout(
 					() => setTime(t => t + oneSecond),
-					1000
-				) as unknown as number
+					1000,
+				) as unknown as number,
 			)
 		}
+		// eslint-disable-next-line
 	}, [])
 
 	const onMouseLeaveHandler = useCallback(() => {
@@ -62,6 +63,7 @@ export function useTooltipLogic(props: TooltipProps): UseTooltipLogicResult {
 			setShow(false)
 			setTime(0)
 		}
+		// eslint-disable-next-line
 	}, [])
 
 	return {

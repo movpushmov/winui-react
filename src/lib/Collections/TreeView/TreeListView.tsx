@@ -1,46 +1,48 @@
-import React, {useEffect, useState} from "react";
-import styles from "../ListView/styles.module.css";
-import { ListViewProps } from "../ListView/ListView";
+import React, { useEffect, useState } from 'react'
+import styles from '../ListView/styles.module.css'
+import { ListViewProps } from '../ListView/ListView'
+import { Key } from './TreeView'
 
-export const TreeListView = (props: ListViewProps) => {
-    const [defaultProps, setDefaultProps] = useState(Object.assign({
-        selectedItems: [],
-        selectionMode: 'single'
-    }, props))
+export const TreeListView = (props: ListViewProps): React.ReactElement => {
+	const [defaultProps, setDefaultProps] = useState(Object.assign({
+		selectedItems: [],
+		selectionMode: 'single',
+	}, props))
 
-    const [selectedKeys, setSelectedKeys] = useState<(string | number)[]>(
-        props.selectedItems ??
+	const [selectedKeys, setSelectedKeys] = useState<Key[]>(
+		props.selectedItems ??
         defaultProps.defaultSelectedItems ??
-        defaultProps.selectedItems
-    )
+        defaultProps.selectedItems,
+	)
 
-    const {
-        children,
-        className,
-        onValueSelect,
-        selectedItems,
-        selectionMode,
-        ...otherProps
-    } = props
 
-    useEffect(() => {
-        onValueSelect?.(selectedKeys)
-    }, [onValueSelect, selectedKeys])
+	const {
+		children,
+		className,
+		onValueSelect,
+		selectedItems,
+		selectionMode,
+		...otherProps
+	} = props
 
-    useEffect(() => {
-        setDefaultProps(Object.assign({
-            selectedItems: [],
-            selectionMode: 'single'
-        }, props))
+	useEffect(() => {
+		onValueSelect?.(selectedKeys)
+	}, [onValueSelect, selectedKeys])
 
-        if (props.selectedItems !== undefined) {
-            setSelectedKeys(props.selectedItems)
-        }
-    }, [props])
+	useEffect(() => {
+		setDefaultProps(Object.assign({
+			selectedItems: [],
+			selectionMode: 'single',
+		}, props))
 
-    return (
-        <ul className={`${styles['list-view']} ${className || ''}`} {...otherProps}>
-            {children}
-        </ul>
-    )
+		if (props.selectedItems !== void 0) {
+			setSelectedKeys(props.selectedItems)
+		}
+	}, [props])
+
+	return (
+		<ul className={`${styles['list-view']} ${className || ''}`} {...otherProps}>
+			{children}
+		</ul>
+	)
 }

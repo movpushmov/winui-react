@@ -1425,7 +1425,7 @@ export function Icon(props: IconProps): React.ReactElement {
 			{
 				fontFamily: 'Segoe Fluent Icons',
 				color: 'var(--text-color-primary)',
-			}, style
+			}, style,
 		)}>
 			{type}
 		</span>

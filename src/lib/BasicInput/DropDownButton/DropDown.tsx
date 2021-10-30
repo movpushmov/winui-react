@@ -6,7 +6,7 @@ import { DropDownItem } from './DropDownButton'
 
 interface DropDownProps {
 	visible: boolean
-	close: () => void
+	close?: () => void
 
 	ref?: React.Ref<HTMLDivElement>
 
@@ -18,15 +18,12 @@ interface DropDownProps {
 
 function prepareClickHandler(
 	i: DropDownItem | React.ReactElement,
-	onClose: () => void,
+	onClose?: () => void,
 	onSelect?: (value: any) => void,
 ) {
 	return () => {
-		if (onSelect) {
-			onSelect(i)
-		}
-
-		onClose()
+		onSelect?.(i)
+		onClose?.()
 	}
 }
 

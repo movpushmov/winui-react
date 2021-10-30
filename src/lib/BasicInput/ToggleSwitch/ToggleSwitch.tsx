@@ -27,6 +27,7 @@ export function ToggleSwitch(props: ToggleSwitchProps): React.ReactElement {
 		}
 
 		return props.onChange?.(e)
+		// eslint-disable-next-line
 	}, [])
 
 	return (

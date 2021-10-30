@@ -54,7 +54,7 @@ export function InfoBar(props: InfoBarProps): React.ReactElement {
 	}, props)
 
 	const [barOpen, setIsOpen] = useState(defaultProps.open !== void 0 ?
-		defaultProps.open : false
+		defaultProps.open : false,
 	)
 
 	const onCloseHandler = useCallback(() => {

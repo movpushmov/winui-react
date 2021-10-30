@@ -3,6 +3,11 @@
     "browser": true,
     "es6": true
   },
+  "ignorePatterns": [
+    "/src/react-app-env.d.ts",
+    "/src/reportWebVitals.ts",
+    "/src/setupTests.ts"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -19,7 +24,7 @@
   },
   "plugins": ["react", "react-hooks", "promise", "optimize-regex", "sonarjs", "@typescript-eslint"],
   "rules": {
-    "no-shadow": ["error", { "builtinGlobals": true }],
+    "no-shadow": "off",
     "no-duplicate-imports": ["error", { "includeExports": true }],
     "no-template-curly-in-string": "error",
     "block-scoped-var": "error",
@@ -129,9 +134,8 @@
     "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/explicit-function-return-type": ["error", { "allowExpressions": true }],
     "@typescript-eslint/interface-name-prefix": "off",
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_$" }],
+    "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-shadow": "off",
-
 
     "react/no-access-state-in-setstate": "error",
     "react/no-danger": "error",

@@ -12,6 +12,7 @@ export function useOuterClick(callback: (e: Event) => void): React.Ref<HTMLDivEl
 	useEffect(() => {
 		document.addEventListener('click', clickHandler)
 		return () => document.removeEventListener('click', clickHandler)
+		// eslint-disable-next-line
 	}, []) // no dependencies -> stable click listener
 
 	return innerRef // convenience for client (doesn't need to init ref himself)

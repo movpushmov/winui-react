@@ -1,78 +1,80 @@
-import React, {CSSProperties, useEffect, useState} from "react";
-import {Button} from "../Button/Button";
+import React, { CSSProperties, useCallback, useEffect, useState } from 'react'
+import { Button } from '../Button/Button'
 import styles from './styles.module.css'
-import {Icon, IconType} from "../../Icons/Icon";
-import {DropDown} from "../DropDownButton/DropDown";
+import { Icon, IconType } from '../../Icons/Icon'
+import { DropDown } from '../DropDownButton/DropDown'
+import { useOuterClick } from '../../utils/useOuterClick'
 
 export type DropDownItem = {
-    icon?: IconType,
-    name: string,
-    value?: any
+	icon?: IconType
+	name: string
+	value?: any
 }
 
 export interface SplitButtonProps {
-    items?: DropDownItem[] | React.ReactElement[]
-    emptyMessage?: string
+	items?: DropDownItem[] | React.ReactElement[]
+	emptyMessage?: string
 
-    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
-    onSelect?: (value: any) => void
+	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
+	onSelect?: (value: any) => void
 
-    className?: string
-    style?: CSSProperties
+	className?: string
+	style?: CSSProperties
 
-    children?: React.ReactNode
-    disabled?: boolean
+	children?: React.ReactNode
+	disabled?: boolean
 }
 
-export function SplitButton(props: SplitButtonProps) {
-    const defaultProps = Object.assign({
-        items: [],
-        emptyMessage: 'Nothing to see.',
-        className: ''
-    }, props)
+export function SplitButton(props: SplitButtonProps): React.ReactElement {
+	const defaultProps = Object.assign({
+		items: [],
+		emptyMessage: 'Nothing to see.',
+		className: '',
+	}, props)
 
-    const { items, emptyMessage, onSelect, onClick, ...otherProps } = defaultProps
+	const { items, emptyMessage, onSelect, ...otherProps } = defaultProps
 
-    const [visible, setIsVisible] = useState(false)
-    const [animateIcon, setIsAnimateIcon] = useState(false)
+	const [visible, setIsVisible] = useState(false)
+	const [animateIcon, setIsAnimateIcon] = useState(false)
+	const elementRef = useOuterClick(() => setIsVisible(false))
 
-    useEffect(() => {
-        setIsAnimateIcon(false)
+	useEffect(() => {
+		setIsAnimateIcon(false)
 
-        if (visible) {
-            setIsAnimateIcon(true)
-        }
-    }, [visible])
+		if (visible) {
+			setIsAnimateIcon(true)
+		}
+	}, [visible])
 
-    return (
-        <div className={`${styles['dropdown']} ${defaultProps.className}`}>
-            <div className={styles['buttons-row']}>
-                <Button
-                    {...otherProps}
-                    onClick={(e) => {
-                        if (onClick) {
-                            onClick(e)
-                        }
-                    }}
-                    className={`${styles['content-button']}`}
-                />
+	const visibilityToggleHandler = useCallback(
+		() => setIsVisible(v => !v),
+		[],
+	)
 
-                <Button
-                    disabled={otherProps.disabled}
-                    className={`${styles['dropdown-button']} ${animateIcon ? styles['animate-icon'] : ''}`}
-                    onClick={() => setIsVisible(!visible)}
-                >
-                    <Icon type={IconType.ChevronDown} />
-                </Button>
-            </div>
+	return (
+		<div className={`${styles['dropdown']} ${defaultProps.className}`}>
+			<div className={styles['buttons-row']}>
+				<Button
+					{...otherProps}
+					className={`${styles['content-button']}`}
+				/>
 
-            <DropDown
-                visible={visible}
-                close={() => setIsVisible(false)}
-                emptyMessage={defaultProps.emptyMessage}
-                onSelect={onSelect}
-                items={items}
-            />
-        </div>
-    )
+				<Button
+					disabled={otherProps.disabled}
+					className={`${styles['dropdown-button']} ${animateIcon ? styles['animate-icon'] : ''}`}
+					onClick={visibilityToggleHandler}
+				>
+					<Icon type={IconType.ChevronDown} />
+				</Button>
+			</div>
+
+			<DropDown
+				visible={visible}
+				ref={elementRef}
+				emptyMessage={defaultProps.emptyMessage}
+				onSelect={onSelect}
+				items={items}
+			/>
+		</div>
+	)
 }

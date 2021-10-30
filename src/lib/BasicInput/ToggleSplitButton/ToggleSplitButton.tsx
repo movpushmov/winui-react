@@ -25,11 +25,7 @@ export function ToggleSplitButton(props: DropDownButtonProps): React.ReactElemen
 		onSelect,
 		className,
 		children,
-
-		// exclude onClick from otherProps
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		onClick,
-
 		disabled,
 		...otherProps
 	} = defaultProps

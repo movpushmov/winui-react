@@ -20,7 +20,7 @@ type PropsType = {
 
 export function useButtonLogic(props: PropsType): UseButtonLogicResult {
 	const [toggled, setIsToggled] = useState(
-		props.value ?? Boolean(props.initialValue)
+		props.value ?? Boolean(props.initialValue),
 	)
 	const [visible, setIsVisible] = useState(false)
 	const [animateIcon, setIsAnimateIcon] = useState(false)
@@ -49,6 +49,7 @@ export function useButtonLogic(props: PropsType): UseButtonLogicResult {
 		if (props.value === void 0) {
 			setIsToggled(t => !t)
 		}
+		// eslint-disable-next-line
 	}, [])
 
 	const closeHandler = useCallback(() => setIsToggled(false), [])

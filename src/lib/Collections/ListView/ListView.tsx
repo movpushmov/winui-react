@@ -1,143 +1,165 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles.module.css'
-import {CheckBoxState} from "../../BasicInput/CheckBox/CheckBox";
-import {ListViewItem} from "./ListViewItem";
+import { CheckBoxState } from '../../BasicInput/CheckBox/CheckBox'
+import { ListViewItem } from './ListViewItem'
+import { Key } from '../TreeView/TreeView'
 
 export type SelectionMode = 'none' | 'single' | 'multiply'
 
 export interface ListViewItemProps extends React.DetailedHTMLProps<
-    React.BaseHTMLAttributes<HTMLLIElement>, HTMLLIElement
-    > {
-    listKey?: string | number
-    disabled?: boolean
+React.BaseHTMLAttributes<HTMLLIElement>, HTMLLIElement
+> {
+	listKey?: string | number
+	disabled?: boolean
 
-    selected?: boolean
-    selectionMode?: SelectionMode
+	selected?: boolean
+	selectionMode?: SelectionMode
 
-    checkBoxState?: CheckBoxState
+	checkBoxState?: CheckBoxState
 }
 
 export interface ListViewProps extends Omit<
-    React.DetailedHTMLProps<
-        React.BaseHTMLAttributes<HTMLUListElement>, HTMLUListElement
-    >,
-    'children'
+React.DetailedHTMLProps<
+React.BaseHTMLAttributes<HTMLUListElement>, HTMLUListElement
+>,
+'children'
 > {
-    children?:
-        React.ReactElement<ListViewItemProps> |
-        React.ReactElement<ListViewItemProps>[]
+	children?:
+	React.ReactElement<ListViewItemProps> |
+	React.ReactElement<ListViewItemProps>[]
 
-    onValueSelect?: (selectedItems: (string | number)[]) => void;
+	onValueSelect?: (selectedItems: Key[]) => void
 
-    defaultSelectedItems?: (string | number)[]
-    selectedItems?: (string | number)[]
-    selectionMode?: SelectionMode
+	defaultSelectedItems?: (string | number)[]
+	selectedItems?: (string | number)[]
+	selectionMode?: SelectionMode
 }
 
-export const ListView = (props: ListViewProps) => {
-    const [defaultProps, setDefaultProps] = useState(Object.assign({
-        selectedItems: [],
-        selectionMode: 'single'
-    }, props))
+export function getHandler<T>(
+	selectedKeys: Key[],
+	key: Key,
+	selectionMode: SelectionMode,
+	setSelectedKeys: React.Dispatch<React.SetStateAction<Key[]>>,
 
-    const [selectedKeys, setSelectedKeys] = useState<(string | number)[]>(
-        props.selectedItems ??
+	disabled?: boolean,
+	propsSelectedItems?: Key[],
+	onClick?: React.MouseEventHandler<T>,
+): React.MouseEventHandler<T> {
+	return e => {
+		onClick?.(e)
+
+		if (
+			selectedKeys.includes(key) && selectionMode === 'single' ||
+			disabled
+		) {
+			return
+		}
+
+		switch (selectionMode) {
+			case 'none': {
+				return
+			}
+			case 'single': {
+				if (propsSelectedItems !== void 0) {
+					return
+				}
+
+				setSelectedKeys([key])
+				break
+			}
+			case 'multiply': {
+				if (selectedKeys.includes(key)) {
+					setSelectedKeys(
+						selectedKeys.filter(k => k !== key),
+					)
+				} else {
+					setSelectedKeys(selectedKeys.concat(key))
+				}
+
+				break
+			}
+		}
+	}
+}
+
+export const ListView = (props: ListViewProps): React.ReactElement => {
+	const [defaultProps, setDefaultProps] = useState(Object.assign({
+		selectedItems: [],
+		selectionMode: 'single',
+	}, props))
+
+	const [selectedKeys, setSelectedKeys] = useState<Key[]>(
+		props.selectedItems ??
         defaultProps.defaultSelectedItems ??
-        defaultProps.selectedItems
-    )
+        defaultProps.selectedItems,
+	)
 
-    const {
-        children,
-        className,
-        onValueSelect,
-        selectedItems,
-        selectionMode,
-        ...otherProps
-    } = props
 
-    useEffect(() => {
-        onValueSelect?.(selectedKeys)
-    }, [onValueSelect, selectedKeys])
+	const {
+		children,
+		className,
+		onValueSelect,
+		selectedItems,
+		selectionMode,
+		...otherProps
+	} = props
 
-    useEffect(() => {
-        setDefaultProps(Object.assign({
-            selectedItems: [],
-            selectionMode: 'single'
-        }, props))
+	useEffect(() => {
+		onValueSelect?.(selectedKeys)
+	}, [onValueSelect, selectedKeys])
 
-        if (props.selectedItems !== undefined) {
-            setSelectedKeys(props.selectedItems)
-        }
-    }, [props])
+	useEffect(() => {
+		setDefaultProps(Object.assign({
+			selectedItems: [],
+			selectionMode: 'single',
+		}, props))
 
-    function getChildren(): React.ReactElement<ListViewItemProps>[] {
-        if (defaultProps.children) {
-            return Array.isArray(defaultProps.children) ?
-                defaultProps.children : [defaultProps.children]
-        } else {
-            return []
-        }
-    }
+		if (props.selectedItems !== void 0) {
+			setSelectedKeys(props.selectedItems)
+		}
+	}, [props])
 
-    return (
-        <ul className={`${styles['list-view']} ${className || ''}`} {...otherProps}>
-            {React.Children.map(getChildren(), (c, i) => {
-                let {
-                    selected,
-                    listKey,
-                    onClick,
-                    disabled,
-                    ...otherProps
-                } = c.props
+	function getChildren(): React.ReactElement<ListViewItemProps>[] {
+		if (defaultProps.children) {
+			return Array.isArray(defaultProps.children) ?
+				defaultProps.children : [defaultProps.children]
+		}
+		return []
 
-                const newOnClick: React.MouseEventHandler<HTMLLIElement> = e => {
-                    onClick?.(e)
+	}
 
-                    if (
-                        (selectedKeys.includes(listKey ?? i) && defaultProps.selectionMode === 'single') ||
-                        disabled
-                    ) {
-                        return;
-                    } else {
-                        switch (defaultProps.selectionMode) {
-                            case 'none': {
-                                return;
-                            }
-                            case 'single': {
-                                if (defaultProps.selectedItems.length > 0 || props.selectedItems !== undefined) {
-                                    return;
-                                }
+	return (
+		<ul className={`${styles['list-view']} ${className || ''}`} {...otherProps}>
+			{React.Children.map(getChildren(), (c, i) => {
+				const {
+					selected,
+					listKey,
+					onClick,
+					disabled,
+					...otherProps
+				} = c.props
 
-                                setSelectedKeys([listKey ?? i])
-                                break;
-                            }
-                            case 'multiply': {
-                                if (selectedKeys.includes(listKey ?? i)) {
-                                    setSelectedKeys(
-                                        selectedKeys.filter(k => k !== (listKey ?? i))
-                                    )
-                                } else {
-                                    setSelectedKeys(selectedKeys.concat(listKey ?? i))
-                                }
+				const onClickHandler = getHandler<HTMLLIElement>(
+					selectedKeys, listKey ?? i,
+					defaultProps.selectionMode,
+					setSelectedKeys,
+					disabled,
+					defaultProps.selectedItems,
+					onClick,
+				)
 
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                return (
-                    <ListViewItem
-                        selected={selected || selectedKeys.includes(listKey ?? i)}
-                        listKey={listKey}
-                        disabled={disabled}
-                        onClick={newOnClick}
-                        selectionMode={props.selectionMode}
-                        {...otherProps}
-                    />
-                )
-            })}
-        </ul>
-    )
+				return (
+					<ListViewItem
+						selected={selected || selectedKeys.includes(listKey ?? i)}
+						listKey={listKey}
+						disabled={disabled}
+						onClick={onClickHandler}
+						selectionMode={props.selectionMode}
+						{...otherProps}
+					/>
+				)
+			})}
+		</ul>
+	)
 }
 

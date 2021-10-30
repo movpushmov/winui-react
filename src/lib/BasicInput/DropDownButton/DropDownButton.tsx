@@ -1,71 +1,74 @@
-import React, {CSSProperties, useEffect, useState} from "react";
-import {Button} from "../Button/Button";
+import React, { CSSProperties, useCallback, useEffect, useState } from 'react'
+import { Button } from '../Button/Button'
 import styles from './styles.module.css'
-import {Icon, IconType} from "../../Icons/Icon";
-import {DropDown} from "./DropDown";
+import { Icon, IconType } from '../../Icons/Icon'
+import { DropDown } from './DropDown'
 
 export type DropDownItem = {
-    icon?: IconType,
-    name: string,
-    value?: any
+	icon?: IconType
+	name: string
+	value?: any
 }
 
 interface DropDownButtonProps {
-    items?: DropDownItem[] | React.ReactElement[]
-    emptyMessage?: string
+	items?: DropDownItem[] | React.ReactElement[]
+	emptyMessage?: string
 
-    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
-    onSelect?: (value: any) => void
+	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
+	onSelect?: (value: any) => void
 
-    className?: string
-    style?: CSSProperties
+	className?: string
+	style?: CSSProperties
 
-    children?: React.ReactNode
-    disabled?: boolean
+	children?: React.ReactNode
+	disabled?: boolean
 }
 
-export function DropDownButton(props: DropDownButtonProps) {
-    const defaultProps = Object.assign({
-        items: [],
-        emptyMessage: 'Nothing to see.',
-        className: ''
-    }, props)
+export function DropDownButton(props: DropDownButtonProps): React.ReactElement {
+	const defaultProps = Object.assign({
+		items: [],
+		emptyMessage: 'Nothing to see.',
+		className: '',
+	}, props)
 
-    const { items, emptyMessage, onSelect, onClick, ...otherProps } = defaultProps
+	const { items, emptyMessage, onSelect, onClick, ...otherProps } = defaultProps
 
-    const [visible, setIsVisible] = useState(false)
-    const [animateIcon, setIsAnimateIcon] = useState(false)
+	const [visible, setIsVisible] = useState(false)
+	const [animateIcon, setIsAnimateIcon] = useState(false)
 
-    useEffect(() => {
-        setIsAnimateIcon(false)
+	useEffect(() => {
+		setIsAnimateIcon(false)
 
-        if (visible) {
-            setIsAnimateIcon(true)
-        }
-    }, [visible])
+		if (visible) {
+			setIsAnimateIcon(true)
+		}
+	}, [visible])
 
-    return (
-        <div className={`${styles['dropdown']} ${defaultProps.className}`}>
-            <Button
-                {...otherProps}
-                onClick={(e) => {
-                    if (onClick) {
-                        onClick(e)
-                    }
+	const clickHandler = useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		onClick?.(e)
+		setIsVisible(v => !v)
 
-                    setIsVisible(!visible)
-                }}
-                className={`${styles['dropdown-button']} ${animateIcon ? styles['animate-icon'] : ''}`}
-                iconRight={<Icon type={IconType.ChevronDown} style={{ marginLeft: '16px' }} />}
-            />
+		// eslint-disable-next-line
+	}, [])
 
-            <DropDown
-                visible={visible}
-                close={() => setIsVisible(false)}
-                emptyMessage={defaultProps.emptyMessage}
-                onSelect={onSelect}
-                items={items}
-            />
-        </div>
-    )
+	const closeHandler = useCallback(() => setIsVisible(false), [])
+
+	return (
+		<div className={`${styles['dropdown']} ${defaultProps.className}`}>
+			<Button
+				{...otherProps}
+				onClick={clickHandler}
+				className={`${styles['dropdown-button']} ${animateIcon ? styles['animate-icon'] : ''}`}
+				iconRight={<Icon type={IconType.ChevronDown} style={{ marginLeft: '16px' }} />}
+			/>
+
+			<DropDown
+				visible={visible}
+				close={closeHandler}
+				emptyMessage={defaultProps.emptyMessage}
+				onSelect={onSelect}
+				items={items}
+			/>
+		</div>
+	)
 }

@@ -13,7 +13,7 @@ export interface TextBlockPropsBase {
 }
 
 export default function getStyles(
-	params: { accent?: boolean; disabled?: boolean; underline?: boolean }
+	params: { accent?: boolean; disabled?: boolean; underline?: boolean },
 ): string {
 	const postfix = params.disabled ? '-disabled' : '' // adds postfix to classname like accent-disabled
 
