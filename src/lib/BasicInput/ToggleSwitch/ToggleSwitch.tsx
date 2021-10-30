@@ -1,55 +1,57 @@
-import React, {CSSProperties, useState} from "react";
+import React, { useCallback, useState } from 'react'
 import styles from './styles.module.css'
-import {TextBlock} from "../../Text/TextBlock";
+import { TextBlock } from '../../Text/TextBlock'
 
 interface ToggleSwitchProps extends Omit<
-    React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-    'type' | 'value'
+React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+'type' | 'value'
 > {
-    header?: string
-    offContent?: string
-    onContent?: string
+	header?: string
+	offContent?: string
+	onContent?: string
 
-    initialValue?: boolean
-    value?: boolean
-    onToggled?: (value: boolean) => void
+	initialValue?: boolean
+	value?: boolean
+	onToggled?: (value: boolean) => void
 }
 
-export function ToggleSwitch(props: ToggleSwitchProps) {
-    const [toggled, setIsToggled] = useState(props.value ?? props.initialValue ?? false)
+export function ToggleSwitch(props: ToggleSwitchProps): React.ReactElement {
+	const [toggled, setIsToggled] = useState(props.value ?? props.initialValue ?? false)
+	const onToggledHandler = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+		if (props.onToggled) {
+			props.onToggled(!toggled)
+		}
 
-    return (
-        <div style={props.style} className={props.className}>
-            {props.header ? (
-                <TextBlock type="body-strong">{props.header}</TextBlock>
-            ) : <></>}
+		if (props.value === void 0) {
+			setIsToggled(!toggled)
+		}
 
-            <div className={styles['row-block']}>
-                <label className={styles['switch']}>
-                    <input
-                        disabled={props.disabled}
-                        checked={toggled}
-                        onChange={e => {
-                            if (props.onToggled) {
-                                props.onToggled(!toggled)
-                            }
+		return props.onChange?.(e)
+	}, [props, toggled])
 
-                            if (props.value === undefined) {
-                                setIsToggled(!toggled)
-                            }
+	return (
+		<div style={props.style} className={props.className}>
+			{props.header ?
+				<TextBlock type="body-strong">{props.header}</TextBlock> :
+				null
+			}
 
-                            return props.onChange?.(e)
-                        }}
-                        type="checkbox"
-                        className={styles['input']}
-                    />
-                    <span className={styles['slider']}/>
-                </label>
+			<div className={styles['row-block']}>
+				<label className={styles['switch']}>
+					<input
+						disabled={props.disabled}
+						checked={toggled}
+						onChange={onToggledHandler}
+						type="checkbox"
+						className={styles['input']}
+					/>
+					<span className={styles['slider']}/>
+				</label>
 
-                {props.onContent || props.offContent ? (
-                    <TextBlock>{toggled ? props.onContent : props.offContent}</TextBlock>
-                ) : <></>}
-            </div>
-        </div>
-    )
+				{props.onContent || props.offContent ?
+					<TextBlock>{toggled ? props.onContent : props.offContent}</TextBlock>
+					: null}
+			</div>
+		</div>
+	)
 }

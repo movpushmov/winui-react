@@ -1,104 +1,69 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import styles from './styles.module.css'
-import {Tooltip} from "../../StatusAndInfo/Tooltip/Tooltip";
-import {TextBlock} from "../../Text/TextBlock";
+import { Tooltip } from '../../StatusAndInfo/Tooltip/Tooltip'
+import { TextBlock } from '../../Text/TextBlock'
+import { useSliderLogic } from './useSliderLogic'
 
-interface SliderProps extends Omit<
-    React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-    'type'
+export interface SliderProps extends Omit<
+React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+'type'
 > {
-    step?: number
+	step?: number
 
-    value?: number
-    initialValue?: number
+	value?: number
+	initialValue?: number
 
-    header?: string
+	header?: string
 }
 
-export const Slider = (props: SliderProps) => {
-    const defaultProps = Object.assign({
-        min: 0,
-        max: 100,
+export const Slider = (props: SliderProps): React.ReactElement => {
+	const defaultProps = Object.assign({
+		min: 0,
+		max: 100,
 
-        step: 1,
-        orientation: 'horizontal'
-    }, props)
+		step: 1,
+	}, props)
 
-    const range = defaultProps.max - defaultProps.min
+	const sliderLogic = useSliderLogic(defaultProps)
 
-    const {
-        value,
-        initialValue,
-        className,
-        style,
-        onMouseDown,
-        onMouseUp,
-        onChange,
-        ...otherProps
-    } = defaultProps
+	const {
+		className,
+		style,
+		...otherProps
+	} = defaultProps
 
-    const [currentValue, setCurrentValue] = useState(value ?? initialValue ?? 0)
-    const [visible, setIsVisible] = useState(false)
+	return (
+		<>
+			{defaultProps.header ? <TextBlock>{defaultProps.header}</TextBlock> : null}
 
-    function getPercentage() {
-        return ((currentValue - defaultProps.min) * 100) / range
-    }
+			<Tooltip
+				content={sliderLogic.currentValue}
+				visible={sliderLogic.visible}
+				className={styles['tooltip']}
+				style={{
+					left: `${sliderLogic.getFillPercentage()}%`,
+					transform: `translate(${sliderLogic.getTooltipTransform()}, -40%)`,
+				}}
+			>
+				<div
+					className={`${styles['slider']} ${className || ''}`}
+					style={style}
+				>
+					<input
+						{...otherProps}
 
-    function getGradient() {
-        return `linear-gradient(to right, ${
-            defaultProps.disabled ? 'var(--slider-disabled-thumb-color)' : 'var(--accent-color)'
-        } ${getPercentage()}%, var(--fill-color-control-strong-default) ${getPercentage()}%)`
-    }
+						style={{
+							background: sliderLogic.getGradient(),
+						}}
+						type="range"
+						value={sliderLogic.currentValue}
 
-    return (
-        <>
-            {defaultProps.header ? <TextBlock>{defaultProps.header}</TextBlock> : <></>}
-
-            <Tooltip
-                content={currentValue}
-                visible={visible}
-                className={styles['tooltip']}
-                style={{
-                    left: getPercentage() + '%',
-                    transform: `translate(${
-                        // center tooltip by center: transform(-88%, -40%) for max value (100%)
-                        ((getPercentage() * -80 / 100) + defaultProps.min - 8) + '%'
-                    }, -40%)`
-                }}
-            >
-                <div
-                    className={`${styles['slider']} ${className || ''}`}
-                    style={style}
-                >
-                    <input
-                        style={{
-                            background: getGradient()
-                        }}
-                        type="range"
-                        {...otherProps}
-                        value={currentValue}
-                        onMouseDown={e => {
-                            setIsVisible(true)
-
-                            onMouseDown?.(e)
-                        }}
-
-                        onMouseUp={e => {
-                            setIsVisible(false)
-
-                            onMouseUp?.(e)
-                        }}
-
-                        onChange={e => {
-                            if (value === undefined) {
-                                setCurrentValue(parseInt(e.currentTarget.value))
-                            }
-
-                            onChange?.(e)
-                        }}
-                    />
-                </div>
-            </Tooltip>
-        </>
-    )
+						onMouseDown={sliderLogic.onMouseDownHandler}
+						onMouseUp={sliderLogic.onMouseUpHandler}
+						onChange={sliderLogic.onChangeHandler}
+					/>
+				</div>
+			</Tooltip>
+		</>
+	)
 }

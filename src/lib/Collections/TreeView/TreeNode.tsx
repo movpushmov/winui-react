@@ -1,4 +1,4 @@
 import React from 'react'
 import { PublicTreeNodeProps } from './TreeView'
 
-export const TreeNode = (props: PublicTreeNodeProps) => <></>
+export const TreeNode = (props: PublicTreeNodeProps): null => null

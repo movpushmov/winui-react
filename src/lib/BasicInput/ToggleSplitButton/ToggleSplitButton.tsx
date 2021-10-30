@@ -1,106 +1,80 @@
-import React, {CSSProperties, useEffect, useState} from "react";
+import React from 'react'
 import styles from '../SplitButton/styles.module.css'
-import {Icon, IconType} from "../../Icons/Icon";
-import {DropDown} from "../DropDownButton/DropDown";
-import {ToggleButton} from "../ToggleButton/ToggleButton";
-import {SplitButtonProps} from "../SplitButton/SplitButton";
+import { Icon, IconType } from '../../Icons/Icon'
+import { DropDown } from '../DropDownButton/DropDown'
+import { ToggleButton } from '../ToggleButton/ToggleButton'
+import { SplitButtonProps } from '../SplitButton/SplitButton'
+import { useButtonLogic } from './useButtonLogic'
 
-interface DropDownButtonProps extends SplitButtonProps {
-    initialValue?: boolean
-    value?: boolean
+export interface DropDownButtonProps extends SplitButtonProps {
+	initialValue?: boolean
+	value?: boolean
 
-    onToggle?: (value: boolean) => void
+	onToggle?: (value: boolean) => void
+	emptyMessage?: string
 }
 
-export function ToggleSplitButton(props: DropDownButtonProps) {
-    const defaultProps = Object.assign({
-        items: [],
-        emptyMessage: 'Nothing to see.',
-        className: ''
-    }, props)
+export function ToggleSplitButton(props: DropDownButtonProps): React.ReactElement {
+	const defaultProps = Object.assign({
+		items: [],
+		emptyMessage: 'Nothing to see',
+	}, props)
 
-    const {
-        items,
-        emptyMessage,
-        onSelect,
-        onClick,
-        value,
-        initialValue,
-        className,
-        children,
-        disabled,
-        ...otherProps
-    } = defaultProps
+	const {
+		items,
+		onSelect,
+		className,
+		children,
+		onClick,
+		emptyMessage,
+		disabled,
+		...otherProps
+	} = defaultProps
 
-    const [toggled, setIsToggled] = useState(value !== undefined ?
-        value : Boolean(initialValue)
-    )
-    const [visible, setIsVisible] = useState(false)
-    const [animateIcon, setIsAnimateIcon] = useState(false)
+	const buttonLogic = useButtonLogic(defaultProps)
 
-    useEffect(() => {
-        setIsAnimateIcon(false)
+	return (
+		<div className={`${styles['dropdown']} ${defaultProps.className || ''}`}>
+			<div className={`${styles['buttons-row']} ${className || ''}`} {...otherProps}>
+				<ToggleButton
+					value={buttonLogic.toggled}
+					disabled={disabled}
+					onClick={buttonLogic.toggleHandler}
+					className={`${styles['content-button']}`}
+					style={{ borderRight: 'none' }}
+				>
+					{children}
+				</ToggleButton>
 
-        if (visible) {
-            setIsAnimateIcon(true)
-        }
-    }, [visible])
+				<ToggleButton
+					value={buttonLogic.toggled}
+					disabled={disabled}
+					className={`${styles['dropdown-button']} ${buttonLogic.animateIcon ? styles['animate-icon'] : ''}`}
+					onClick={buttonLogic.openHandler}
 
-    useEffect(() => {
-        if (!props.disabled && props.onToggle) {
-            props.onToggle(toggled)
-        }
-    },[toggled, props])
+					style={{
+						padding: 0,
+					}}
+				>
+					<div style={{
+						width: 1,
+						height: '100%',
+						backgroundColor: buttonLogic.toggled ?
+							'var(--control-stroke-on-accent-tertiary)' :
+							'var(--control-stroke-default)',
+					}}
+					/>
+					<Icon type={IconType.ChevronDown} style={{ padding: '4px 8px' }} />
+				</ToggleButton>
+			</div>
 
-    return (
-        <div className={`${styles['dropdown']} ${defaultProps.className || ''}`}>
-            <div className={`${styles['buttons-row']} ${className || ''}`} {...otherProps}>
-                <ToggleButton
-                    value={toggled}
-                    disabled={disabled}
-                    onClick={(e) => {
-                        if (onClick) {
-                            onClick(e)
-                        }
-
-                        if (value === undefined) {
-                            setIsToggled(!toggled)
-                        }
-                    }}
-                    className={`${styles['content-button']}`}
-                    style={{ borderRight: 'none' }}
-                    children={children}
-                />
-
-                <ToggleButton
-                    value={toggled}
-                    disabled={disabled}
-                    className={`${styles['dropdown-button']} ${animateIcon ? styles['animate-icon'] : ''}`}
-                    onClick={() => setIsVisible(!visible)}
-
-                    style={{
-                        padding: 0,
-                    }}
-                >
-                    <div style={{
-                            width: 1,
-                            height: '100%',
-                            backgroundColor: toggled ?
-                                'var(--control-stroke-on-accent-tertiary)' :
-                                'var(--control-stroke-default)'
-                        }}
-                    />
-                    <Icon type={IconType.ChevronDown} style={{ padding: '4px 8px' }} />
-                </ToggleButton>
-            </div>
-
-            <DropDown
-                visible={visible}
-                close={() => setIsVisible(false)}
-                emptyMessage={defaultProps.emptyMessage}
-                onSelect={onSelect}
-                items={items}
-            />
-        </div>
-    )
+			<DropDown
+				visible={buttonLogic.visible}
+				close={buttonLogic.closeHandler}
+				emptyMessage={emptyMessage}
+				onSelect={onSelect}
+				items={items}
+			/>
+		</div>
+	)
 }

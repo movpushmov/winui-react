@@ -1,0 +1,23 @@
+.list-view-item-no-effects:after {
+    display: none;
+}
+
+.sublist-hidden {
+    display: none;
+    height: 0;
+}
+
+.sublist-visible {
+    height: auto;
+}
+
+.chevron-button {
+    background-color: transparent;
+    border-color: transparent;
+
+    padding: 4px 8px;
+}
+
+.chevron-button:hover {
+    background-color: transparent !important;
+}
