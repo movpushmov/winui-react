@@ -1,0 +1,238 @@
+/*region Template styles for flyout*/
+.flyout-container {
+    position: relative;
+
+    width: fit-content;
+}
+
+.flyout-box-base {
+    position: absolute;
+    color: var(--text-color-primary);
+
+    padding: 16px;
+
+    width: 100vw;
+    max-width: 75vw;
+
+    background: rgba(252, 252, 252, 0.85);
+    background-blend-mode: normal, luminosity;
+    /* Blur / Acrylic */
+
+    backdrop-filter: blur(60px);
+
+    border: 1px solid var(--surface-stroke-flyout);
+
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
+    border-radius: 7px;
+}
+
+.flyout-box-base:before{
+    z-index:-1;
+    position:absolute;
+    left:0;
+    top:0;
+    content: '';
+
+    background-image: url("../../noise.png");
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 3%;
+}
+/*endregion*/
+
+/*region Top flyout styles*/
+.flyout-box-top {
+    composes: flyout-box-base;
+
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes Show-Animation-Top {
+    0% {
+        display: none;
+        opacity: 0;
+
+        transform: translate(-50%, 8px);
+    }
+
+    1% {
+        display: block;
+    }
+
+    100% {
+        opacity: 1;
+
+        transform: translate(-50%, 0);
+    }
+}
+
+.visible-top {
+    animation-timing-function: ease;
+    animation-duration: .2s;
+    animation-name: Show-Animation-Top;
+
+    visibility: visible;
+
+    transform: translate(-50%, 0);
+}
+
+@keyframes Hide-Animation-Top {
+    0% {
+        visibility: visible;
+        opacity: 1;
+
+        transform: translate(-50%, 0);
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translate(-50%, 8px);
+    }
+}
+
+.hide-top {
+    animation-timing-function: ease;
+    animation-duration: .2s;
+    animation-name: Hide-Animation-Top;
+
+    visibility: hidden;
+
+    transform: translate(-50%, 8px);
+}
+/*endregion*/
+
+/*region Bottom flyout styles*/
+.flyout-box-bottom {
+    composes: flyout-box-base;
+
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 110%);
+}
+
+@keyframes Show-Animation-Bottom {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+
+        transform: translate(-50%, 90%);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform: translate(-50%, 110%);
+    }
+}
+
+.visible-bottom {
+    animation-timing-function: ease;
+    animation-duration: .2s;
+    animation-name: Show-Animation-Bottom;
+
+    visibility: visible;
+
+    transform: translate(-50%, 110%);
+}
+
+@keyframes Hide-Animation-Bottom {
+    0% {
+        visibility: visible;
+        opacity: 1;
+
+        transform: translate(-50%, 110%);
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translate(-50%, 100%);
+    }
+}
+
+.hide-bottom {
+    animation-timing-function: ease;
+    animation-duration: .2s;
+    animation-name: Hide-Animation-Bottom;
+
+    visibility: hidden;
+
+    transform: translate(-50%, 90%);
+}
+/*endregion*/
+
+/*region Left flyout styles*/
+.flyout-box-bottom {
+    composes: flyout-box-base;
+
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 110%);
+}
+
+@keyframes Show-Animation-Bottom {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+
+        transform: translate(-50%, 90%);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform: translate(-50%, 110%);
+    }
+}
+
+.visible-bottom {
+    animation-timing-function: ease;
+    animation-duration: .2s;
+    animation-name: Show-Animation-Bottom;
+
+    visibility: visible;
+
+    transform: translate(-50%, 110%);
+}
+
+@keyframes Hide-Animation-Bottom {
+    0% {
+        visibility: visible;
+        opacity: 1;
+
+        transform: translate(-50%, 110%);
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translate(-50%, 100%);
+    }
+}
+
+.hide-bottom {
+    animation-timing-function: ease;
+    animation-duration: .2s;
+    animation-name: Hide-Animation-Bottom;
+
+    visibility: hidden;
+
+    transform: translate(-50%, 90%);
+}
+/*endregion*/

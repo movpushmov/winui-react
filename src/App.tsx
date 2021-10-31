@@ -26,11 +26,13 @@ import { GridView } from './lib/Collections/GridView/GridView'
 import { GridViewItem } from './lib/Collections/GridView/GridViewItem'
 import { TreeView } from './lib/Collections/TreeView/TreeView'
 import { TreeNode } from './lib/Collections/TreeView/TreeNode'
+import { FlyoutBlock } from './Flyout/FlyoutBlock'
 
 const rowStyle: CSSProperties = {
 	display: 'flex',
 	flexDirection: 'row',
 	alignItems: 'center',
+	flexWrap: 'wrap',
 }
 
 const columnStyle: CSSProperties = {
@@ -617,6 +619,14 @@ function App(): React.ReactElement {
 					</TreeNode>
 				</TreeView>
 			</div>
+
+			<FlyoutBlock/>
+
+			<TitleBlock type="title">ContentDialog</TitleBlock>
+
+			<TitleBlock type="title">TeachingTip</TitleBlock>
+
+			<TitleBlock type="title">Input</TitleBlock>
 		</div>
 	)
 }
