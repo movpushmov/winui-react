@@ -36,23 +36,23 @@ https://movpushmov.github.io/
 
 | Browser                | Compatible             | First compatible version |
 |------------------------|------------------------|--------------------------|
-| IE                     | ❌ Not tested yet       | ❓                        |
-| Edge*                  | ❌ Not tested yet       | ❓                        |
+| IE                     | ❓ Not tested yet       | ❓                        |
+| Edge*                  | ❓ Not tested yet       | ❓                        |
 | Firefox                | ❌ Not compatible       | ❌                       |
 | Chrome                 | ✅ Partially compatible | Tested on 93 version      |
-| Safari                 | ❌ Not tested yet       | ❓                        |
-| Opera                  | ❌ Not tested yet       | ❓                        |
-| Safari on iOS*         | ❌ Not tested yet       | ❓                        |
-| Opera Mini*            | ❌ Not tested yet       | ❓                        |
-| Android Browser*       | ❌ Not tested yet       | ❓                        |
-| Opera Mobile*          | ❌ Not tested yet       | ❓                        |
-| Chrome for Android     | ❌ Not tested yet       | ❓                        |
-| Firefox for Android    | ❌ Not tested yet       | ❓                        |
-| UC Browser for Android | ❌ Not tested yet       | ❓                        |
-| Samsung Internet       | ❌ Not tested yet       | ❓                        |
-| QQ Browser             | ❌ Not tested yet       | ❓                        |
-| Baidu Browser          | ❌ Not tested yet       | ❓                        |
-| KaiOS Browser          | ❌ Not tested yet       | ❓                        |
+| Safari                 | ❓ Not tested yet       | ❓                        |
+| Opera                  | ❓ Not tested yet       | ❓                        |
+| Safari on iOS*         | ❓ Not tested yet       | ❓                        |
+| Opera Mini*            | ❓ Not tested yet       | ❓                        |
+| Android Browser*       | ❓ Not tested yet       | ❓                        |
+| Opera Mobile*          | ❓ Not tested yet       | ❓                        |
+| Chrome for Android     | ❓ Not tested yet       | ❓                        |
+| Firefox for Android    | ❓ Not tested yet       | ❓                        |
+| UC Browser for Android | ❓ Not tested yet       | ❓                        |
+| Samsung Internet       | ❓ Not tested yet       | ❓                        |
+| QQ Browser             | ❓ Not tested yet       | ❓                        |
+| Baidu Browser          | ❓ Not tested yet       | ❓                        |
+| KaiOS Browser          | ❓ Not tested yet       | ❓                        |
 
 ### Demostration video:
 
