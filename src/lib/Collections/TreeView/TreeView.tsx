@@ -95,10 +95,6 @@ export const TreeView = (props: TreeViewProps): React.ReactElement => {
 			}
 		}
 
-		for (const key of keys) {
-			(selectedKeys.includes(key) ? keysToFilter : keysToAdd).push(key)
-		}
-
 		const newKeys = selectedKeys
 			.concat(keysToAdd)
 			.filter(k => !keysToFilter.includes(k))
