@@ -38,8 +38,8 @@ https://movpushmov.github.io/
 |------------------------|------------------------|--------------------------|
 | IE                     | ❌ Not tested yet       | ❓                        |
 | Edge*                  | ❌ Not tested yet       | ❓                        |
-| Firefox                | ❌ Not tested yet       | ❓                        |
-| Chrome                 | ✅ Partially compatible | Tested on 93 version     |
+| Firefox                | ❌ Not compatible       | ❌                       |
+| Chrome                 | ✅ Partially compatible | Tested on 93 version      |
 | Safari                 | ❌ Not tested yet       | ❓                        |
 | Opera                  | ❌ Not tested yet       | ❓                        |
 | Safari on iOS*         | ❌ Not tested yet       | ❓                        |
