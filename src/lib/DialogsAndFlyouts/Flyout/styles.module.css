@@ -173,15 +173,15 @@
 /*endregion*/
 
 /*region Left flyout styles*/
-.flyout-box-bottom {
+.flyout-box-left {
     composes: flyout-box-base;
 
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 110%);
+    left: 0;
+    top: 50%;
+    transform: translate(-104%, -50%);
 }
 
-@keyframes Show-Animation-Bottom {
+@keyframes Show-Animation-Left {
     0% {
         display: none;
         opacity: 0;
@@ -190,49 +190,111 @@
     1% {
         display: block;
 
-        transform: translate(-50%, 90%);
+        transform: translate(-100%, -50%);
     }
 
     100% {
         opacity: 1;
-
-        transform: translate(-50%, 110%);
+        transform: translate(-104%, -50%);
     }
 }
 
-.visible-bottom {
+.visible-left {
     animation-timing-function: ease;
     animation-duration: .2s;
-    animation-name: Show-Animation-Bottom;
+    animation-name: Show-Animation-Left;
 
     visibility: visible;
 
-    transform: translate(-50%, 110%);
+    transform: translate(-104%, -50%);
 }
 
-@keyframes Hide-Animation-Bottom {
+@keyframes Hide-Animation-Left {
     0% {
         visibility: visible;
         opacity: 1;
 
-        transform: translate(-50%, 110%);
+        transform: translate(-104%, -50%);
     }
 
     100% {
         opacity: 0;
         visibility: hidden;
 
-        transform: translate(-50%, 100%);
+        transform: translate(-100%, -50%);
     }
 }
 
-.hide-bottom {
+.hide-left {
     animation-timing-function: ease;
     animation-duration: .2s;
-    animation-name: Hide-Animation-Bottom;
+    animation-name: Hide-Animation-Left;
 
     visibility: hidden;
 
-    transform: translate(-50%, 90%);
+    transform: translate(-100%, -50%);
+}
+/*endregion*/
+
+/*region Right flyout styles*/
+.flyout-box-right {
+    composes: flyout-box-base;
+
+    right: 0;
+    top: 50%;
+}
+
+@keyframes Show-Animation-Right {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+
+        transform: translate(100%, -50%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(104%, -50%);
+    }
+}
+
+.visible-right {
+    animation-timing-function: ease;
+    animation-duration: .2s;
+    animation-name: Show-Animation-Right;
+
+    visibility: visible;
+
+    transform: translate(104%, -50%);
+}
+
+@keyframes Hide-Animation-Right {
+    0% {
+        visibility: visible;
+        opacity: 1;
+
+        transform: translate(104%, -50%);
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translate(100%, -50%);
+    }
+}
+
+.hide-right {
+    animation-timing-function: ease;
+    animation-duration: .2s;
+    animation-name: Hide-Animation-Right;
+
+    visibility: hidden;
+
+    transform: translate(100%, -50%);
 }
 /*endregion*/

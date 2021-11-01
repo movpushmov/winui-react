@@ -1,0 +1,96 @@
+.modal-background {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.3);
+
+    overflow: hidden;
+}
+
+@keyframes Show-Animation {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes Hide-Animation-Right {
+    0% {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.visible {
+    animation-timing-function: ease;
+    animation-duration: .2s;
+    animation-name: Show-Animation-Right;
+
+    visibility: visible;
+}
+
+.hidden {
+    animation-timing-function: ease;
+    animation-duration: .2s;
+    animation-name: Hide-Animation-Right;
+
+    visibility: hidden;
+
+    display: none;
+}
+
+.modal-block {
+    background-color: white;
+
+    width: fit-content;
+    height: fit-content;
+
+    border-radius: 7px;
+}
+
+.modal-block>h4 {
+    margin: 0;
+    padding: 24px 24px 0 24px;
+}
+
+.modal-content {
+    padding: 0 24px 24px 24px;
+}
+
+.modal-actions {
+    background-color: var(--fill-color-solid-background-base);
+    padding: 24px;
+
+    border-radius: 0 0 7px 7px;
+
+    display: grid;
+}
+
+.modal-actions>button:not(:last-child) {
+    margin-right: 8px;
+}

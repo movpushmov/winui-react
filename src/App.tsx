@@ -27,6 +27,7 @@ import { GridViewItem } from './lib/Collections/GridView/GridViewItem'
 import { TreeView } from './lib/Collections/TreeView/TreeView'
 import { TreeNode } from './lib/Collections/TreeView/TreeNode'
 import { FlyoutBlock } from './Flyout/FlyoutBlock'
+import DialogBlock from './Dialog/DialogBlock'
 
 const rowStyle: CSSProperties = {
 	display: 'flex',
@@ -623,6 +624,8 @@ function App(): React.ReactElement {
 			<FlyoutBlock/>
 
 			<TitleBlock type="title">ContentDialog</TitleBlock>
+
+			<DialogBlock/>
 
 			<TitleBlock type="title">TeachingTip</TitleBlock>
 
