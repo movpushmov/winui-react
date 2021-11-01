@@ -9,7 +9,7 @@ https://movpushmov.github.io/
 - Input (Number box, Password box, Text Box)
 - Color Picker, ComboBox, Auto Suggests Box
 - NavigationView (left & top variants), BreadcrumbBar
-- Dialog, Flyout, Teaching Tip
+- Teaching Tip
 - RichEditBox
 
 ### Project status:
@@ -20,7 +20,7 @@ https://movpushmov.github.io/
 | Text                | 🚧🏗️                      | In near future         |
 | Status and info     | 🧪                         | Released               |
 | Navigation          | ❌                         | In near future         |
-| Dialogs and Flyouts | ❌                         | In near future         |
+| Dialogs and Flyouts | 🧪                         | Released               |
 | Collections         | 🧪                         | Released               |
 | Date and Time       | ❌                         | In near future         |
 | Media               | ❌                         | In near future         |
