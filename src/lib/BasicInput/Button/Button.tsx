@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './styles.module.css'
 import { IconProps } from '../../Icons/Icon'
 
-interface ButtonProps extends Omit<
+export interface ButtonProps extends Omit<
 React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
 'type'
 > {

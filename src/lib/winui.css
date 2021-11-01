@@ -102,10 +102,16 @@ body {
 
     --fill-control-solid: #FFFFFF;
 
+    --fill-color-solid-background-base: #F3F3F3;
+    --fill-color-solid-background-secondary: #EEEEEE;
+    --fill-color-solid-background-tertiary: #F9F9F9;
+    --fill-color-solid-background-quarternary: #FFFFFF;
+
     /* Special styles */
     --slider-disabled-thumb-color: var(--accent-color-disabled);
 
     background-color: #FAFAFA;
+    color: var(--text-color-primary);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -201,6 +207,11 @@ body {
         --elevation-circle: rgba(255, 255, 255, 0.0698);
 
         --fill-control-solid: #454545;
+
+        --fill-color-solid-background-base: #202020;
+        --fill-color-solid-background-secondary: #1C1C1C;
+        --fill-color-solid-background-tertiary: #282828;
+        --fill-color-solid-background-quarternary: #2C2C2C;
 
         /* Special styles */
         --slider-disabled-thumb-color: var(--accent-color-tertiary);
