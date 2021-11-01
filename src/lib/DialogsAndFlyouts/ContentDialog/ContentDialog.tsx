@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { DialogSectionProps } from './ContentDialogSection'
 
 import styles from './styles.module.css'
@@ -26,36 +26,42 @@ function getButtonCount(children?: ButtonProps | ButtonProps[]): number {
 	return [children].length
 }
 
-const ContentDialog = (props: ContentDialogProps): React.ReactElement =>
-	<div className={`${styles['modal-background']} ${props.visible ? styles['visible'] : styles['hidden']}`}>
-		<div className={styles['modal-block']}>
-			<TitleBlock type="subtitle">{props.title}</TitleBlock>
+const ContentDialog = (props: ContentDialogProps): React.ReactElement => {
+	useEffect(() => {
+		document.body.style.overflow = props.visible ? 'hidden' : ''
+	}, [props.visible])
 
-			{React.Children.map(props.children, child => {
-				switch (child.props.type) {
-					case 'content': {
-						return (
-							<div className={styles['modal-content']}>
-								{child.props.children}
-							</div>
-						)
+	return (
+		<div className={`${styles['modal-background']} ${props.visible ? styles['visible'] : styles['hidden']}`}>
+			<div className={styles['modal-block']}>
+				<TitleBlock type="subtitle">{props.title}</TitleBlock>
+
+				{React.Children.map(props.children, child => {
+					switch (child.props.type) {
+						case 'content': {
+							return (
+								<div className={styles['modal-content']}>
+									{child.props.children}
+								</div>
+							)
+						}
+						case 'actions': {
+							return (
+								<div
+									className={styles['modal-actions']}
+									style={{
+										gridTemplateColumns: `repeat(${getButtonCount(child.props.children)}, 1fr)`,
+									}}
+								>
+									{child.props.children}
+								</div>
+							)
+						}
 					}
-					case 'actions': {
-						return (
-							<div
-								className={styles['modal-actions']}
-								style={{
-									gridTemplateColumns: `repeat(${getButtonCount(child.props.children)}, 1fr)`,
-								}}
-							>
-								{child.props.children}
-							</div>
-						)
-					}
-				}
-			})}
+				})}
+			</div>
 		</div>
-	</div>
-
+	)
+}
 
 export default ContentDialog

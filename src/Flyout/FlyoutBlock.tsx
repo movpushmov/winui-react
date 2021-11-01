@@ -31,7 +31,7 @@ export const FlyoutBlock = (): React.ReactElement => {
 				visible={visible}
 				onClose={handleClose}
 
-				flyoutPosition="right"
+				flyoutPosition="top"
 
 				style={{ alignSelf: 'center' }}
 			>

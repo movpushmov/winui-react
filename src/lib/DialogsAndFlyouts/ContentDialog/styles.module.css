@@ -19,51 +19,6 @@
     overflow: hidden;
 }
 
-@keyframes Show-Animation {
-    0% {
-        display: none;
-        opacity: 0;
-    }
-
-    1% {
-        display: block;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes Hide-Animation-Right {
-    0% {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        visibility: hidden;
-    }
-}
-
-.visible {
-    animation-timing-function: ease;
-    animation-duration: .2s;
-    animation-name: Show-Animation-Right;
-
-    visibility: visible;
-}
-
-.hidden {
-    animation-timing-function: ease;
-    animation-duration: .2s;
-    animation-name: Hide-Animation-Right;
-
-    visibility: hidden;
-
-    display: none;
-}
-
 .modal-block {
     background-color: white;
 
@@ -71,6 +26,8 @@
     height: fit-content;
 
     border-radius: 7px;
+
+    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.1876), 0 2px 21px rgba(0, 0, 0, 0.1474);
 }
 
 .modal-block>h4 {
@@ -93,4 +50,30 @@
 
 .modal-actions>button:not(:last-child) {
     margin-right: 8px;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity .1s ease-out;
+}
+
+.hidden>.modal-block {
+    transform: scale(1.02);
+
+    transition: transform .1s ease-out;
+}
+
+.visible {
+    opacity: 1;
+    pointer-events: auto;
+
+    transition: opacity .1s ease-out;
+}
+
+.visible>.modal-block {
+    transform: scale(1);
+
+    transition: transform .1s ease-out;
 }
