@@ -60,7 +60,7 @@
 }
 
 .hidden>.modal-block {
-    transform: scale(1.02);
+    transform: scale(1.03);
 
     transition: transform .1s ease-out;
 }
