@@ -18,7 +18,7 @@ https://movpushmov.github.io/
 | Basic Inputs        | 🧪                         | Released               |
 | Text                | 🧪                         | Released               |
 | Status and info     | 🧪                         | Released               |
-| Navigation          | ❌                         | In near future         |
+| Navigation          | 🚧🏗️                         | In near future         |
 | Dialogs and Flyouts | 🧪                         | Released               |
 | Collections         | 🧪                         | Released               |
 | Date and Time       | ❌                         | In near future         |
