@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { Button } from '../lib/BasicInput/Button/Button'
 import ContentDialog from '../lib/DialogsAndFlyouts/ContentDialog/ContentDialog'
 import { ContentDialogSection } from '../lib/DialogsAndFlyouts/ContentDialog/ContentDialogSection'
-import { TextBlock } from '../lib/Text/TextBlock'
+import { TextBlock } from '../lib/Text/Text/TextBlock'
 import { CheckBox } from '../lib/BasicInput/CheckBox/CheckBox'
 
 const DialogBlock = (): React.ReactElement => {

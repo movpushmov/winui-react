@@ -1,0 +1,90 @@
+.input-container {
+    position: relative;
+
+    width: fit-content;
+}
+
+.btn {
+    position: absolute;
+    right: 4px;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    padding: 4px;
+    background: transparent;
+    border: none;
+}
+
+.btn:hover {
+    background-color: var(--fill-color-subtle-secondary) !important;
+}
+
+.input::placeholder {
+    color: var(--text-color-secondary);
+}
+
+.input {
+    padding: 8px 32px 8px 12px;
+    outline: none;
+
+    background-color: var(--fill-color-control-default);
+    color: var(--text-color-primary);
+
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+
+    border-bottom-width: 2px;
+
+    border-color: rgba(0, 0, 0, 0.0578);
+    border-bottom-color: rgba(0, 0, 0, 0.4458);
+}
+
+.input:hover {
+    background-color: var(--fill-color-control-secondary);
+}
+
+.input:focus {
+    border-bottom-color: var(--accent-color);
+    background-color: var(--fill-color-control-input-active);
+}
+
+.input[type="number"]::-webkit-outer-spin-button,
+.input[type="number"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+.input[type="number"] {
+    -moz-appearance:textfield;
+}
+
+.buttons-container {
+    position: absolute;
+    right: 4px;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: flex;
+    flex-direction: row;
+}
+
+.buttons-container>button {
+    padding: 4px;
+    background: transparent;
+    border: none;
+}
+
+.buttons-container>button:hover {
+    background-color: var(--fill-color-subtle-secondary) !important;
+}
+
+.flyout {
+    width: fit-content !important;
+    padding: 8px !important;
+}
+
+.flyout>button:first-child {
+    margin-bottom: 4px;
+}

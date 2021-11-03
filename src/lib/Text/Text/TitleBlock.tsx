@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.css'
-import getStyles, { TextBlockPropsBase } from './utils'
+import getStyles, { TextBlockPropsBase } from '../utils'
 
 interface TextBlockProps extends TextBlockPropsBase{
 	type?:

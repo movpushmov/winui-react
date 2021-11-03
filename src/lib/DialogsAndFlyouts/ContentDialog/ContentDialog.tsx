@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { DialogSectionProps } from './ContentDialogSection'
 
 import styles from './styles.module.css'
-import { TitleBlock } from '../../Text/TitleBlock'
+import { TitleBlock } from '../../Text/Text/TitleBlock'
 import { ButtonProps } from '../../BasicInput/Button/Button'
 
 interface ContentDialogProps {

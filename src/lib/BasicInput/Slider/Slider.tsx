@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.css'
 import { Tooltip } from '../../StatusAndInfo/Tooltip/Tooltip'
-import { TextBlock } from '../../Text/TextBlock'
+import { TextBlock } from '../../Text/Text/TextBlock'
 import { useSliderLogic } from './useSliderLogic'
 
 export interface SliderProps extends Omit<

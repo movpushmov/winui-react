@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react'
 import styles from './styles.module.css'
-import { TextBlock } from '../../Text/TextBlock'
+import { TextBlock } from '../../Text/Text/TextBlock'
 import { useTooltipLogic } from './useTooltipLogic'
 
 export interface TooltipProps {

@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react'
-import { TitleBlock } from '../lib/Text/TitleBlock'
+import { TitleBlock } from '../lib/Text/Text/TitleBlock'
 import { Flyout } from '../lib/DialogsAndFlyouts/Flyout/Flyout'
 import { Button } from '../lib/BasicInput/Button/Button'
-import { TextBlock } from '../lib/Text/TextBlock'
+import { TextBlock } from '../lib/Text/Text/TextBlock'
 
 export const FlyoutBlock = (): React.ReactElement => {
 	const [visible, setIsVisible] = useState(false)

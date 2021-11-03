@@ -1,7 +1,7 @@
 import styles from './dropdown.module.css'
 import React from 'react'
 import { Icon, IconType } from '../../Icons/Icon'
-import { TextBlock } from '../../Text/TextBlock'
+import { TextBlock } from '../../Text/Text/TextBlock'
 import { DropDownItem } from './DropDownButton'
 import { useOuterClick } from '../../utils/useOuterClick'
 

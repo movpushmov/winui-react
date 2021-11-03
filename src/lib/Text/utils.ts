@@ -1,4 +1,4 @@
-import styles from './styles.module.css'
+import styles from './Text/styles.module.css'
 import React, { CSSProperties } from 'react'
 
 export interface TextBlockPropsBase {

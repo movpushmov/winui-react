@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import styles from './styles.module.css'
-import { TextBlock } from '../../Text/TextBlock'
+import { TextBlock } from '../../Text/Text/TextBlock'
 
 interface CheckBoxProps extends Omit<
 React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,

@@ -2,7 +2,7 @@ import React, { CSSProperties } from 'react'
 import './lib/winui.css'
 
 import { Button } from './lib/BasicInput/Button/Button'
-import { TitleBlock } from './lib/Text/TitleBlock'
+import { TitleBlock } from './lib/Text/Text/TitleBlock'
 import { Icon, IconType } from './lib/Icons/Icon'
 import { ToggleButton } from './lib/BasicInput/ToggleButton/ToggleButton'
 import { HyperlinkButton } from './lib/BasicInput/HyperlinkButton/HyperlinkButton'
@@ -12,7 +12,7 @@ import { ToggleSplitButton } from './lib/BasicInput/ToggleSplitButton/ToggleSpli
 import { ToggleSwitch } from './lib/BasicInput/ToggleSwitch/ToggleSwitch'
 import { CheckBox, CheckBoxState } from './lib/BasicInput/CheckBox/CheckBox'
 import { Tooltip } from './lib/StatusAndInfo/Tooltip/Tooltip'
-import { TextBlock } from './lib/Text/TextBlock'
+import { TextBlock } from './lib/Text/Text/TextBlock'
 import { InfoBar } from './lib/StatusAndInfo/InfoBar/InfoBar'
 import { InfoBadge } from './lib/StatusAndInfo/InfoBadge/InfoBadge'
 import { ProgressRing } from './lib/StatusAndInfo/ProgressRing/ProgressRing'
@@ -26,8 +26,9 @@ import { GridView } from './lib/Collections/GridView/GridView'
 import { GridViewItem } from './lib/Collections/GridView/GridViewItem'
 import { TreeView } from './lib/Collections/TreeView/TreeView'
 import { TreeNode } from './lib/Collections/TreeView/TreeNode'
-import { FlyoutBlock } from './Flyout/FlyoutBlock'
 import DialogBlock from './Dialog/DialogBlock'
+import { TextBox } from './lib/Text/TextBox/TextBox'
+import { NumberBox } from './lib/Text/NumberBox/NumberBox'
 
 const rowStyle: CSSProperties = {
 	display: 'flex',
@@ -621,8 +622,6 @@ function App(): React.ReactElement {
 				</TreeView>
 			</div>
 
-			<FlyoutBlock/>
-
 			<TitleBlock type="title">ContentDialog</TitleBlock>
 
 			<DialogBlock/>
@@ -630,6 +629,12 @@ function App(): React.ReactElement {
 			<TitleBlock type="title">TeachingTip</TitleBlock>
 
 			<TitleBlock type="title">Input</TitleBlock>
+
+			<TextBox placeholder="Enter your name" header="Classic TextBox"/>
+			<TextBox type="password" placeholder="Enter your password" header="PasswordBox"/>
+
+			<NumberBox placeholder="Enter your number" header="Compact NumberBox" max={100} min={-100}/>
+			<NumberBox type="inline" placeholder="Enter your number" header="Inline NumberBox"/>
 		</div>
 	)
 }

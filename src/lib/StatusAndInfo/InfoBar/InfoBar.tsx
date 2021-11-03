@@ -1,6 +1,6 @@
 import React, { CSSProperties, useCallback, useState } from 'react'
 import styles from './styles.module.css'
-import { TextBlock } from '../../Text/TextBlock'
+import { TextBlock } from '../../Text/Text/TextBlock'
 import { Icon, IconType } from '../../Icons/Icon'
 import { InfoBarCloseButton } from './CloseButton'
 
