@@ -17,7 +17,7 @@ https://movpushmov.github.io/
 | Type of components  | Current development status | Estimated release date |
 |---------------------|----------------------------|------------------------|
 | Basic Inputs        | 🧪                         | Released               |
-| Text                | 🚧🏗️                      | In near future         |
+| Text                | 🧪                         | Released               |
 | Status and info     | 🧪                         | Released               |
 | Navigation          | ❌                         | In near future         |
 | Dialogs and Flyouts | 🧪                         | Released               |
