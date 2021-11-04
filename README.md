@@ -6,7 +6,6 @@ https://movpushmov.github.io/
 
 ### Current roadmap:
 
-- Input (Number box, Password box, Text Box)
 - Color Picker, ComboBox, Auto Suggests Box
 - NavigationView (left & top variants), BreadcrumbBar
 - Teaching Tip
@@ -17,9 +16,9 @@ https://movpushmov.github.io/
 | Type of components  | Current development status | Estimated release date |
 |---------------------|----------------------------|------------------------|
 | Basic Inputs        | 🧪                         | Released               |
-| Text                | 🚧🏗️                      | In near future         |
+| Text                | 🧪                         | Released               |
 | Status and info     | 🧪                         | Released               |
-| Navigation          | ❌                         | In near future         |
+| Navigation          | 🚧🏗️                         | In near future         |
 | Dialogs and Flyouts | 🧪                         | Released               |
 | Collections         | 🧪                         | Released               |
 | Date and Time       | ❌                         | In near future         |
