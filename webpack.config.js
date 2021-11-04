@@ -17,13 +17,17 @@ module.exports = {
     extensions: [".js", ".ts", ".tsx", ".css"]
   },
 
-  plugins: !isPackageJsonExists ? [
-      new MiniCssExtractPlugin(),
-      new CopyPlugin({ patterns: [
-          { from: './package.json', to: 'package.json' },
-          { from: './src/winui.css', to: 'winui.css' },
-      ]})       
-  ] : [new MiniCssExtractPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new CopyPlugin({ patterns: !isPackageJsonExists ? [
+        { from: './package.json', to: 'package.json' },
+        { from: './src/winui.css', to: 'winui.css' },
+        { from: './src/noise.png', to: 'noise.png' }
+      ] : [
+        { from: './src/winui.css', to: 'winui.css' },
+        { from: './src/noise.png', to: 'noise.png' }
+      ]})
+  ],
 
   module: {
     rules: [

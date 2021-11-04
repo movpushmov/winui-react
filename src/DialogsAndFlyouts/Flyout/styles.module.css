@@ -33,7 +33,7 @@
     top:0;
     content: '';
 
-    background-image: url("../../noise.png");
+    background-image: var(--noise-image);
 
     width: 100%;
     height: 100%;
