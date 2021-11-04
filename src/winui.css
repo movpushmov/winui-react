@@ -109,7 +109,7 @@ body {
 
     /* Special styles */
     --slider-disabled-thumb-color: var(--accent-color-disabled);
-    --noise-image: url("../../noise.png");
+    --noise-image: url("./noise.png");
 
     background-color: #FAFAFA;
     color: var(--text-color-primary);
