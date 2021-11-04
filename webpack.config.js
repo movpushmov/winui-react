@@ -1,4 +1,7 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const CopyPlugin = require("copy-webpack-plugin")
+
+const isPackageJsonExists = require('fs').existsSync('./dist/package.json');
 
 module.exports = {
   mode: 'production',
@@ -14,9 +17,13 @@ module.exports = {
     extensions: [".js", ".ts", ".tsx", ".css"]
   },
 
-  plugins: [
+  plugins: !isPackageJsonExists ? [
       new MiniCssExtractPlugin(),
-  ],
+      new CopyPlugin({ patterns: [
+          { from: './package.json', to: 'package.json' },
+          { from: './src/winui.css', to: 'winui.css' },
+      ]})       
+  ] : [new MiniCssExtractPlugin()],
 
   module: {
     rules: [
