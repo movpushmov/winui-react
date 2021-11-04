@@ -7,6 +7,7 @@ import { CheckBoxState } from '../../BasicInput/CheckBox/CheckBox'
 
 import styles from './styles.module.css'
 import { Button } from '../../BasicInput/Button/Button'
+import { TextBlock } from '../../Text/Text/TextBlock'
 
 export type Key = string | number
 
@@ -34,6 +35,9 @@ React.BaseHTMLAttributes<HTMLDivElement>, HTMLDivElement
 	defaultSelectedItems?: Key[]
 	selectedItems?: Key[]
 	selectionMode?: SelectionMode
+
+	dropdownIconPosition?: 'left' | 'right'
+	closeAllSubLists?: boolean
 }
 
 interface TreeViewNode {
@@ -52,7 +56,20 @@ export const TreeView = (props: TreeViewProps): React.ReactElement => {
 	const [defaultProps, setDefaultProps] = useState(Object.assign({
 		selectedItems: [],
 		selectionMode: 'single',
+		dropdownIconPosition: 'left',
 	}, props))
+
+	const {
+		children,
+		onValueSelect,
+		defaultSelectedItems,
+		selectedItems,
+		selectionMode,
+		dropdownIconPosition,
+		closeAllSubLists,
+
+		...otherProps
+	} = props
 
 	const [selectedKeys, setSelectedKeys] = useState(
 		props.selectedItems ??
@@ -60,12 +77,21 @@ export const TreeView = (props: TreeViewProps): React.ReactElement => {
 		defaultProps.selectedItems,
 	)
 
+	useEffect(() => {
+		if (props.selectedItems !== void 0) {
+			setSelectedKeys(
+				props.selectedItems,
+			)
+		}
+	}, [props.selectedItems])
+
 	const [treeNodes, setNodes] = useState<TreeViewNode[]>([])
 
 	useEffect(() => {
 		setDefaultProps(Object.assign({
 			selectedItems: [],
 			selectionMode: 'single',
+			dropdownIconPosition: 'left',
 		}, props))
 	}, [props])
 
@@ -113,8 +139,14 @@ export const TreeView = (props: TreeViewProps): React.ReactElement => {
 	}
 
 	function selectHandler(keys: Key[], checkBoxState?: CheckBoxState): void {
+		props.onValueSelect?.(keys)
+
 		switch (defaultProps.selectionMode) {
 			case 'single': {
+				if (props.selectedItems !== void 0) {
+					return
+				}
+
 				setSelectedKeys(keys)
 				break
 			}
@@ -222,9 +254,12 @@ export const TreeView = (props: TreeViewProps): React.ReactElement => {
 	}
 
 	function isVisible(key: Key): boolean {
-		return visibleSubLists.includes(key)
+		return visibleSubLists.includes(key) && !props.closeAllSubLists
 	}
 
+	// TO DO
+	// Refactor this function to reduce its Cognitive Complexity from 17 to the 15 allowed
+	// eslint-disable-next-line sonarjs/cognitive-complexity
 	function treeToReact(
 		node: TreeViewNode,
 		selectedKeys: Key[],
@@ -233,8 +268,8 @@ export const TreeView = (props: TreeViewProps): React.ReactElement => {
 		depth++
 
 		if (node.root && node.children) {
-			return node.children.map(n =>
-				<TreeListView key={`tree-view-sub-list-${depth}`}>
+			return node.children.map((n, index) =>
+				<TreeListView key={`tree-view-sub-list-${depth}-${index}`}>
 					{treeToReact(n, selectedKeys, depth)}
 				</TreeListView>,
 			)
@@ -246,26 +281,38 @@ export const TreeView = (props: TreeViewProps): React.ReactElement => {
 			return (
 				<>
 					<ListViewItem
-						className={styles['list-view-item-no-effects']}
+						className={defaultProps.selectionMode === 'multiply' ?
+							styles['list-view-item-no-effects'] :
+							styles['tree-list-view-item']
+						}
 						key={node.value}
 						selectionMode={props.selectionMode}
 						listKey={node.value}
 						checkBoxState={checkBoxState}
-						selected={false}
+						selected={defaultProps.selectionMode !== 'multiply' ?
+							selectedKeys.includes(node.value) : false
+						}
 						onClick={getHandlerSelect(
 							selectHandler,
 							node.childrenValues,
+							defaultProps.selectionMode,
 							checkBoxState,
+							node.value,
 						)}
 					>
+						{node.icon && <Icon type={node.icon}/>}
+						{defaultProps.dropdownIconPosition === 'right' ?
+							<TextBlock>{node.title}</TextBlock> : null}
+
 						<Button
-							className={styles['chevron-button']}
+							className={styles[`chevron-button-${defaultProps.dropdownIconPosition}`]}
 							iconLeft={
-								<Icon type={
-									isVisible(
+								<Icon
+									className={isVisible(
 										`tree-view-sub-open-list-${depth}-${node.value}`,
-									) ? IconType.ChevronDown : IconType.ChevronRight
-								}/>
+									) ? styles['rotated-chevron-icon'] : styles['chevron-icon']}
+									type={IconType.ChevronDown}
+								/>
 							}
 							onClick={getSubItemsOpenHandler(
 								subOpenHandler,
@@ -274,7 +321,8 @@ export const TreeView = (props: TreeViewProps): React.ReactElement => {
 							)}
 						/>
 
-						{node.title}
+						{defaultProps.dropdownIconPosition === 'left' ?
+							<TextBlock>{node.title}</TextBlock> : null}
 					</ListViewItem>
 
 					{node.children.map((n, i) =>
@@ -295,10 +343,18 @@ export const TreeView = (props: TreeViewProps): React.ReactElement => {
 				key={node.value}
 				selectionMode={props.selectionMode}
 				listKey={node.value}
-				onClick={getHandlerSelect(selectHandler, [node.value])}
+				className={styles['tree-list-view-item']}
+				onClick={getHandlerSelect(
+					selectHandler,
+					[],
+					defaultProps.selectionMode,
+					void 0,
+					node.value,
+				)}
 				selected={selectedKeys.includes(node.value)}
 			>
-				{node.title}
+				{node.icon && <Icon type={node.icon}/>}
+				<TextBlock style={{ margin: 0 }}>{node.title}</TextBlock>
 			</ListViewItem>
 		)
 
@@ -316,14 +372,28 @@ export const TreeView = (props: TreeViewProps): React.ReactElement => {
 		children: treeNodes,
 	}
 
-	return <>{treeToReact(rootNode, selectedKeys, 0)}</>
+	return (
+		<div {...otherProps}>
+			{treeToReact(rootNode, selectedKeys, 0)}
+		</div>
+	)
 }
 
 function getHandlerSelect(
 	selectHandler: (keys: Key[], checkBoxState?: CheckBoxState) => void,
 	childrenValues: Key[],
+	selectionMode: 'none' | 'single' | 'multiply',
 	checkBoxState?: CheckBoxState,
-) {
+	rootKey?: Key,
+): () => void {
+	if (selectionMode === 'none') {
+		return () => void 0
+	}
+
+	if (selectionMode === 'single') {
+		return () => selectHandler([rootKey || ''])
+	}
+
 	return () => selectHandler(childrenValues, checkBoxState)
 }
 

@@ -11,13 +11,137 @@
     height: auto;
 }
 
-.chevron-button {
-    background-color: transparent;
-    border-color: transparent;
+.chevron-button-left {
+    background-color: transparent !important;
+    border-color: transparent !important;
 
     padding: 4px 8px;
 }
 
-.chevron-button:hover {
+.chevron-button-left:hover {
     background-color: transparent !important;
+}
+
+.chevron-button-right {
+    background-color: transparent !important;
+    border-color: transparent !important;
+
+    margin-left: auto;
+
+    padding: 4px 8px;
+}
+
+.chevron-button-right:hover {
+    background-color: transparent !important;
+}
+
+.tree-list-view-item {
+    height: 24px;
+}
+
+.tree-list-view-item>span {
+    margin-right: 16px;
+    margin-top: 2px;
+}
+
+.tree-list-view-item>p {
+    margin: 0;
+}
+
+.chevron-icon {
+    transform: rotate(0deg);
+
+    transition: transform .1s ease;
+}
+
+.rotated-chevron-icon {
+    transform: rotate(180deg);
+
+    transition: transform .1s ease;
+}
+
+/* === NAVIGATION VIEW STYLES === */
+
+.navigation-view>ul {
+    padding: 0;
+    margin: 4px;
+}
+
+.toggle-button {
+    width: 40px;
+    height: 40px;
+    margin: 4px;
+
+    padding: 0;
+    box-sizing: border-box;
+
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.toggle-button:hover {
+    background-color: var(--fill-color-subtle-tertiary) !important;
+}
+
+.navigation-view-expanded {
+    width: 300px;
+    height: 100vh;
+
+    position: fixed;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background-color: var(--fill-color-subtle-secondary);
+
+    transition: width .1s ease-out;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation-view-expanded>div>ul {
+    padding: 0;
+    margin: 0 4px;
+}
+
+.navigation-view-expanded>div>ul>.tree-list-view-item>p {
+    white-space: nowrap;
+}
+
+.navigation-view-closed {
+    display: flex;
+    flex-direction: column;
+
+    width: 48px;
+    height: 100vh;
+
+    position: fixed;
+    background-color: var(--fill-color-subtle-secondary);
+
+    transition: width .1s ease-out;
+
+    overflow-x: hidden;
+}
+
+.navigation-view-closed>div>ul {
+    padding: 0;
+    margin: 0 4px;
+}
+
+.navigation-view-closed>div>ul>.tree-list-view-item {
+    height: 40px;
+    padding: 0 12px;
+}
+
+.navigation-view-closed>div>ul>.tree-list-view-item>button {
+    display: none;
+}
+
+.navigation-view-closed>div>ul>.tree-list-view-item>p {
+    display: none;
+}
+
+.items-list {
+    overflow: auto;
+    flex-grow: 1;
 }

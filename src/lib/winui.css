@@ -219,3 +219,25 @@ body {
         background-color: #1C1C1C;
     }
 }
+
+.winui-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    background-color: transparent;
+}
+
+.winui-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.4458);
+
+    border-radius: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .winui-scrollbar::-webkit-scrollbar:hover {
+        background:
+                linear-gradient(0deg, rgba(44, 44, 44, 0.15), rgba(44, 44, 44, 0.15)), rgba(44, 44, 44, 0.96);
+    }
+
+    .winui-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.5442);
+    }
+}
