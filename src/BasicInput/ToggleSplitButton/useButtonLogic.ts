@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { DropDownButtonProps } from './ToggleSplitButton'
-import { useOuterClick } from '../../utils/useOuterClick'
 
 interface UseButtonLogicResult {
 	toggled: boolean

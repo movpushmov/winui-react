@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { TextBlock } from '../Text/TextBlock'
 import styles from '../TextBox/styles.module.css'
 import { Button } from '../../BasicInput/Button/Button'

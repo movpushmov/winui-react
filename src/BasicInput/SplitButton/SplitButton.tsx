@@ -3,7 +3,6 @@ import { Button } from '../Button/Button'
 import styles from './styles.module.css'
 import { Icon, IconType } from '../../Icons/Icon'
 import { DropDown } from '../DropDownButton/DropDown'
-import { useOuterClick } from '../../utils/useOuterClick'
 
 export type DropDownItem = {
 	icon?: IconType

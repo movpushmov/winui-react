@@ -26,7 +26,7 @@ function getButtonCount(children?: ButtonProps | ButtonProps[]): number {
 	return [children].length
 }
 
-const ContentDialog = (props: ContentDialogProps): React.ReactElement => {
+export const ContentDialog = (props: ContentDialogProps): React.ReactElement => {
 	useEffect(() => {
 		document.body.style.overflow = props.visible ? 'hidden' : ''
 	}, [props.visible])
@@ -63,5 +63,3 @@ const ContentDialog = (props: ContentDialogProps): React.ReactElement => {
 		</div>
 	)
 }
-
-export default ContentDialog

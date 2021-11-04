@@ -1,10 +1,16 @@
 {
   "name": "winui-react",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\"",
+    "build": "npx webpack --progress --color",
+    "deploy": "np"
+  },
+  "np": {
+    "yarn": false,
+    "contents": "dist"
   },
   "repository": {
     "type": "git",
@@ -15,5 +21,29 @@
   "bugs": {
     "url": "https://github.com/movpushmov/react-winui-controls-gallery/issues"
   },
-  "homepage": "https://github.com/movpushmov/react-winui-controls-gallery#readme"
+  "homepage": "https://github.com/movpushmov/react-winui-controls-gallery#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/react": "^17.0.34",
+    "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "css-loader": "^6.5.1",
+    "eslint": "^8.1.0",
+    "eslint-plugin-optimize-regex": "^1.2.1",
+    "eslint-plugin-promise": "^5.1.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-sonarjs": "^0.10.0",
+    "mini-css-extract-plugin": "^2.4.4",
+    "process": "^0.11.10",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "semver-increment": "^1.0.1",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.4",
+    "webpack": "^5.61.0",
+    "webpack-cli": "^4.9.1"
+  }
 }
