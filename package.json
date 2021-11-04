@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "build": "npx webpack --progress --color",
-    "deploy": "np"
+    "deploy": "cd dist && np --no-cleanup"
   },
   "np": {
     "yarn": false,
