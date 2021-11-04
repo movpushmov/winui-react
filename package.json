@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/movpushmov/react-winui-controls-gallery.git"
+    "url": "git+https://github.com/movpushmov/react-winui.git"
   },
   "author": "movpushmov",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/movpushmov/react-winui-controls-gallery/issues"
+    "url": "https://github.com/movpushmov/react-winui/issues"
   },
-  "homepage": "https://github.com/movpushmov/react-winui-controls-gallery#readme",
+  "homepage": "https://github.com/movpushmov/react-winui#readme",
   "dependencies": {},
   "devDependencies": {
     "@types/react": "^17.0.34",

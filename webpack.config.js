@@ -6,7 +6,7 @@ module.exports = {
 
   entry: "./src/index.ts",
   output: {
-    filename: "./winui.bundle.js"
+    filename: "./index.js"
   },
 
   resolve: {
