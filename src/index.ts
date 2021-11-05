@@ -1,47 +1,85 @@
 // === Basic input ===
-export { Button } from './BasicInput/Button/Button'
-export { CheckBox, CheckBoxState } from './BasicInput/CheckBox/CheckBox'
-export { DropDownButton, DropDownItem } from './BasicInput/DropDownButton/DropDownButton'
-export { HyperlinkButton } from './BasicInput/HyperlinkButton/HyperlinkButton'
-export { RadioButton } from './BasicInput/RadioButton/RadioButton'
-export { RadioButtonGroup } from './BasicInput/RadioButton/RadioButtonGroup'
-export { Slider } from './BasicInput/Slider/Slider'
-export { SplitButton } from './BasicInput/SplitButton/SplitButton'
-export { ToggleButton } from './BasicInput/ToggleButton/ToggleButton'
-export { ToggleSplitButton } from './BasicInput/ToggleSplitButton/ToggleSplitButton'
-export { ToggleSwitch } from './BasicInput/ToggleSwitch/ToggleSwitch'
+import { Button } from './BasicInput/Button/Button'
+import { CheckBox, CheckBoxState } from './BasicInput/CheckBox/CheckBox'
+import { DropDownButton, DropDownItem } from './BasicInput/DropDownButton/DropDownButton'
+import { HyperlinkButton } from './BasicInput/HyperlinkButton/HyperlinkButton'
+import { RadioButton } from './BasicInput/RadioButton/RadioButton'
+import { RadioButtonGroup } from './BasicInput/RadioButton/RadioButtonGroup'
+import { Slider } from './BasicInput/Slider/Slider'
+import { SplitButton } from './BasicInput/SplitButton/SplitButton'
+import { ToggleButton } from './BasicInput/ToggleButton/ToggleButton'
+import { ToggleSplitButton } from './BasicInput/ToggleSplitButton/ToggleSplitButton'
+import { ToggleSwitch } from './BasicInput/ToggleSwitch/ToggleSwitch'
 
 // === Collections ===
-export { GridView } from './Collections/GridView/GridView'
-export { GridViewItem } from './Collections/GridView/GridViewItem'
+import { GridView } from './Collections/GridView/GridView'
+import { GridViewItem } from './Collections/GridView/GridViewItem'
 
-export { ListView } from './Collections/ListView/ListView'
-export { ListViewItem } from './Collections/ListView/ListViewItem'
+import { ListView } from './Collections/ListView/ListView'
+import { ListViewItem } from './Collections/ListView/ListViewItem'
 
-export { TreeView } from './Collections/TreeView/TreeView'
-export { TreeNode } from './Collections/TreeView/TreeNode'
+import { TreeView } from './Collections/TreeView/TreeView'
+import { TreeNode } from './Collections/TreeView/TreeNode'
 
 // === Dialogs and Flyouts ===
-export { ContentDialog } from './DialogsAndFlyouts/ContentDialog/ContentDialog'
-export { ContentDialogSection } from './DialogsAndFlyouts/ContentDialog/ContentDialogSection'
-export { Flyout } from './DialogsAndFlyouts/Flyout/Flyout'
+import { ContentDialog } from './DialogsAndFlyouts/ContentDialog/ContentDialog'
+import { ContentDialogSection } from './DialogsAndFlyouts/ContentDialog/ContentDialogSection'
+import { Flyout } from './DialogsAndFlyouts/Flyout/Flyout'
 
 // === Icons ===
-export { Icon, IconType } from './Icons/Icon'
+import { Icon, IconType } from './Icons/Icon'
 
 // === Navigation ===
-export { NavigationView } from './Navigation/NavigationView/NavigationView'
-export { NavigationViewItem } from './Navigation/NavigationView/NavigationViewItem'
+import { NavigationView } from './Navigation/NavigationView/NavigationView'
+import { NavigationViewItem } from './Navigation/NavigationView/NavigationViewItem'
 
 // === Status and info ===
-export { InfoBadge } from './StatusAndInfo/InfoBadge/InfoBadge'
-export { InfoBar } from './StatusAndInfo/InfoBar/InfoBar'
-export { Tooltip } from './StatusAndInfo/Tooltip/Tooltip'
-export { ProgressBar } from './StatusAndInfo/ProgressBar/ProgressBar'
-export { ProgressRing } from './StatusAndInfo/ProgressRing/ProgressRing'
+import { InfoBadge } from './StatusAndInfo/InfoBadge/InfoBadge'
+import { InfoBar } from './StatusAndInfo/InfoBar/InfoBar'
+import { Tooltip } from './StatusAndInfo/Tooltip/Tooltip'
+import { ProgressBar } from './StatusAndInfo/ProgressBar/ProgressBar'
+import { ProgressRing } from './StatusAndInfo/ProgressRing/ProgressRing'
 
 // === Text ===
-export { TextBlock } from './Text/Text/TextBlock'
-export { TitleBlock } from './Text/Text/TitleBlock'
-export { TextBox } from './Text/TextBox/TextBox'
-export { NumberBox } from './Text/NumberBox/NumberBox'
+import { TextBlock } from './Text/Text/TextBlock'
+import { TitleBlock } from './Text/Text/TitleBlock'
+import { TextBox } from './Text/TextBox/TextBox'
+import { NumberBox } from './Text/NumberBox/NumberBox'
+
+export {
+    Button,
+    CheckBox,
+    CheckBoxState,
+    DropDownItem,
+    DropDownButton,
+    HyperlinkButton,
+    RadioButtonGroup,
+    RadioButton,
+    Slider,
+    SplitButton,
+    Tooltip,
+    TextBox,
+    TitleBlock,
+    TextBlock,
+    TreeNode,
+    TreeView,
+    ToggleSwitch,
+    ToggleSplitButton,
+    ToggleButton,
+    IconType,
+    NavigationViewItem,
+    NavigationView,
+    ListView,
+    ContentDialogSection,
+    ListViewItem,
+    GridViewItem,
+    ContentDialog,
+    Flyout,
+    GridView,
+    ProgressBar,
+    InfoBadge,
+    ProgressRing,
+    InfoBar,
+    Icon,
+    NumberBox
+}
