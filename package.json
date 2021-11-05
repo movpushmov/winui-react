@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/movpushmov/react-winui.git"
+    "url": "git+https://github.com/movpushmov/winui-react.git"
   },
   "author": "movpushmov",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/movpushmov/react-winui/issues"
+    "url": "https://github.com/movpushmov/winui-react/issues"
   },
-  "homepage": "https://github.com/movpushmov/react-winui#readme",
+  "homepage": "https://github.com/movpushmov/winui-react#readme",
   "peerDependencies": {
     "react": "*"
   },
