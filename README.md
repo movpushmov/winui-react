@@ -1,5 +1,7 @@
 # Welcome to WinUI React repository!
 
+This is React UI library, which implements Windows UI Design (WinUI 2.7 Design, Windows 11 Design).
+
 ### Live demo:
 
 https://movpushmov.github.io/
@@ -7,7 +9,7 @@ https://movpushmov.github.io/
 ### Current roadmap:
 
 - Color Picker, ComboBox, Auto Suggests Box
-- NavigationView (left & top variants), BreadcrumbBar
+- NavigationView (top variant), BreadcrumbBar
 - Teaching Tip
 - RichEditBox
 
@@ -52,7 +54,3 @@ https://movpushmov.github.io/
 | QQ Browser             | ❓ Not tested yet       | ❓                        |
 | Baidu Browser          | ❓ Not tested yet       | ❓                        |
 | KaiOS Browser          | ❓ Not tested yet       | ❓                        |
-
-### Demostration video:
-
-https://user-images.githubusercontent.com/49155506/134993918-9ace0fcc-a9ce-44bf-85c3-bbe2acf068c2.mp4
