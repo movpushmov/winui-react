@@ -8,8 +8,14 @@ module.exports = {
 
 
   entry: "./src/index.ts",
+  experiments: {
+    outputModule: true
+  },
   output: {
-    filename: "./index.js"
+    filename: "./index.js",
+    library: {
+      type: "module"
+    }
   },
 
   resolve: {
@@ -51,5 +57,5 @@ module.exports = {
         ],
       },
     ],
-  },
+  }
 }
