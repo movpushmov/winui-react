@@ -1,8 +1,6 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const CopyPlugin = require("copy-webpack-plugin")
 
-const isPackageJsonExists = require('fs').existsSync('./dist/package.json');
-
 module.exports = {
   mode: 'production',
 
@@ -21,18 +19,13 @@ module.exports = {
 
   plugins: [
     new MiniCssExtractPlugin(),
-    new CopyPlugin({ patterns: !isPackageJsonExists ? [
-        { from: './package.json', to: 'package.json' },
-        { from: './src/winui.css', to: 'winui.css' },
-        { from: './src/noise.png', to: 'noise.png' },
-        { from: './README.md', to: 'README.md' },
-        { from: './src/fonts', to: 'fonts' },
-      ] : [
-        { from: './src/winui.css', to: 'winui.css' },
-        { from: './src/noise.png', to: 'noise.png' },
-        { from: './README.md', to: 'README.md' },
-        { from: './src/fonts', to: 'fonts' },
-      ]})
+    new CopyPlugin({ patterns: [
+      { from: './package.json', to: 'package.json' },
+      { from: './src/winui.css', to: 'winui.css' },
+      { from: './src/noise.png', to: 'noise.png' },
+      { from: './README.md', to: 'README.md' },
+      { from: './src/fonts', to: 'fonts' }
+    ]})
   ],
 
   externals: {
