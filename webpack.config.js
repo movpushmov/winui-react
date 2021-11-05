@@ -24,10 +24,12 @@ module.exports = {
     new CopyPlugin({ patterns: !isPackageJsonExists ? [
         { from: './package.json', to: 'package.json' },
         { from: './src/winui.css', to: 'winui.css' },
-        { from: './src/noise.png', to: 'noise.png' }
+        { from: './src/noise.png', to: 'noise.png' },
+        { from: './src/fonts', to: 'fonts' },
       ] : [
         { from: './src/winui.css', to: 'winui.css' },
-        { from: './src/noise.png', to: 'noise.png' }
+        { from: './src/noise.png', to: 'noise.png' },
+        { from: './src/fonts', to: 'fonts' },
       ]})
   ],
 
