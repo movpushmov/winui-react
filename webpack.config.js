@@ -8,14 +8,10 @@ module.exports = {
 
 
   entry: "./src/index.ts",
-  experiments: {
-    outputModule: true
-  },
   output: {
     filename: "./index.js",
-    library: {
-      type: "module"
-    }
+    libraryTarget: 'umd',
+    library: 'winui-react'
   },
 
   resolve: {
@@ -35,9 +31,17 @@ module.exports = {
       ]})
   ],
 
+  externals: {
+    react: 'react'
+  },
+
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: "ts-loader" },
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader",
+        exclude: /node_modules/
+      },
       {
         test: /\.(sa|sc|c)ss$/i,
         exclude: /\.module\.(sa|sc|c)ss$/i,
