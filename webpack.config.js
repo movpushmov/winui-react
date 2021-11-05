@@ -25,10 +25,12 @@ module.exports = {
         { from: './package.json', to: 'package.json' },
         { from: './src/winui.css', to: 'winui.css' },
         { from: './src/noise.png', to: 'noise.png' },
+        { from: './README.md', to: 'README.md' },
         { from: './src/fonts', to: 'fonts' },
       ] : [
         { from: './src/winui.css', to: 'winui.css' },
         { from: './src/noise.png', to: 'noise.png' },
+        { from: './README.md', to: 'README.md' },
         { from: './src/fonts', to: 'fonts' },
       ]})
   ],
