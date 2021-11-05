@@ -23,6 +23,10 @@
   },
   "homepage": "https://github.com/movpushmov/react-winui#readme",
   "dependencies": {},
+  "peerDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
   "devDependencies": {
     "@types/react": "^17.0.34",
     "@types/react-dom": "^17.0.11",
@@ -38,8 +42,6 @@
     "eslint-plugin-sonarjs": "^0.10.0",
     "mini-css-extract-plugin": "^2.4.4",
     "process": "^0.11.10",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
     "semver-increment": "^1.0.1",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.2.6",
