@@ -242,3 +242,50 @@ body {
         background: rgba(255, 255, 255, 0.5442);
     }
 }
+
+@font-face {
+    font-family: 'Segoe UI Variable Display';
+    font-weight: 300; /* light */
+
+    src: url("./fonts/Segoe-UI-Variable-Static-Display-Light.ttf");
+}
+
+@font-face {
+    font-family: 'Segoe Fluent Icons';
+
+    src: url("./fonts/Segoe Fluent Icons.ttf");
+}
+
+@font-face {
+    font-family: 'Segoe UI Variable Display';
+    font-weight: normal;
+
+    src: url("./fonts/Segoe-UI-Variable-Static-Display.ttf");
+}
+
+@font-face {
+    font-family: 'Segoe UI Variable Display';
+    font-weight: bold;
+
+    src: url("./fonts/Segoe-UI-Variable-Static-Display-Bold.ttf");
+}
+
+@font-face {
+    font-family: 'Segoe UI Variable Small';
+
+    src: url("./fonts/Segoe-UI-Variable-Static-Small.ttf");
+}
+
+@font-face {
+    font-family: 'Segoe UI Variable Text';
+    font-weight: normal;
+
+    src: url("./fonts/Segoe-UI-Variable-Static-Text.ttf");
+}
+
+@font-face {
+    font-family: 'Segoe UI Variable Text';
+    font-weight: bold;
+
+    src: url("./fonts/Segoe-UI-Variable-Static-Text-Semibold.ttf");
+}
