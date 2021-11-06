@@ -142,6 +142,7 @@
 }
 
 .items-list {
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     flex-grow: 1;
 }

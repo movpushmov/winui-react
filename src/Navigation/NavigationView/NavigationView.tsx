@@ -27,7 +27,7 @@ interface NavigationViewProps {
 	toggleButtonEnabled?: boolean
 	toggleButtonVisible?: boolean
 
-	settingsEnabled?: boolean
+	disableSettings?: boolean
 
 	backButtonVisible?: boolean
 	backButtonEnabled?: boolean
@@ -80,7 +80,12 @@ export const NavigationView = (props: NavigationViewProps): React.ReactElement =
 	}, [props])
 
 	return (
-		<div className={styles[`navigation-view-${open ? 'expanded' : 'closed'}`]}>
+		<div
+			className={
+				`${styles[`navigation-view-${open ? 'expanded' : 'closed'}`]} ${props.className || ''}`
+			}
+			style={props.style}
+		>
 			{defaultProps.backButtonVisible &&
 				<Button
 					onClick={defaultProps.onBack}
@@ -116,11 +121,13 @@ export const NavigationView = (props: NavigationViewProps): React.ReactElement =
 				onValueSelect={settingsSelectedHandler}
 				selectedItems={settingsSelected}
 			>
-				<NavigationViewItem
-					title="Settings"
-					value="settings"
-					icon={IconType.Settings}
-				/>
+				{!props.disableSettings ? (
+					<NavigationViewItem
+						title="Settings"
+						value="settings"
+						icon={IconType.Settings}
+					/>
+				) : void 0}
 			</TreeView>
 		</div>
 	)

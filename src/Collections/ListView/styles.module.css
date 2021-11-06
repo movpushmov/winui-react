@@ -46,12 +46,6 @@
     background-color: var(--fill-color-subtle-tertiary);
 }
 
-.list-view-item:active:after {
-    height: 50%;
-
-    transition: height .2s ease;
-}
-
 .list-view-item-selected {
     composes: list-view-item-base;
 

@@ -12,6 +12,8 @@ React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputEl
 
 	value?: CheckBoxState
 	initialValue?: CheckBoxState
+
+	onCheck?: (value: CheckBoxState) => void
 }
 
 export enum CheckBoxState {
@@ -33,8 +35,35 @@ export function CheckBox(props: CheckBoxProps): React.ReactElement {
 	}, [props])
 
 	const clickHandler = useCallback(() => {
-		if (props.disabled || props.value !== void 0) {
+		if (props.disabled) {
 			return
+		}
+
+		if (props.value !== void 0) {
+			if (props.isThreeState) {
+				let newState = CheckBoxState.Checked
+
+				switch (state) {
+					case CheckBoxState.Unchecked: {
+						newState = CheckBoxState.Checked
+						break
+					}
+					case CheckBoxState.Checked: {
+						newState = CheckBoxState.Indeterminate
+						break
+					}
+					case CheckBoxState.Indeterminate: {
+						newState = CheckBoxState.Unchecked
+					}
+				}
+
+				props.onCheck?.(newState)
+			} else {
+				props.onCheck?.(
+					state === CheckBoxState.Unchecked ?
+						CheckBoxState.Checked : CheckBoxState.Unchecked
+				)
+			}
 		}
 
 		if (props.isThreeState) {
