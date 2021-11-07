@@ -39,7 +39,7 @@ export function CheckBox(props: CheckBoxProps): React.ReactElement {
 			return
 		}
 
-		if (props.value !== void 0) {
+		if (props.value === void 0) {
 			if (props.isThreeState) {
 				let newState = CheckBoxState.Checked
 
