@@ -1,27 +1,37 @@
-.link>a {
-    color: var(--accent-text-color-primary);
-    text-decoration: none;
-
+.link {
     padding: 4px 12px;
     border-radius: 4px;
 }
 
+.link>a {
+    color: var(--accent-text-color-primary);
+    text-decoration: none;
+}
+
+.link:hover {
+    background-color: var(--fill-color-subtle-secondary);
+}
+
 .link>a:hover {
     color: var(--accent-text-color-secondary);
-    background-color: var(--fill-color-subtle-secondary);
+}
+
+.link:active {
+    background-color: var(--fill-color-subtle-tertiary);
 }
 
 .link>a:active {
     color: var(--accent-text-color-tertiary);
-    background-color: var(--fill-color-subtle-tertiary);
+}
+
+.link-disabled {
+    padding: 4px 12px;
+    border-radius: 4px;
 }
 
 .link-disabled>a {
     color: var(--accent-text-color-disabled);
     text-decoration: none;
-
-    padding: 4px 12px;
-    border-radius: 4px;
 
     pointer-events: none;
 }
