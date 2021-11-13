@@ -2,16 +2,12 @@
   "name": "winui-react",
   "version": "1.0.6",
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "build": "npx webpack --progress --color",
     "deploy": "cd dist && np --no-cleanup"
-  },
-  "np": {
-    "yarn": false,
-    "contents": "dist"
   },
   "repository": {
     "type": "git",
