@@ -42,7 +42,7 @@ interface NavigationViewProps {
 	onSelect?: (e: NavigationViewSelectEvent) => void
 	onBack?: () => void
 
-	onPaneToggle?: (open?: boolean) => void
+	onPaneToggle?: (open: boolean) => void
 
 	children?: React.ReactElement<NavigationViewItemProps> | React.ReactElement<NavigationViewItemProps>[]
 }
