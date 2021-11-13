@@ -35,10 +35,14 @@ interface NavigationViewProps {
 	position?: 'left' | 'top'
 
 	className?: string
+	activePaneClassName?: string
+
 	style?: CSSProperties
 
 	onSelect?: (e: NavigationViewSelectEvent) => void
 	onBack?: () => void
+
+	onPaneToggle?: (open?: boolean) => void
 
 	children?: React.ReactElement<NavigationViewItemProps> | React.ReactElement<NavigationViewItemProps>[]
 }
@@ -54,7 +58,10 @@ export const NavigationView = (props: NavigationViewProps): React.ReactElement =
 
 	const [open, setIsOpen] = useState(props.open ?? false)
 
-	const toggleHandler = useCallback(() => setIsOpen(o => !o), [])
+	const toggleHandler = useCallback(() => {
+		props.onPaneToggle?.(!open)
+		setIsOpen(!open)
+	}, [open, props.onPaneToggle])
 
 	const [selectedItems, setSelectedItems] = useState<Key[]>([])
 	const [settingsSelected, setIsSettingsSelected] = useState<Key[]>([])
@@ -79,11 +86,16 @@ export const NavigationView = (props: NavigationViewProps): React.ReactElement =
 		setSelectedItems(items)
 	}, [props])
 
+	function generateClassName() {
+		const paneClassName = styles[`navigation-view-${open ? 'expanded' : 'closed'}`]
+		const paneUserClassName = open ? props.className : props.activePaneClassName
+
+		return `${paneClassName} ${paneUserClassName || ''}`
+	}
+
 	return (
 		<div
-			className={
-				`${styles[`navigation-view-${open ? 'expanded' : 'closed'}`]} ${props.className || ''}`
-			}
+			className={generateClassName()}
 			style={props.style}
 		>
 			{defaultProps.backButtonVisible &&
