@@ -1,4 +1,4 @@
-import React, { CSSProperties, useCallback, useState } from 'react'
+import React, { CSSProperties, useCallback, useState, useEffect } from 'react'
 import { Icon, IconType } from '../../Icons/Icon'
 import { TreeView } from '../../Collections/TreeView/TreeView'
 
@@ -37,6 +37,8 @@ interface NavigationViewProps {
 	className?: string
 	activePaneClassName?: string
 
+	selectedValue?: Key;
+
 	style?: CSSProperties
 
 	onSelect?: (e: NavigationViewSelectEvent) => void
@@ -63,8 +65,15 @@ export const NavigationView = (props: NavigationViewProps): React.ReactElement =
 		setIsOpen(!open)
 	}, [open, props.onPaneToggle])
 
-	const [selectedItems, setSelectedItems] = useState<Key[]>([])
-	const [settingsSelected, setIsSettingsSelected] = useState<Key[]>([])
+	const [selectedItems, setSelectedItems] = useState<Key[]>(props.selectedValue ? [props.selectedValue] : [])
+	const [footerItems, setFooterItems] = useState<Key[]>(props.selectedValue ? [props.selectedValue] : [])
+
+	useEffect(() => {
+		if (props.selectedValue !== void 0) {
+			setSelectedItems([props.selectedValue])
+			setFooterItems([props.selectedValue])
+		}
+	}, [props.selectedValue])
 
 	const settingsSelectedHandler = useCallback(() => {
 		props.onSelect?.({
@@ -72,7 +81,11 @@ export const NavigationView = (props: NavigationViewProps): React.ReactElement =
 			selectedValues: ['settings'],
 		})
 
-		setIsSettingsSelected(['settings'])
+		if (props.selectedValue !== void 0) {
+			return;
+		}
+
+		setFooterItems(['settings'])
 		setSelectedItems([])
 	}, [props])
 
@@ -82,7 +95,11 @@ export const NavigationView = (props: NavigationViewProps): React.ReactElement =
 			selectedValues: items,
 		})
 
-		setIsSettingsSelected([])
+		if (props.selectedValue !== void 0) {
+			return;
+		}
+
+		setFooterItems([])
 		setSelectedItems(items)
 	}, [props])
 
@@ -131,7 +148,7 @@ export const NavigationView = (props: NavigationViewProps): React.ReactElement =
 			<TreeView
 				dropdownIconPosition="right"
 				onValueSelect={settingsSelectedHandler}
-				selectedItems={settingsSelected}
+				selectedItems={footerItems}
 			>
 				{!props.disableSettings ? (
 					<NavigationViewItem
