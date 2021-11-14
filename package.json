@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "build": "npx webpack --progress --color",
-    "deploy": "cd dist && np --no-cleanup"
+    "deploy": "cd dist && np --no-cleanup && node ../postDeploy.js"
   },
   "repository": {
     "type": "git",
@@ -37,7 +37,6 @@
     "eslint-plugin-sonarjs": "^0.10.0",
     "mini-css-extract-plugin": "^2.4.4",
     "process": "^0.11.10",
-    "semver-increment": "^1.0.1",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.2.6",
     "typescript": "^4.4.4",
