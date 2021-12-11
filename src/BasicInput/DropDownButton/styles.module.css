@@ -3,7 +3,11 @@
     user-select: none;
 }
 
-.dropdown-button:active:not(:disabled)>span {
+.dropdown-button {
+    min-height: 32px;
+}
+
+.dropdown-button:active:not(:disabled)>span:last-child {
     margin-top: -2px;
 }
 
@@ -25,7 +29,7 @@
     }
 }
 
-.animate-icon>span {
+.animate-icon>span:last-child {
     animation-duration: .3s;
     animation-name: Icon-Animation;
 }

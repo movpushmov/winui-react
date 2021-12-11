@@ -37,7 +37,7 @@ interface NavigationViewProps {
 	className?: string
 	activePaneClassName?: string
 
-	selectedValue?: Key;
+	selectedValue?: Key
 
 	style?: CSSProperties
 
@@ -63,7 +63,7 @@ export const NavigationView = (props: NavigationViewProps): React.ReactElement =
 	const toggleHandler = useCallback(() => {
 		props.onPaneToggle?.(!open)
 		setIsOpen(!open)
-	}, [open, props.onPaneToggle])
+	}, [open, props])
 
 	const [selectedItems, setSelectedItems] = useState<Key[]>(props.selectedValue ? [props.selectedValue] : [])
 	const [footerItems, setFooterItems] = useState<Key[]>(props.selectedValue ? [props.selectedValue] : [])
@@ -82,7 +82,7 @@ export const NavigationView = (props: NavigationViewProps): React.ReactElement =
 		})
 
 		if (props.selectedValue !== void 0) {
-			return;
+			return
 		}
 
 		setFooterItems(['settings'])
@@ -96,14 +96,14 @@ export const NavigationView = (props: NavigationViewProps): React.ReactElement =
 		})
 
 		if (props.selectedValue !== void 0) {
-			return;
+			return
 		}
 
 		setFooterItems([])
 		setSelectedItems(items)
 	}, [props])
 
-	function generateClassName() {
+	function generateClassName(): string {
 		const paneClassName = styles[`navigation-view-${open ? 'expanded' : 'closed'}`]
 		const paneUserClassName = open ? props.className : props.activePaneClassName
 
@@ -115,25 +115,27 @@ export const NavigationView = (props: NavigationViewProps): React.ReactElement =
 			className={generateClassName()}
 			style={props.style}
 		>
-			{defaultProps.backButtonVisible &&
-				<Button
-					onClick={defaultProps.onBack}
-					disabled={!defaultProps.backButtonEnabled}
-					className={styles['toggle-button']}
-				>
-					<Icon type={IconType.ChromeBack}/>
-				</Button>
-			}
+			<div>
+				{defaultProps.backButtonVisible &&
+					<Button
+						onClick={defaultProps.onBack}
+						disabled={!defaultProps.backButtonEnabled}
+						className={styles['toggle-button']}
+					>
+						<Icon type={IconType.ChromeBack}/>
+					</Button>
+				}
 
-			{defaultProps.toggleButtonVisible &&
-				<Button
-					onClick={toggleHandler}
-					disabled={!defaultProps.toggleButtonEnabled}
-					className={styles['toggle-button']}
-				>
-					<Icon type={IconType.GlobalNavButton}/>
-				</Button>
-			}
+				{defaultProps.toggleButtonVisible &&
+					<Button
+						onClick={toggleHandler}
+						disabled={!defaultProps.toggleButtonEnabled}
+						className={styles['toggle-button']}
+					>
+						<Icon type={IconType.GlobalNavButton}/>
+					</Button>
+				}
+			</div>
 
 			<TreeView
 				dropdownIconPosition="right"
@@ -150,13 +152,13 @@ export const NavigationView = (props: NavigationViewProps): React.ReactElement =
 				onValueSelect={settingsSelectedHandler}
 				selectedItems={footerItems}
 			>
-				{!props.disableSettings ? (
+				{!props.disableSettings ?
 					<NavigationViewItem
 						title="Settings"
 						value="settings"
 						icon={IconType.Settings}
 					/>
-				) : void 0}
+					: void 0}
 			</TreeView>
 		</div>
 	)

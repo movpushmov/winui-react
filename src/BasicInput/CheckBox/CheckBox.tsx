@@ -34,58 +34,66 @@ export function CheckBox(props: CheckBoxProps): React.ReactElement {
 		}
 	}, [props])
 
+	const toggleWithValueUndefined = useCallback(() => {
+		if (props.isThreeState) {
+			let newState = CheckBoxState.Checked
+
+			switch (state) {
+				case CheckBoxState.Unchecked: {
+					newState = CheckBoxState.Checked
+					break
+				}
+				case CheckBoxState.Checked: {
+					newState = CheckBoxState.Indeterminate
+					break
+				}
+				case CheckBoxState.Indeterminate: {
+					newState = CheckBoxState.Unchecked
+				}
+			}
+
+			props.onCheck?.(newState)
+		} else {
+			props.onCheck?.(
+				state === CheckBoxState.Unchecked ?
+					CheckBoxState.Checked : CheckBoxState.Unchecked,
+			)
+		}
+	}, [props, state])
+
+	const getNextValue = useCallback(() => {
+		if (props.isThreeState) {
+			switch (state) {
+				case CheckBoxState.Unchecked: {
+					return CheckBoxState.Checked
+				}
+				case CheckBoxState.Checked: {
+					return CheckBoxState.Indeterminate
+				}
+				case CheckBoxState.Indeterminate: {
+					return CheckBoxState.Unchecked
+				}
+			}
+		} else if (state === CheckBoxState.Unchecked) {
+			return CheckBoxState.Checked
+		} else {
+			return CheckBoxState.Unchecked
+		}
+	}, [props.isThreeState, state])
+
 	const clickHandler = useCallback(() => {
 		if (props.disabled) {
 			return
 		}
 
 		if (props.value === void 0) {
-			if (props.isThreeState) {
-				let newState = CheckBoxState.Checked
-
-				switch (state) {
-					case CheckBoxState.Unchecked: {
-						newState = CheckBoxState.Checked
-						break
-					}
-					case CheckBoxState.Checked: {
-						newState = CheckBoxState.Indeterminate
-						break
-					}
-					case CheckBoxState.Indeterminate: {
-						newState = CheckBoxState.Unchecked
-					}
-				}
-
-				props.onCheck?.(newState)
-			} else {
-				props.onCheck?.(
-					state === CheckBoxState.Unchecked ?
-						CheckBoxState.Checked : CheckBoxState.Unchecked
-				)
-			}
-		}
-
-		if (props.isThreeState) {
-			switch (state) {
-				case CheckBoxState.Unchecked: {
-					setState(CheckBoxState.Checked)
-					break
-				}
-				case CheckBoxState.Checked: {
-					setState(CheckBoxState.Indeterminate)
-					break
-				}
-				case CheckBoxState.Indeterminate: {
-					setState(CheckBoxState.Unchecked)
-				}
-			}
-		} else if (state === CheckBoxState.Unchecked) {
-			setState(CheckBoxState.Checked)
+			toggleWithValueUndefined()
 		} else {
-			setState(CheckBoxState.Unchecked)
+			props.onCheck?.(getNextValue())
 		}
-	}, [props.disabled, props.isThreeState, props.value, state])
+
+		setState(getNextValue())
+	}, [getNextValue, props, toggleWithValueUndefined])
 
 	return (
 		<div>
