@@ -107,6 +107,8 @@ body {
     --fill-color-solid-background-tertiary: #F9F9F9;
     --fill-color-solid-background-quarternary: #FFFFFF;
 
+    --fill-color-layer: white;
+
     /* Special styles */
     --slider-disabled-thumb-color: var(--accent-color-disabled);
     --noise-image: url("./noise.png");
@@ -214,6 +216,8 @@ body {
         --fill-color-solid-background-tertiary: #282828;
         --fill-color-solid-background-quarternary: #2C2C2C;
 
+        --fill-color-layer: #2C2C2C;
+
         /* Special styles */
         --slider-disabled-thumb-color: var(--accent-color-tertiary);
 
@@ -241,51 +245,4 @@ body {
     .winui-scrollbar::-webkit-scrollbar-thumb {
         background: rgba(255, 255, 255, 0.5442);
     }
-}
-
-@font-face {
-    font-family: 'Segoe UI Variable Display';
-    font-weight: 300; /* light */
-
-    src: url("./fonts/Segoe-UI-Variable-Static-Display-Light.ttf");
-}
-
-@font-face {
-    font-family: 'Segoe Fluent Icons';
-
-    src: url("./fonts/Segoe Fluent Icons.ttf");
-}
-
-@font-face {
-    font-family: 'Segoe UI Variable Display';
-    font-weight: normal;
-
-    src: url("./fonts/Segoe-UI-Variable-Static-Display.ttf");
-}
-
-@font-face {
-    font-family: 'Segoe UI Variable Display';
-    font-weight: bold;
-
-    src: url("./fonts/Segoe-UI-Variable-Static-Display-Bold.ttf");
-}
-
-@font-face {
-    font-family: 'Segoe UI Variable Small';
-
-    src: url("./fonts/Segoe-UI-Variable-Static-Small.ttf");
-}
-
-@font-face {
-    font-family: 'Segoe UI Variable Text';
-    font-weight: normal;
-
-    src: url("./fonts/Segoe-UI-Variable-Static-Text.ttf");
-}
-
-@font-face {
-    font-family: 'Segoe UI Variable Text';
-    font-weight: bold;
-
-    src: url("./fonts/Segoe-UI-Variable-Static-Text-Semibold.ttf");
 }

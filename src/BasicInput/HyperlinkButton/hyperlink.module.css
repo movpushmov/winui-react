@@ -1,9 +1,13 @@
 .link {
-    padding: 4px 12px;
     border-radius: 4px;
+    padding: 4px 6px;
+
+    text-align: center;
 }
 
 .link>a {
+    padding: 4px 12px;
+
     color: var(--accent-text-color-primary);
     text-decoration: none;
 }

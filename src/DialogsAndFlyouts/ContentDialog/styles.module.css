@@ -16,12 +16,12 @@
 
     background-color: rgba(0, 0, 0, 0.3);
 
-    z-index: 1;
+    z-index: 99999999;
     overflow: hidden;
 }
 
 .modal-block {
-    background-color: white;
+    background-color: var(--fill-color-layer);
 
     width: fit-content;
     height: fit-content;

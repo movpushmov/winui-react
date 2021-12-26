@@ -3,7 +3,20 @@ const CopyPlugin = require("copy-webpack-plugin")
 
 module.exports = {
   mode: 'production',
-
+  optimization: {
+    chunkIds: 'total-size',
+    concatenateModules: true,
+    flagIncludedChunks: true,
+    innerGraph: true,
+    mangleExports: 'size',
+    mergeDuplicateChunks: true,
+    minimize: true,
+    moduleIds: 'size',
+    nodeEnv: 'production',
+    removeAvailableModules: true,
+    removeEmptyChunks: true,
+    usedExports: true,
+  },
 
   entry: "./src/index.ts",
   output: {
@@ -24,7 +37,6 @@ module.exports = {
       { from: './src/winui.css', to: 'winui.css' },
       { from: './src/noise.png', to: 'noise.png' },
       { from: './README.md', to: 'README.md' },
-      { from: './src/fonts', to: 'fonts' }
     ]})
   ],
 
