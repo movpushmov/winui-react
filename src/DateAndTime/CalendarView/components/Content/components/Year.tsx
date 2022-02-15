@@ -21,7 +21,7 @@ interface YearProps {
 const firstDay = 1
 
 export const Year = (props: YearProps): React.ReactElement => {
-	const months = getMonths(props.locale)
+	const months = getMonths()
 
 	return (
 		<div className={styles['dates']}>

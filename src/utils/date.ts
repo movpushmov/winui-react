@@ -30,9 +30,11 @@ export function getDaysInMonth(month: number, year: number): Date[] {
 			getDays(lastMonthIndex, year - offset) :
 			getDays(month - offset, year)
 
-		days = daysInPrevMonth
-			.slice(Math.max(daysInPrevMonth.length - days[0].getDay(), 0))
-			.concat(days)
+		if (days[0]) {
+			days = daysInPrevMonth
+				.slice(Math.max(daysInPrevMonth.length - days[0].getDay(), 0))
+				.concat(days)
+		}
 	}
 
 	{
@@ -40,8 +42,11 @@ export function getDaysInMonth(month: number, year: number): Date[] {
 			getDays(0, year + offset) :
 			getDays(month + offset, year)
 
-		if (lastDayIndex - days[0].getDay() > 0) {
-			days = days.concat(daysInNextMonth.slice(0, lastDayIndex - days[days.length - offset].getDay()))
+		const [firstDay] = days
+		const lastDay = days[days.length - offset]
+
+		if (firstDay && lastDayIndex - firstDay.getDay() > 0 && lastDay) {
+			days = days.concat(daysInNextMonth.slice(0, lastDayIndex - lastDay.getDay()))
 		}
 	}
 
