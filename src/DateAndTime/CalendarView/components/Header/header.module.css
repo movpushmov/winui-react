@@ -1,0 +1,48 @@
+.controls {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    padding: 8px 4px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.controls>.timelapse-button {
+    flex: 1;
+
+    background-color: transparent;
+    border: none;
+
+    justify-content: flex-start;
+
+    margin-left: 4px;
+
+    padding: 4px 8px;
+}
+
+.timelapse-button>p {
+    margin: 4px 0;
+
+    text-transform: capitalize;
+}
+
+.scroll-button {
+    margin: 0 4px;
+
+    background-color: transparent;
+    border: none;
+
+    height: 35px;
+}
+
+.scroll-button:active {
+    color: var(--fill-color-control-strong-default);
+}
+
+.scroll-button>span {
+    margin: 4px 0;
+    font-size: 8px;
+}

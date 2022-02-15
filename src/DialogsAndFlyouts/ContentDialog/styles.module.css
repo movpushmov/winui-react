@@ -21,7 +21,7 @@
 }
 
 .modal-block {
-    background-color: var(--fill-color-layer);
+    background-color: white;
 
     width: fit-content;
     height: fit-content;
@@ -29,6 +29,12 @@
     border-radius: 7px;
 
     box-shadow: 0 32px 64px rgba(0, 0, 0, 0.1876), 0 2px 21px rgba(0, 0, 0, 0.1474);
+}
+
+@media (prefers-color-scheme: dark) {
+    .modal-block {
+        background-color: #2b2b2b;
+    }
 }
 
 .modal-block>h4 {

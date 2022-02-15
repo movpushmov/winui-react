@@ -107,7 +107,12 @@ body {
     --fill-color-solid-background-tertiary: #F9F9F9;
     --fill-color-solid-background-quarternary: #FFFFFF;
 
-    --fill-color-layer: white;
+    --fill-color-layer: rgba(255, 255, 255, 25%);
+
+    --fill-color-text-primary: rgba(0, 0, 0, 89.56%);
+    --fill-color-text-secondary: rgba(0, 0, 0, 60.63%);
+    --fill-color-text-tertiary: rgba(0, 0, 0, 44.58%);
+    --fill-color-text-disabled: rgba(0, 0, 0, 36.14%);
 
     /* Special styles */
     --slider-disabled-thumb-color: var(--accent-color-disabled);
@@ -216,7 +221,12 @@ body {
         --fill-color-solid-background-tertiary: #282828;
         --fill-color-solid-background-quarternary: #2C2C2C;
 
-        --fill-color-layer: #2C2C2C;
+        --fill-color-layer: rgba(58, 58, 58, 30%);
+
+        --fill-color-text-primary: white;
+        --fill-color-text-secondary: rgba(255, 255, 255, 78.6%);
+        --fill-color-text-tertiary: rgba(255, 255, 255, 54.42%);
+        --fill-color-text-disabled: rgba(255, 255, 255, 36.28%);
 
         /* Special styles */
         --slider-disabled-thumb-color: var(--accent-color-tertiary);

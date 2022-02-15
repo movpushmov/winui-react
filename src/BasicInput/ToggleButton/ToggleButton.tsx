@@ -1,20 +1,21 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { ForwardedRef, useCallback, useEffect, useState } from 'react'
 import { Button } from '../Button/Button'
 
 interface ToggleButtonProps extends Omit<
 React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
-'value'
+'value' | 'ref'
 > {
 	disabled?: boolean
 	initialValue?: boolean
 
 	value?: boolean
+	ref?: ForwardedRef<HTMLButtonElement>
 
 	onToggle?: (value: boolean) => void
 }
 
 export function ToggleButton(props: ToggleButtonProps): React.ReactElement {
-	const { onClick, initialValue, value, ...otherProps } = props
+	const { onClick, initialValue, value, ref, ...otherProps } = props
 	const [toggled, setIsToggled] = useState(
 		value !== void 0 ?
 			value : Boolean(initialValue),
@@ -45,6 +46,7 @@ export function ToggleButton(props: ToggleButtonProps): React.ReactElement {
 
 	return (
 		<Button
+			ref={ref}
 			{...otherProps}
 			onClick={clickHandler}
 			type={toggled ? 'accent' : 'default'}

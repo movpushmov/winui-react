@@ -1,0 +1,79 @@
+.dates {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    padding: 4px 3px;
+
+    height: 252px;
+
+    flex: 1;
+}
+
+.dates>div {
+    height: 100%;
+}
+
+.date {
+    width: 40px;
+    height: 40px;
+
+    margin: 1px;
+    position: relative;
+
+    background-color: transparent;
+    border: none;
+
+    border-radius: 50%;
+    color: var(--text-color-primary);
+}
+
+.date:hover {
+    background-color: var(--fill-color-subtle-secondary);
+}
+
+.date:active {
+    background-color: var(--fill-color-subtle-tertiary);
+    color: var(--text-color-secondary)
+}
+
+.current-date {
+    composes: date;
+
+    background-color: var(--accent-color);
+    color: var(--text-on-accent-color-primary) !important;
+}
+
+.current-date:after {
+    background-color: var(--text-on-accent-color-primary) !important;
+}
+
+
+.out-date {
+    composes: date;
+
+    color: rgba(255, 255, 255, 40%);
+}
+
+.out-date:active:after {
+    background-color: white !important;
+}
+
+.out-date:after {
+    background-color: rgba(255, 255, 255, 40%) !important;
+}
+
+
+.blocked-date:after {
+    content: '';
+    position: absolute;
+
+    width: 1px;
+    height: 60%;
+
+    background-color: white;
+
+    transform: rotate(-45deg);
+}

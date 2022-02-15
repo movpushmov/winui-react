@@ -1,0 +1,17 @@
+.days-names {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 3px 0 3px;
+
+    height: 40px;
+}
+
+.days-names>p {
+    width: 40px;
+    text-align: center;
+
+    text-transform: capitalize;
+}

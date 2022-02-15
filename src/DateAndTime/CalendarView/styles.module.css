@@ -1,0 +1,49 @@
+.container {
+    position: relative;
+
+    width: 300px;
+
+    border-radius: 7px;
+    border: 1px solid var(--surface-stroke-default);
+}
+
+@media (prefers-color-scheme: dark) {
+    .container {
+        background: linear-gradient(0deg, rgba(44, 44, 44, 0.15), rgba(44, 44, 44, 0.15)), rgba(44, 44, 44, 0.96);
+    }
+}
+
+.content {
+    border-top: 1px solid var(--card-stroke-default);
+    border-radius: 0 0 7px 7px;
+
+    height: 298px;
+
+
+    position: relative;
+    z-index: 2;
+
+    background-color: var(--fill-color-layer);
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+.dates {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    padding: 4px 3px;
+
+    height: 252px;
+
+    flex: 1;
+
+    align-items: center;
+    justify-content: center;
+}

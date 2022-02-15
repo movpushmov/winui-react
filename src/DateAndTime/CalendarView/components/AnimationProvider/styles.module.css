@@ -1,0 +1,113 @@
+@keyframes Zoom-In-Visible {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+        visibility: visible;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes Zoom-Out-Visible {
+    0% {
+        transform: scale(1.2);
+        opacity: 0;
+        visibility: visible;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes Zoom-Out-Hidden {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    99% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+
+    100% {
+        visibility: hidden;
+    }
+}
+
+@keyframes Zoom-In-Hidden {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    99% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        visibility: hidden;
+    }
+}
+
+.zoom-in-visible {
+    visibility: visible;
+    opacity: 1;
+
+    animation-duration: .25s;
+    animation-timing-function: ease-out;
+    animation-name: Zoom-In-Visible;
+}
+
+.zoom-in-hidden {
+    visibility: hidden;
+    opacity: 0;
+
+    transform: scale(1.2);
+
+    animation-duration: .25s;
+    animation-timing-function: ease-out;
+    animation-name: Zoom-In-Hidden;
+}
+
+.zoom-out-visible {
+    visibility: visible;
+    opacity: 1;
+
+    animation-duration: .25s;
+    animation-timing-function: ease-out;
+    animation-name: Zoom-Out-Visible;
+}
+
+.zoom-out-hidden {
+    visibility: hidden;
+    opacity: 0;
+
+    transform: scale(1.2);
+
+    animation-duration: .25s;
+    animation-timing-function: ease-out;
+    animation-name: Zoom-Out-Hidden;
+}
+
+.content-block {
+    position: absolute;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible;
+}
