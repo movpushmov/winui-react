@@ -1,13 +1,12 @@
 {
   "name": "winui-react",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "build": "npx webpack --progress --color",
-    "deploy": "np --no-cleanup --contents ./dist && node ../postDeploy.js"
+    "build": "npx webpack --progress --color"
   },
   "repository": {
     "type": "git",
