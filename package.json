@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "build": "npx webpack --progress --color",
-    "deploy": "cd dist && np --no-cleanup && node ../postDeploy.js"
+    "deploy": "np --no-cleanup --contents ./dist && node ../postDeploy.js"
   },
   "repository": {
     "type": "git",
