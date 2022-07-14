@@ -24,10 +24,10 @@ https://movpushmov.github.io/
 | Basic Inputs        | 🧪                         | Released               |
 | Text                | 🧪                         | Released               |
 | Status and info     | 🧪                         | Released               |
-| Navigation          | 🚧🏗️                         | In near future         |
+| Navigation          | 🚧🏗️                       | In near future         |
 | Dialogs and Flyouts | 🧪                         | Released               |
 | Collections         | 🧪                         | Released               |
-| Date and Time       | ❌                         | In near future         |
+| Date and Time       | 🚧🏗️                       | In near future         |
 | Media               | ❌                         | In near future         |
 | Menus and Toolbars  | ❌                         | In near future         |
 
@@ -43,7 +43,7 @@ https://movpushmov.github.io/
 |------------------------|------------------------|--------------------------|
 | IE                     | ❓ Not tested yet       | ❓                        |
 | Edge*                  | ❓ Not tested yet       | ❓                        |
-| Firefox                | ❌ Need some fixes      | ❌                        |
+| Firefox                | ❓ Need some fixes      | ❌                        |
 | Chrome                 | ✅ Partially compatible | Tested on 93 version      |
 | Safari                 | ❓ Need some fixes      | Last version              |
 | Opera                  | ❓ Not tested yet       | ❓                        |
