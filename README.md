@@ -41,10 +41,10 @@ https://movpushmov.github.io/
 
 | Browser                | Compatible             | First compatible version |
 |------------------------|------------------------|--------------------------|
-| IE                     | ❓ Not tested yet       | ❓                        |
-| Edge*                  | ❓ Not tested yet       | ❓                        |
-| Firefox                | ❓ Need some fixes      | ❌                        |
-| Chrome                 | ✅ Partially compatible | Tested on 93 version      |
+| IE                     | ❌ Not compatible       | ❌                        |
+| Edge*                  | ✅ Compatible.          | ❓                        |
+| Firefox                | ❓ Need some fixes      | Last version              |
+| Chrome                 | ✅ Compatible           | Tested on 93 version      |
 | Safari                 | ❓ Need some fixes      | Last version              |
 | Opera                  | ❓ Not tested yet       | ❓                        |
 | Safari on iOS*         | ❓ Not tested yet       | ❓                        |
@@ -58,3 +58,6 @@ https://movpushmov.github.io/
 | QQ Browser             | ❓ Not tested yet       | ❓                        |
 | Baidu Browser          | ❓ Not tested yet       | ❓                        |
 | KaiOS Browser          | ❓ Not tested yet       | ❓                        |
+
+
+*Edge on webview2 (Chromium)
