@@ -43,9 +43,9 @@ https://movpushmov.github.io/
 |------------------------|------------------------|--------------------------|
 | IE                     | ❓ Not tested yet       | ❓                        |
 | Edge*                  | ❓ Not tested yet       | ❓                        |
-| Firefox                | ❌ Not compatible       | ❌                       |
+| Firefox                | ❌ Need some fixes      | ❌                        |
 | Chrome                 | ✅ Partially compatible | Tested on 93 version      |
-| Safari                 | ❓ Not tested yet       | ❓                        |
+| Safari                 | ❓ Need some fixes      | Last version              |
 | Opera                  | ❓ Not tested yet       | ❓                        |
 | Safari on iOS*         | ❓ Not tested yet       | ❓                        |
 | Opera Mini*            | ❓ Not tested yet       | ❓                        |
