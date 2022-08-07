@@ -1,25 +1,24 @@
-import React, { ForwardedRef, useCallback, useState } from 'react'
-import styles from './styles.module.css'
+import React, { useCallback, useState } from 'react'
+import styles from '../TextBox/styles.module.css'
 import { Button } from '../../BasicInput/Button/Button'
 import { Icon, IconType } from '../../Icons/Icon'
 import { TextBlock } from '../Text/TextBlock'
 
-type InputProps =
-    React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+type TextAreaProps =
+    React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
 
 type DivProps =
     React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
-interface TextBoxProps extends Omit<InputProps, 'type'> {
+interface RichTextBoxProps extends Omit<TextAreaProps, 'type'> {
 	containerProps?: DivProps
 	type?: 'text' | 'password'
 
 	enableClearButton?: boolean
 	header?: string
-	containerRef?: React.LegacyRef<HTMLDivElement>
 }
 
-export const TextBox = (props: TextBoxProps): React.ReactElement => {
+export const RichTextBox = (props: RichTextBoxProps): React.ReactElement => {
 	const {
 		className: inputClassName,
 		type: inputType,
@@ -29,15 +28,13 @@ export const TextBox = (props: TextBoxProps): React.ReactElement => {
 		header,
 		value,
 		defaultValue,
-		containerRef,
 		...otherProps
 	} = props
 	const [show, setIsShow] = useState(Boolean(value ?? defaultValue))
 
 	const [currentValue, setValue] = useState(value ?? defaultValue ?? '')
-	const [type, setType] = useState(inputType || 'text')
 
-	const onChangeHandler = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+	const onChangeHandler = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		if (value === void 0) {
 			setValue(e.currentTarget.value)
 		}
@@ -54,9 +51,6 @@ export const TextBox = (props: TextBoxProps): React.ReactElement => {
 		setIsShow(false)
 	}, [])
 
-	const mouseDownHandler = useCallback(() => setType('text'), [])
-	const mouseUpHandler = useCallback(() => setType('password'), [])
-
 	let {
 		containerClassName, otherContainerProps,
 	}: {
@@ -69,34 +63,22 @@ export const TextBox = (props: TextBoxProps): React.ReactElement => {
 	}
 
 	return (
-		<div ref={containerRef}>
+		<div>
 			{header && <TextBlock type="body-strong">{header}</TextBlock>}
 
 			<div className={`${containerClassName || ''} ${styles['input-container']}`} {...otherContainerProps}>
-				<input
-					type={type}
+				<textarea
 					value={currentValue}
 					onChange={onChangeHandler}
 					className={`${styles['input']} ${inputClassName || ''}`} {...otherProps}
 				/>
-				{props.type === 'password' ?
-					<Button
-						className={styles['btn']}
-						style={{ display: show ? void 0 : 'none' }}
-						onMouseDown={mouseDownHandler}
-						onMouseUp={mouseUpHandler}
-					>
-						<Icon type={IconType.RevealPasswordMedium}/>
-					</Button>
-					:
-					<Button
-						onClick={clearHandler}
-						className={styles['btn']}
-						style={{ display: show && enableClearButton ? void 0 : 'none' }}
-					>
-						<Icon type={IconType.ErrorBadge12}/>
-					</Button>
-				}
+				<Button
+					onClick={clearHandler}
+					className={styles['btn']}
+					style={{ display: show && enableClearButton ? void 0 : 'none' }}
+				>
+					<Icon type={IconType.ErrorBadge12}/>
+				</Button>
 			</div>
 		</div>
 	)

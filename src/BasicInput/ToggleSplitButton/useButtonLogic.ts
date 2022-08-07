@@ -8,7 +8,7 @@ interface UseButtonLogicResult {
 
 	closeHandler: () => void
 	openHandler: () => void
-	toggleHandler: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+	toggleHandler: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 type PropsType = {
@@ -37,7 +37,7 @@ export function useButtonLogic(props: PropsType): UseButtonLogicResult {
 		}
 	},[toggled, props])
 
-	const toggleHandler = useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+	const toggleHandler = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
 		if (props.onClick) {
 			props.onClick(e)
 		}

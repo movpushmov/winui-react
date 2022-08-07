@@ -5,7 +5,7 @@ type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HT
 
 export interface DialogSectionProps extends Omit<DivProps, 'children'> {
 	type: 'content' | 'actions'
-	children?: ButtonProps | ButtonProps[]
+	children?: React.ReactElement<ButtonProps> | React.ReactElement<ButtonProps>[]
 }
 
 export const ContentDialogSection = (props: DialogSectionProps): null => null

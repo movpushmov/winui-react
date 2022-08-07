@@ -62,13 +62,14 @@
 
 @keyframes Show-Animation-Top {
     0% {
-        display: none;
+        height: 0;
         opacity: 0;
 
         transform: translate(-50%, 8px);
     }
 
     1% {
+        height: unset;
         display: block;
     }
 
@@ -84,23 +85,25 @@
     animation-duration: .2s;
     animation-name: Show-Animation-Top;
 
-    visibility: visible;
+    height: unset;
 
     transform: translate(-50%, 0);
 }
 
 @keyframes Hide-Animation-Top {
     0% {
-        visibility: visible;
+        height: unset;
         opacity: 1;
 
         transform: translate(-50%, 0);
     }
 
-    100% {
+    99% {
         opacity: 0;
-        visibility: hidden;
-        content-visibility: hidden;
+    }
+
+    100% {
+        height: 0;
 
         transform: translate(-50%, 8px);
     }
@@ -111,8 +114,8 @@
     animation-duration: .2s;
     animation-name: Hide-Animation-Top;
 
-    visibility: hidden;
-    content-visibility: hidden;
+    height: 0;
+    opacity: 0;
 
     transform: translate(-50%, 8px);
 }
@@ -129,19 +132,17 @@
 
 @keyframes Show-Animation-Bottom {
     0% {
-        display: none;
+        height: 0;
         opacity: 0;
     }
 
     1% {
-        display: block;
-
+        height: unset;
         transform: translate(-50%, 90%);
     }
 
     100% {
         opacity: 1;
-
         transform: translate(-50%, 110%);
     }
 }
@@ -151,23 +152,25 @@
     animation-duration: .2s;
     animation-name: Show-Animation-Bottom;
 
-    visibility: visible;
+    height: unset;
 
     transform: translate(-50%, 110%);
 }
 
 @keyframes Hide-Animation-Bottom {
     0% {
-        visibility: visible;
+        height: unset;
         opacity: 1;
 
         transform: translate(-50%, 110%);
     }
 
-    100% {
+    99% {
         opacity: 0;
-        visibility: hidden;
-        content-visibility: hidden;
+    }
+
+    100% {
+        height: 0;
 
         transform: translate(-50%, 100%);
     }
@@ -178,8 +181,8 @@
     animation-duration: .2s;
     animation-name: Hide-Animation-Bottom;
 
-    visibility: hidden;
-    content-visibility: hidden;
+    height: 0;
+    opacity: 0;
 
     transform: translate(-50%, 90%);
 }
@@ -196,13 +199,12 @@
 
 @keyframes Show-Animation-Left {
     0% {
-        display: none;
+        height: 0;
         opacity: 0;
     }
 
     1% {
-        display: block;
-
+        height: unset;
         transform: translate(-100%, -50%);
     }
 
@@ -217,22 +219,26 @@
     animation-duration: .2s;
     animation-name: Show-Animation-Left;
 
-    visibility: visible;
+    height: unset;
+    opacity: 1;
 
     transform: translate(-104%, -50%);
 }
 
 @keyframes Hide-Animation-Left {
     0% {
-        visibility: visible;
+        height: unset;
         opacity: 1;
 
         transform: translate(-104%, -50%);
     }
 
-    100% {
+    99% {
         opacity: 0;
-        visibility: hidden;
+    }
+
+    100% {
+        height: 0;
 
         transform: translate(-100%, -50%);
     }
@@ -243,7 +249,8 @@
     animation-duration: .2s;
     animation-name: Hide-Animation-Left;
 
-    visibility: hidden;
+    height: 0;
+    opacity: 0;
 
     transform: translate(-100%, -50%);
 }
@@ -311,3 +318,7 @@
     transform: translate(100%, -50%);
 }
 /*endregion*/
+
+.base-class {
+    display: none;
+}

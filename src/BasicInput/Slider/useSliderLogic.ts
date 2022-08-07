@@ -16,8 +16,8 @@ interface UseSliderLogicResult {
 	getGradient: () => string
 	getTooltipTransform: () => string
 
-	onMouseDownHandler: (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void
-	onMouseUpHandler: (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void
+	onMouseDownHandler: (e: React.MouseEvent<HTMLInputElement>) => void
+	onMouseUpHandler: (e: React.MouseEvent<HTMLInputElement>) => void
 	onChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -50,13 +50,13 @@ export function useSliderLogic(defaultProps: DefaultPropsType): UseSliderLogicRe
 		} ${getFillPercentage()}%, var(--fill-color-control-strong-default) ${getFillPercentage()}%)`
 	}
 
-	function onMouseDownHandler(e: React.MouseEvent<HTMLInputElement, MouseEvent>): void {
+	function onMouseDownHandler(e: React.MouseEvent<HTMLInputElement>): void {
 		setIsVisible(true)
 
 		onMouseDown?.(e)
 	}
 
-	function onMouseUpHandler(e: React.MouseEvent<HTMLInputElement, MouseEvent>): void {
+	function onMouseUpHandler(e: React.MouseEvent<HTMLInputElement>): void {
 		setIsVisible(false)
 
 		onMouseUp?.(e)

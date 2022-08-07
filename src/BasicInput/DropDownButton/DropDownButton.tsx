@@ -1,4 +1,4 @@
-import React, { CSSProperties, useCallback, useEffect, useState } from 'react'
+import React, { CSSProperties, useCallback, useEffect, useRef, useState } from 'react'
 import { Button } from '../Button/Button'
 import styles from './styles.module.css'
 import { Icon, IconType } from '../../Icons/Icon'
@@ -36,6 +36,8 @@ export function DropDownButton(props: DropDownButtonProps): React.ReactElement {
 	const [visible, setIsVisible] = useState(false)
 	const [animateIcon, setIsAnimateIcon] = useState(false)
 
+	const buttonRef = useRef<HTMLButtonElement>(null)
+
 	useEffect(() => {
 		setIsAnimateIcon(false)
 
@@ -44,18 +46,23 @@ export function DropDownButton(props: DropDownButtonProps): React.ReactElement {
 		}
 	}, [visible])
 
-	const clickHandler = useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+	const clickHandler = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
 		onClick?.(e)
 		setIsVisible(v => !v)
+	}, [onClick])
 
-		// eslint-disable-next-line
-	}, [])
+	const closeHandler = useCallback((e: Event) => setIsVisible(isVisible => {
+		if (buttonRef.current?.contains(e.target as HTMLElement)) {
+			return isVisible
+		}
 
-	const closeHandler = useCallback(() => setIsVisible(false), [])
+		return !isVisible
+	}), [])
 
 	return (
 		<div className={`${styles['dropdown']} ${defaultProps.className}`}>
 			<Button
+				ref={buttonRef}
 				{...otherProps}
 				onClick={clickHandler}
 				className={`${styles['dropdown-button']} ${animateIcon ? styles['animate-icon'] : ''}`}

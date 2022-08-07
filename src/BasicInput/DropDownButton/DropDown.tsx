@@ -1,5 +1,5 @@
 import styles from './dropdown.module.css'
-import React from 'react'
+import React, { MouseEventHandler, useCallback } from 'react'
 import { Icon, IconType } from '../../Icons/Icon'
 import { TextBlock } from '../../Text/Text/TextBlock'
 import { DropDownItem } from './DropDownButton'
@@ -7,7 +7,7 @@ import { useOuterClick } from '../../utils/useOuterClick'
 
 interface DropDownProps {
 	visible: boolean
-	close?: () => void
+	close?: (e: Event) => void
 
 	ref?: React.Ref<HTMLDivElement>
 
@@ -17,23 +17,17 @@ interface DropDownProps {
 	emptyMessage: string
 }
 
-function prepareClickHandler(
-	i: DropDownItem | React.ReactElement,
-	onClose?: () => void,
-	onSelect?: (value: any) => void,
-) {
-	return () => {
-		onSelect?.(i)
-		onClose?.()
-	}
-}
-
 export function DropDown(props: DropDownProps): React.ReactElement {
-	const ref = useOuterClick(() => {
+	const ref = useOuterClick(e => {
 		if (props.visible) {
-			props.close?.()
+			props.close?.(e)
 		}
 	})
+
+	const handler = useCallback((e: React.MouseEvent<HTMLDivElement>, i: DropDownItem | React.ReactElement) => {
+		props.onSelect?.(i)
+		props.close?.(e as unknown as Event)
+	}, [props])
 
 	return (
 		<div className={styles['dropdown-menu']} ref={ref}>
@@ -45,12 +39,10 @@ export function DropDown(props: DropDownProps): React.ReactElement {
 								return i
 							}
 
-							const handler = prepareClickHandler(i, props.close, props.onSelect)
-
 							return (
 								<div
 									className={styles['dropdown-item']}
-									onClick={handler}
+									onClick={e => handler(e, i)}
 									key={index}
 								>
 									{i.icon ? <Icon type={i.icon} style={{ marginRight: '8px' }} /> : null}

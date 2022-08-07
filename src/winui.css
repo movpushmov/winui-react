@@ -256,3 +256,8 @@ body {
         background: rgba(255, 255, 255, 0.5442);
     }
 }
+
+/* safari fix */
+button {
+    margin: 0;
+}

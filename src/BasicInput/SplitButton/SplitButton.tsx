@@ -1,4 +1,4 @@
-import React, { CSSProperties, useCallback, useEffect, useState } from 'react'
+import React, { CSSProperties, useCallback, useEffect, useRef, useState } from 'react'
 import { Button } from '../Button/Button'
 import styles from './styles.module.css'
 import { Icon, IconType } from '../../Icons/Icon'
@@ -32,6 +32,7 @@ export function SplitButton(props: SplitButtonProps): React.ReactElement {
 	}, props)
 
 	const { items, emptyMessage, onSelect, ...otherProps } = defaultProps
+	const containerRef = useRef<HTMLDivElement>(null)
 
 	const [visible, setIsVisible] = useState(false)
 	const [animateIcon, setIsAnimateIcon] = useState(false)
@@ -49,11 +50,17 @@ export function SplitButton(props: SplitButtonProps): React.ReactElement {
 		[],
 	)
 
-	const closeHandler = useCallback(() => setIsVisible(false), [])
+	const closeHandler = useCallback((e: Event) => setIsVisible(isVisible => {
+		if (containerRef.current?.contains(e.target as HTMLElement)) {
+			return isVisible
+		}
+
+		return !isVisible
+	}), [])
 
 	return (
 		<div className={`${styles['dropdown']} ${defaultProps.className}`}>
-			<div className={styles['buttons-row']}>
+			<div className={styles['buttons-row']} ref={containerRef}>
 				<Button
 					{...otherProps}
 					className={`${styles['content-button']}`}

@@ -14,7 +14,9 @@ interface ContentDialogProps {
 	[React.ReactElement<DialogSectionProps>, React.ReactElement<DialogSectionProps>]
 }
 
-function getButtonCount(children?: ButtonProps | ButtonProps[]): number {
+const singleButtonCount = 1
+
+function getButtonCount(children?: React.ReactElement<ButtonProps> | React.ReactElement<ButtonProps>[]): number {
 	if (Array.isArray(children)) {
 		return children.length
 	}
@@ -23,7 +25,7 @@ function getButtonCount(children?: ButtonProps | ButtonProps[]): number {
 		return 0
 	}
 
-	return [children].length
+	return singleButtonCount
 }
 
 export const ContentDialog = (props: ContentDialogProps): React.ReactElement => {

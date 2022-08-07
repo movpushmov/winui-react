@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { ForwardedRef, useCallback, useEffect, useRef, useState } from 'react'
 import styles from './styles.module.css'
 
 import { Header } from './components/Header/Header'
@@ -42,7 +42,7 @@ export enum CalendarZoom {
 
 const offset = 1
 
-export const CalendarView = (props: CalendarViewProps): React.ReactElement => {
+export const CalendarView = React.forwardRef((props: CalendarViewProps, ref: ForwardedRef<HTMLDivElement>): React.ReactElement => {
 	const defaultProps = Object.assign({
 		locale: 'en-US',
 		identifier: 'gregorian',
@@ -121,7 +121,7 @@ export const CalendarView = (props: CalendarViewProps): React.ReactElement => {
 	const [zoom, setZoom] = useState(CalendarZoom.MONTH)
 
 	return (
-		<div className={styles['container']}>
+		<div className={styles['container']} ref={ref}>
 			<Header
 				currentPeriod={currentPeriod}
 				zoom={zoom}
@@ -251,4 +251,4 @@ export const CalendarView = (props: CalendarViewProps): React.ReactElement => {
 			</div>
 		</div>
 	)
-}
+})

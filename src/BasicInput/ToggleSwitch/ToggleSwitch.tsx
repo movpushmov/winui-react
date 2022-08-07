@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styles from './styles.module.css'
 import { TextBlock } from '../../Text/Text/TextBlock'
 
@@ -28,6 +28,12 @@ export function ToggleSwitch(props: ToggleSwitchProps): React.ReactElement {
 
 		return props.onChange?.(e)
 	}, [props, toggled])
+
+	useEffect(() => {
+		if (props.value !== void 0) {
+			setIsToggled(props.value)
+		}
+	}, [props.value])
 
 	return (
 		<div style={props.style} className={props.className}>

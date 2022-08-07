@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { TextBox } from '../../Text/TextBox/TextBox'
 import { CalendarView, CalendarViewProps } from '../CalendarView/CalendarView'
 import { Flyout } from '../../DialogsAndFlyouts/Flyout/Flyout'
+import { useOuterClick } from '../../utils/useOuterClick'
 
 interface CalendarDatePickerProps extends Omit<CalendarViewProps, 'selectedDates' | 'defaultSelectedDates'> {
 	defaultDate?: Date
@@ -14,13 +15,24 @@ export const CalendarDatePicker = (props: CalendarDatePickerProps): React.ReactE
 	const [selectedDate, setSelectedDate] = useState(props.selectedDate ?? props.defaultDate ?? void 0)
 	const [visible, setIsVisible] = useState(false)
 
+	const inputRef = useRef<HTMLDivElement>(null)
+	const calendarRef = useOuterClick(e => {
+		if (visible && !inputRef.current?.contains(e.target as HTMLElement)) {
+			setIsVisible(false)
+		}
+	})
+
 	return (
 		<div>
 			<Flyout
 				visible={visible}
 				flyoutPosition="bottom"
 				flyoutContent={(
-					<CalendarView selectionMode="single" locale="ru"/>
+					<CalendarView
+						selectionMode="single"
+						locale="ru"
+						ref={calendarRef}
+					/>
 				)}
 
 				boxProps={{
@@ -34,8 +46,8 @@ export const CalendarDatePicker = (props: CalendarDatePickerProps): React.ReactE
 					placeholder=""
 					value={(selectedDate ?? '').toString()}
 					readOnly
+					containerRef={inputRef}
 					onFocus={() => setIsVisible(true)}
-					onBlur={() => setIsVisible(false)}
 				/>
 			</Flyout>
 		</div>

@@ -1,7 +1,6 @@
 import React, { HTMLAttributes, useEffect, useState } from 'react'
 import styles from './styles.module.css'
 import { TextBlock } from '../../Text/Text/TextBlock'
-import { useOuterClick } from '../../utils/useOuterClick'
 
 type DivPropsType = React.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 type Position = 'top' | 'bottom' | 'left' | 'right'
@@ -11,7 +10,7 @@ interface FlyoutProps extends DivPropsType {
 	flyoutContent?: string | React.ReactNode
 	visible: boolean
 
-	onClose?: () => void
+	onClose?: (e: Event) => void
 
 	boxProps?: DivPropsType
 }
@@ -26,11 +25,7 @@ export const Flyout = (props: FlyoutProps): React.ReactElement => {
 		...otherProps
 	} = props
 
-	const elementRef = useOuterClick(() => {
-		if (props.visible) {
-			onClose?.()
-		}
-	})
+	const [containerClass, setContainerClass] = useState(styles['base-class'])
 
 	function getFlyoutBoxClassName(visible?: boolean, className?: string): string {
 		const boxPositionName = styles[`flyout-box-${flyoutPosition}`]
@@ -41,40 +36,21 @@ export const Flyout = (props: FlyoutProps): React.ReactElement => {
 		return `${boxPositionName || ''} ${boxVisibilityName || ''} ${className || ''}`
 	}
 
-	if (boxProps) {
-		const {
-			className,
-			ref,
-			...otherBoxProps
-		} = boxProps
+	useEffect(() => {
+		if (containerClass === styles['base-class'] && !props.visible) {
+			return
+		}
 
-		const classNames = getFlyoutBoxClassName(props.visible, className)
-
-		return (
-			<div className={styles['flyout-container']} {...otherProps}>
-				<div
-					{...otherBoxProps}
-					ref={elementRef}
-					className={classNames}
-				>
-					{typeof props.flyoutContent === 'string' ?
-						<TextBlock style={{ margin: 0 }}>{props.flyoutContent}</TextBlock>
-						: props.flyoutContent}
-				</div>
-
-				{props.children}
-			</div>
-		)
-	}
-
-	const classNames = getFlyoutBoxClassName(props.visible)
+		if (boxProps) {
+			setContainerClass(getFlyoutBoxClassName(props.visible, boxProps.className))
+		} else {
+			setContainerClass(getFlyoutBoxClassName(props.visible))
+		}
+	}, [boxProps, getFlyoutBoxClassName, props.visible])
 
 	return (
 		<div className={styles['flyout-container']} {...otherProps}>
-			<div
-				ref={elementRef}
-				className={classNames}
-			>
+			<div {...(boxProps ?? {})} className={containerClass}>
 				{typeof props.flyoutContent === 'string' ?
 					<TextBlock style={{ margin: 0 }}>{props.flyoutContent}</TextBlock>
 					: props.flyoutContent}
