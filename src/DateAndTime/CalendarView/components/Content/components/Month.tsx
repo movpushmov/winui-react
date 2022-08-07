@@ -71,10 +71,11 @@ export const Month = ({ locale, currentPeriod, currentDay, selectDate, validator
 			<div className={styles['dates']}>
 				{days.map(day => {
 					const isBlocked =
-						Boolean(validator) &&
-						!validator?.({ type: 'day', value: day }) ||
-						!validator?.({ type: 'month', value: day }) ||
-						!validator?.({ type: 'year', value: day.getFullYear() })
+						validator !== void 0 && (
+							!validator({ type: 'day', value: day }) ||
+							!validator({ type: 'month', value: day }) ||
+							!validator({ type: 'year', value: day.getFullYear() })
+						)
 
 					return (
 						<DateButton

@@ -11,8 +11,8 @@
 
     padding: 16px;
 
-    width: 100vw;
-    max-width: 75vw;
+    min-width: 100%;
+    width: fit-content;
 
     background: rgba(252, 252, 252, 0.85);
     background-blend-mode: normal, luminosity;
@@ -24,6 +24,15 @@
 
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
     border-radius: 7px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .flyout-box-base {
+        background:
+                linear-gradient(0deg, rgba(44, 44, 44, 0.15),
+                rgba(44, 44, 44, 0.15)),
+                rgba(44, 44, 44, 0.96);
+    }
 }
 
 .flyout-box-base:before{
@@ -91,6 +100,7 @@
     100% {
         opacity: 0;
         visibility: hidden;
+        content-visibility: hidden;
 
         transform: translate(-50%, 8px);
     }
@@ -102,6 +112,7 @@
     animation-name: Hide-Animation-Top;
 
     visibility: hidden;
+    content-visibility: hidden;
 
     transform: translate(-50%, 8px);
 }
@@ -156,6 +167,7 @@
     100% {
         opacity: 0;
         visibility: hidden;
+        content-visibility: hidden;
 
         transform: translate(-50%, 100%);
     }
@@ -167,6 +179,7 @@
     animation-name: Hide-Animation-Bottom;
 
     visibility: hidden;
+    content-visibility: hidden;
 
     transform: translate(-50%, 90%);
 }

@@ -82,3 +82,39 @@ export function getDecade(year: number): Decade {
 		end: end.getFullYear(),
 	}
 }
+
+export function toString(date: Date, locale: string): string {
+	return date.toLocaleString(locale, { day: 'numeric', month: 'numeric', year: 'numeric' })
+}
+
+export function isEqual(first: Date, second: Date): boolean {
+	return (
+		first.getDate() === second.getDate() &&
+		first.getMonth() === second.getMonth() &&
+		first.getFullYear() === second.getFullYear()
+	)
+}
+
+export function getInRange(from: Date, to: Date): Date[] {
+	const days: Date[] = []
+
+	if (to.getTime() < from.getTime()) {
+		const date = new Date(to)
+		days.push(new Date(date))
+
+		while (!isEqual(date, from)) {
+			date.setDate(date.getDate() + offset)
+			days.push(new Date(date))
+		}
+	} else {
+		const date = new Date(from)
+		days.push(new Date(date))
+
+		while (!isEqual(date, to)) {
+			date.setDate(date.getDate() + offset)
+			days.push(new Date(date))
+		}
+	}
+
+	return days
+}

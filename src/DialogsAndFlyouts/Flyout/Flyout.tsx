@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react'
+import React, { HTMLAttributes, useEffect, useState } from 'react'
 import styles from './styles.module.css'
 import { TextBlock } from '../../Text/Text/TextBlock'
 import { useOuterClick } from '../../utils/useOuterClick'
@@ -38,7 +38,7 @@ export const Flyout = (props: FlyoutProps): React.ReactElement => {
 			styles[`visible-${flyoutPosition}`] :
 			styles[`hide-${flyoutPosition}`]
 
-		return `${boxPositionName} ${boxVisibilityName} ${className || ''}`
+		return `${boxPositionName || ''} ${boxVisibilityName || ''} ${className || ''}`
 	}
 
 	if (boxProps) {

@@ -4,7 +4,7 @@ import styles from './styles.module.css'
 import { Header } from './components/Header/Header'
 import { Month } from './components/Content/components/Month'
 import { AnimationProvider } from './components/AnimationProvider/AnimationProvider'
-import { getDecade } from '../../utils/date'
+import { getDecade, getInRange } from '../../utils/date'
 import { Year } from './components/Content/components/Year'
 import { Decade } from './components/Content/components/Decade'
 
@@ -15,18 +15,23 @@ type Value =
 
 export type CalendarDateValidator = (value: Value) => boolean
 
-interface CalendarViewProps {
+export interface CalendarViewProps {
 	locale?: string
 	identifier?: string
-	selectionMode?: 'single' | 'multiply' | 'none'
+	selectionMode?: 'single' | 'multiply' | 'none' | 'range'
 
 	isGroupLabelVisible?: boolean
 	isOutOfScopeEnabled?: boolean
 
 	validator?: CalendarDateValidator
+
+	defaultSelectedDates?: Date[]
 	selectedDates?: Date[]
 
-	onSelect?: (date: Date) => void
+	onSelect?: (date: Date[]) => void
+
+	style?: React.CSSProperties
+	className?: string
 }
 
 export enum CalendarZoom {
@@ -49,10 +54,18 @@ export const CalendarView = (props: CalendarViewProps): React.ReactElement => {
 
 	const currentDay = useRef(new Date())
 
-	const [selectedDates, setSelectedDays] = useState(props.selectedDates ?? [])
+	const [selectedDates, setSelectedDays] = useState(props.selectedDates ?? props.defaultSelectedDates ?? [])
 	const [currentPeriod, setCurrentPeriod] = useState(new Date())
 	const [currentYear, setCurrentYear] = useState(currentPeriod.getFullYear())
 	const [currentDecade, setCurrentDecade] = useState(getDecade(currentPeriod.getFullYear()))
+
+	const [leftInRange, setLeftInRange] = useState<Date | undefined>()
+
+	useEffect(() => {
+		if (props.selectedDates) {
+			setSelectedDays(props.selectedDates)
+		}
+	}, [props.selectedDates])
 
 	useEffect(() => {
 		setCurrentYear(currentPeriod.getFullYear())
@@ -66,7 +79,7 @@ export const CalendarView = (props: CalendarViewProps): React.ReactElement => {
 					setSelectedDays([date])
 				}
 
-				props.onSelect?.(date)
+				props.onSelect?.([date])
 				break
 			}
 			case 'multiply': {
@@ -74,7 +87,28 @@ export const CalendarView = (props: CalendarViewProps): React.ReactElement => {
 					setSelectedDays(selectedDates.concat(date))
 				}
 
-				props.onSelect?.(date)
+				props.onSelect?.([date])
+
+				break
+			}
+			case 'range': {
+				if (props.selectedDates) {
+					break
+				}
+
+				if (!leftInRange) {
+					setSelectedDays([date])
+					setLeftInRange(date)
+
+					props.onSelect?.([date])
+				} else {
+					const days = getInRange(leftInRange, date)
+
+					setSelectedDays(days)
+					props.onSelect?.([leftInRange, date])
+
+					setLeftInRange(void 0)
+				}
 
 				break
 			}
@@ -82,7 +116,7 @@ export const CalendarView = (props: CalendarViewProps): React.ReactElement => {
 				break
 			}
 		}
-	}, [defaultProps.selectionMode, props, selectedDates])
+	}, [defaultProps.selectionMode, props, selectedDates, leftInRange])
 
 	const [zoom, setZoom] = useState(CalendarZoom.MONTH)
 
@@ -168,7 +202,7 @@ export const CalendarView = (props: CalendarViewProps): React.ReactElement => {
 				}}
 			/>
 
-			<div className={styles['content']}>
+			<div className={`${styles['content'] ?? ''} ${props.className ?? ''}`} style={props.style}>
 				<AnimationProvider zoom={zoom} type={CalendarZoom.MONTH}>
 					<Month
 						validator={props.validator}
